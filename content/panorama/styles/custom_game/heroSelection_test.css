@@ -1,0 +1,255 @@
+#HeroSelectedRays,
+.HeroSelectionMain{
+	width:100%;
+	height: 100%;
+	z-index: 1;
+    opacity: 1;
+}
+#ScenePanelContainer,
+#ScenePanel{
+	width:100%;
+	height: 100%;
+
+}
+#HeroInfo{
+	width:30%;
+	height: 100%;
+}
+
+#HeroNameInfo{
+	align:center top;
+	flow-children:right;
+}
+#QuestionIcon{
+	width: 20px;
+	height: 20px;
+	wash-color:#A5ADA2ff; 
+	align:center center;
+	margin-bottom:7px;
+	margin-left: 5px;
+}
+#Name{
+	width:100%;
+	height: 75%;
+	vertical-align: center;
+}
+#IsVampire{
+	width: 42px;
+	height: 42px;
+	margin-left:5px;
+	vertical-align: center;
+}
+.TeamPlayer
+{
+    flow-children: right;
+    height: 60px;
+    horizontal-align: center;
+}
+
+.SelectHero{
+	vertical-align: center;
+    margin-right: 30px;
+    border-radius: 4px;
+    width: 72px;
+    height: 40px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    box-shadow: #000000ff -2px -2px 4px 4px;
+    transition-property: transform, opacity, saturation;
+    transition-duration: 0.3s;
+    saturation:0;
+
+}
+.AbilityRow{
+	flow-children:right;
+}
+.AbilityRow DOTAAbilityImage
+{
+    width: 56px;
+    height: 56px;
+    margin: 4px;
+    border-radius: 3px;
+    background-color: black;
+    tooltip-position: right;
+    tooltip-body-position: 100% 50%;
+    transition-property: transform, saturation;
+    transition-duration: 0.1s;
+}
+.AbilityRow DOTAAbilityImage:Hover{
+    saturation:1.2;
+}
+
+
+.AbilityRow Label
+{
+    vertical-align: center;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    margin-left: 8px;
+    font-size: 20px;
+    color: white;
+    text-shadow: skyblue 0px 0px 3px 0px;
+}
+
+#HeroAbilities
+{
+    flow-children: up;
+    align: left bottom;
+    margin-left: 50px;
+    margin-bottom: 60px;
+    opacity: 0.86;
+}
+
+.SelectHero:Hover{
+	box-shadow: skyblue -2px -2px 0px 3px;
+}
+.TeamPlayer Label
+{
+    vertical-align: center;
+    font-size: 24px;
+    height: 26px;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-align: left;
+    width: 200px;
+}
+
+.LabelName
+{
+    font-size: 45px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 0px 3px 1.0 lime;
+    letter-spacing: 7px;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    horizontal-align: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#PlayersContent
+{
+    margin-top: 30px;
+    width: 100%;
+    flow-children: down;
+}
+
+#HeroSelectionBackgroundScene
+{
+    width: 50%;
+    height: 51%;
+    pre-transform-scale2d: 2;
+    vertical-align: middle;
+    horizontal-align: center;
+    background-color: rgb(29, 39, 47);
+    z-index: -1000;
+}
+#HeroSelectionTopGradient
+{
+    width: 100%;
+    height: 150px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000 ), to( #00000000 ) );
+}
+
+#HeroList
+{
+    align: center top;
+    margin-top: 100px;
+    width: 55%;
+    flow-children: down;
+}
+
+#HeroList.NewPlayer
+{
+    align: center center;
+    margin: 0;
+}
+
+.HeroHeader
+{
+    margin-bottom: 40px;
+    font-size: 42px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 0px 3px 1.0 skyblue;
+    letter-spacing: 6px;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    horizontal-align: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#DifficultyList
+{
+    width: 100%;
+    flow-children: right;
+}
+
+#Heroes
+{
+    flow-children: right-wrap;
+    align:center center;
+    max-width: 70%;
+
+}
+
+#TimerText
+{
+    font-size: 48px;
+    horizontal-align: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 0px 4px 1.0 red;
+    letter-spacing: 6px;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.SelectionImage
+{
+    margin: 4px;
+    width: 75px;
+    height: 75px;
+    margin: 6px;
+    box-shadow: #000000ff -2px -2px 4px 4px;
+    border-radius: 50%;
+} 
+
+.SelectionImage:hover
+{
+    box-shadow: skyblue -2px -2px 0px 4px;
+}
+
+.SelectionImage:Disabled{
+    saturation:.6;
+}
+.SelectionImage:Disabled:Hover{
+    box-shadow: #000000ff -2px -2px 4px 4px;
+}
+.IsSelectionPlayer{
+    z-index: 2;
+    saturation:1;
+}
+.IsSelectionHero:Hover,
+.IsSelectionHero{
+    box-shadow: lime -2px -2px 0px 4px;
+}
+
+.IsSelectionHeroFirst:Hover,
+.IsSelectionHeroFirst{
+    z-index: 3;
+    box-shadow: yellow -2px -2px 0px 4px;
+}
+
+.IsSelectionHero .SelectHero{
+    saturation:1;
+}
+
+#RightSide
+{
+    align: right top;
+    flow-children: down;
+    width: 25%;
+    margin-top: 100px;
+}
+

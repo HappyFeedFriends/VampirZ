@@ -1,0 +1,11 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/custom_loading_screen.css" />
+	</styles>
+	<Panel class="AddonLoadingRoot" >
+		<Panel id="CustomBg" >
+			<Panel  id="LoadScreenImages" scaling="stretch-to-fit-preserve-aspect" /> 
+		</Panel>
+	</Panel>
+</root>

@@ -1,0 +1,53 @@
+<root>
+    <styles>
+    	<include src="s2r://panorama/styles/profile_badge.vcss_c" />
+       	<include src="file://{resources}/styles/custom_game/VampirZ_end_screen.css" />
+	   	<include src="s2r://panorama/styles/dotastyles.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/util.js" />  		
+        <include src="file://{resources}/scripts/custom_game/VampirZ_end_screen.js" />  		 		
+    </scripts>
+    <snippets>
+		<snippet name="Player">
+				<Panel class="playerStr" > 
+					<Panel id="PlayerName" class="player" > 
+						<DOTAAvatarImage id="Avatar"/> 
+						<DOTAUserName id="UserName" />
+					</Panel>
+					<Label id = "GlobalRank" html="true" class="GlobalRank" text="254" /> 
+					<Label id = "kills" class="kills" html="true" text="32" /> 
+					<Label id = "deaths" class="deaths" html="true" text="32" /> 
+					<Label id = "assistance" class="assistance" html="true" text="32" /> 
+					<Label id = "durationLife" class="durationLife" html="true" text="32:40" /> 
+					<Label id = "rating" class="rating" html="true" text="TBD -> 22000" /> 
+					<!--<Label id = "xpBonus" class="xpBonus" html="true" text="+ 0" /> -->   
+					<ProgressBar class="xpBonus" min="0" max="5000" id="StatusProgress" > 
+						<Label id ="xpBonus" text="123" />
+					</ProgressBar>  
+					<Label id = "Coin" class="Coin" html="true" text="1" />  
+				</Panel> 
+		</snippet>
+	</snippets>
+    <Panel class="MainPanel" hittest="false" >    
+		<Panel id="EndScreenPanel" > 
+			<Panel id="Title" > 
+				<Label text="player_name" class="player" />  
+				<Label text="global_rank" class="GlobalRank" /> 
+				<Label text="kills" class="kills"/> 
+				<Label text="assistance" class="assistance"/>  
+				<Label text="deaths" class="deaths" />  
+				<Label text="durationLife" class="durationLife" /> 
+				<Label text="ratingUpdate" class="rating" /> 
+				 <Label text="xpBonus" class="xpBonus" /> 
+				<Label text="addCoin" class="Coin" />  
+			</Panel>
+			<Panel id="TeamPanel" /> 		
+			<Panel id="LoadingPanel">
+					<Label id="LoadingText" text="LOADING"/>
+					<Panel class="Spinner" />
+					<Label id="LoadingMessage" text="Connection servers..."/>
+			</Panel> 
+		</Panel>
+    </Panel>
+</root>

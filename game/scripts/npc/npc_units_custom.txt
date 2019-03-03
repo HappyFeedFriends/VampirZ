@@ -1,0 +1,92 @@
+  // Dota Units File
+#base "units/neutrals.txt"
+#base "units/bosses.txt"
+"DOTAUnits"
+{
+  "Version" "1"
+  
+  "npc_dummy_unit"
+  {
+    // General
+    //
+    "BaseClass"         "npc_dota_base_additive"  // Class of entity of link to.
+    "Model"           "models/development/invisiblebox.vmdl"  // Model.    
+    "Ability1"          "dummy_unit"     // Ability 1.
+    "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"     // Type of attack - melee, ranged, etc.
+    "AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
+    "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"      // Hull type used for navigation/locomotion.
+    "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+    "MovementSpeed"       "450"   // Speed
+    "MovementTurnRate"      "1.0"   // Turning rate.
+    "FollowRange"       "250"   // Distance to keep when following
+    "StatusHealth"        "1"     // Base health.
+    "StatusHealthRegen"     "0"     // Health regeneration rate.
+    "StatusMana"        "0"     // Base mana.
+    "StatusManaRegen"     "0"     // Mana regeneration rate.
+    "TeamName"          "DOTA_TEAM_GOODGUYS"      // Team name.
+    "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+    "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+    "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+
+    // Bots
+    //----------------------------------------------------------------
+    "AttackDesire"        "1.5"   // How much bots want to attack them vs other non-hero things
+  }
+  
+	"npc_vampirZ_hero_shinobu"
+	{
+		"BaseClass"					"npc_dota_hero"
+		"HeroID"					"118"
+		"Model"						"models/hero_shinobu/shinobu_01.vmdl"	
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"ModelScale"				"0.7"
+		"MovementTurnRate"			"1.5"
+		"MovementSpeed"				"325"
+		"VoiceFile"					""
+
+		"AbilityLayout"		"5"
+		"Ability1"		""
+		"Ability2"		""
+		"Ability3"		""
+		"Ability4"      ""
+		"Ability5"      ""
+		"Ability6"		""
+		
+		"Ability10"		"special_bonus_shinobu_2"
+		"Ability11"		"special_bonus_shinobu_4"
+		"Ability12"		"special_bonus_shinobu_5"
+		"Ability13"		"special_bonus_truestrike"
+		"Ability14"		"special_bonus_shinobu_1"
+		"Ability15"		"special_bonus_shinobu_3"
+		"Ability16"		"special_bonus_shinobu_7"
+		"Ability17"		"special_bonus_shinobu_6"
+
+		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"				"31"
+		"AttackDamageMax"				"33"
+		"AttackRate"					"1.6"		
+		"AttackDamageType"				"DAMAGE_TYPE_ArmorPhysical"
+		"AttackAnimationPoint"			"0.3"
+		"AttackAcquisitionRange"		"800"
+		"AttackRange"					"150"
+		"ProjectileModel"				"particles/base_attacks/ranged_hero.vpcf"
+		"ProjectileSpeed"				"900"
+		"MagicalResistance"				"25"
+		"ArmorPhysical"				"5"
+		"StatusHealthRegen"			"3.25"
+		"VisionDaytimeRange"		"1800"
+		"VisionNighttimeRange"		"800"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"25.3"
+		"AttributeStrengthGain"		"2.1"
+		"AttributeBaseAgility"		"34"
+		"AttributeAgilityGain"		"2.9"
+		"AttributeBaseIntelligence"	"19.2"
+		"AttributeIntelligenceGain"	"2.1"
+		"HasInventory"				"1"	
+
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	}  
+}

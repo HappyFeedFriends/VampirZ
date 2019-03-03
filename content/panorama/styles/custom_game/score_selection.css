@@ -1,0 +1,89 @@
+#ScoreSelection
+{	
+	position: -40px 30px 0;
+	horizontal-align: left;
+	background-color: rgba(48, 45, 45, 0);
+	vertical-align: center;
+	width: 290px;
+	border-radius: 30px;
+	height: 180px;
+	border: 1px solid #999;
+	z-index: 99999;
+}
+
+#ScoreSelection:hover
+{
+	color:#93aa00;
+}
+
+#select_score_title
+{
+	vertical-align: top;
+	margin-top: 6px;
+	horizontal-align:center;
+	text-transform: uppercase;
+	font-size: 26px;
+	color: #cccccc;
+	text-shadow: 2px 2px 2px #000000;
+}
+
+.ScoreBG
+{
+	width:100px;
+}
+
+.ScoreText
+{
+	text-shadow: 1px 1px 2px 3 #000000;
+	font-size: 28px;
+	font-weight: bold;
+	text-align: center;
+	width:100%;
+	vertical-align: center;
+	opacity: 0.5;
+}
+
+.ScoreText:hover
+{
+	color:#b88c3b;
+	brightness:4.0;
+}
+
+.ScoreText:Active
+{
+	opacity: 0;
+}
+
+.SelectButton
+{
+	margin-left: 35px;
+	horizontal-align: left;
+	margin-top: 50px;
+	background-color: rgba(48, 45, 45, 0.5);
+	border-radius: 10px;
+}
+.SelectButtonTwo
+{
+	margin-right: 35px;
+	horizontal-align: right;
+	margin-top: 50px;
+	background-color: rgba(48, 45, 45, 0.5);
+	border-radius: 10px;
+	border-radius: 10px;
+}
+.SelectButtonThree
+{
+	margin-left: 35px;
+	horizontal-align: left;
+	margin-top: 110px;
+	background-color: rgba(48, 45, 45, 0.5);
+	border-radius: 10px;
+}
+.SelectButtonFour
+{
+	margin-right: 35px;
+	horizontal-align: right;
+	margin-top: 110px;
+	background-color: rgba(48, 45, 45, 0.5);
+	border-radius: 10px;
+}

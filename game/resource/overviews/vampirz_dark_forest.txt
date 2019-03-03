@@ -1,0 +1,8 @@
+vampirz_dark_forest
+{
+	material materials/overviews/vampirz_dark_forest.vmat
+	pos_x -10496
+	pos_y 10496
+	scale 20.500
+}
+

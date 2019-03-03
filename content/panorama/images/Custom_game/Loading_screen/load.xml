@@ -1,0 +1,12 @@
+<root> 
+<Panel class="AddonLoadingRoot"> 
+<!--<Image id="gamemode" class="SeqImg" src="file://{images}/custom_game/loading_screen/custom_bg_1.png" /> 
+<Image id="gamemode" class="SeqImg" src="file://{images}/custom_game/custom_icon/blood.png" /> 
+<Image id="gamemode" class="SeqImg" src="file://{images}/custom_game/custom_icon/armor.png" /> 
+<Image id="gamemode" class="SeqImg" src="file://{images}/custom_game/custom_icon/damage.png" /> 
+<Image id="gamemode" class="SeqImg" src="file://{images}/custom_game/custom_icon/health.png" /> 
+<Image id="gamemode" class="SeqImg" src="file://{images}/custom_game/custom_icon/shield.png" /> 
+<Image id="gamemode" class="SeqImg" src="file://{images}/custom_game/custom_icon/vampirism.png" /> 
+<Image id="gamemode" class="SeqImg" src="file://{images}/custom_game/custom_icon/movespeed.png" />  ->
+</Panel> 
+</root>

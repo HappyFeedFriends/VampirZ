@@ -1,0 +1,76 @@
+.ShopButtonMain{
+
+	width:260px;
+	height:80px;
+	vertical-align: bottom;
+	horizontal-align: right;     
+	background-image: url("s2r://panorama/images/hud/reborn/courier_gold_bg_262_psd.vtex");
+	background-size: 100%;
+	flow-children:right;
+}
+
+.shop_launcher_bg
+{
+	margin-right: 0px;
+	margin-bottom: 0px;
+	horizontal-align: right;
+	vertical-align: bottom;
+	z-index: -2;
+	width: 278px;
+	height: 60px;
+	background-image: url("s2r://panorama/images/hud/reborn/courier_gold_bg_262_psd.vtex");
+	background-size: 100%;
+}
+
+.GoldIcons
+{
+	background-image: url("s2r://panorama/images/hud/icon_gold_psd.vtex");
+	background-size: 100% 100%;
+	width: 20px;
+	height: 20px;
+	vertical-align: center;
+	
+}
+.BloodIcons
+{
+ 
+	background-image: url("s2r://panorama/images/custom_game/custom_icon/blood.png");
+	background-size: 100% 100%;
+	width: 25px;
+	height: 24px;
+	vertical-align: center;
+}
+
+.ShopButton
+{
+	background-image: url("s2r://panorama/images/hud/reborn/shop_launcher_button_psd.vtex");
+	background-color:#000000aa 0px 0px 2px 2px;
+	brightness: 0.9;
+	background-size: 100% 100%;
+	width: 170px;
+	height: 50px;
+	vertical-align: bottom;
+	horizontal-align: left;
+	margin-bottom: 12px;
+	margin-left: 25px;
+}
+#ClassIcon{
+	width: 50px;
+	height: 50px;
+	horizontal-align:center;
+	vertical-align:center;
+}
+#ClassIcon:Hover{
+	brightness: 2;
+}
+.ShopButton Label{
+
+	horizontal-align: center;
+    vertical-align: center;
+    font-size: 23;
+	font-family: "Times New Roman";
+    color: #fff;
+}
+.ShopButton:Hover{
+	brightness: 0.8;
+}

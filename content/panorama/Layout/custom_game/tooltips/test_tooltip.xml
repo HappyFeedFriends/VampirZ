@@ -1,0 +1,17 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/styles/custom_game/tooltips/test_tooltip.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+		<include src="file://{resources}/scripts/custom_game/tooltips.js" />
+	</scripts>
+	<Panel class="UpgradeTooltip" hittest="false" ontooltiploaded="setupTooltipSpecialUpgrade()"  >
+		<Panel id="TitleContainer" >
+			<Label id="Title" text="#title" />
+		</Panel>
+		<Label id="Description" html="true" text="description" />
+		<Label id="Level" text="#Upgrade_level" />
+	</Panel>
+</root>

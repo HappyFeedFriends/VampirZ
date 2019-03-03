@@ -1,0 +1,43 @@
+#CustomBg,
+.AddonLoadingRoot
+{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+} 
+#LoadScreenImages{
+	width: 100%;
+    height: 100%;
+	background-image: url("s2r://panorama/images/Custom_game/Loading_screen/custom_bg_1.png");
+	background-size: 100% 100%;
+}
+#AddonTitle
+{
+	margin-bottom: -15px;
+	vertical-align: center;
+	text-transform: uppercase;
+	font-size: 80px;
+	color: #cccccc;
+	text-shadow: 2px 2px 2px #000000;
+}
+ 
+.ProBg
+{
+	background-repeat: repeat;
+	background-position: 50% 50%;
+	background-size: 100% 100%;
+}
+
+#VoteTeam{
+	
+	margin-left:250px;
+	margin-top:180px;
+	width: 350px;
+    height: 100px;
+	box-shadow: 0 0 4px #535c63;
+	flow-children: down; 
+}
+.VotingTeam{
+	margin-top:20px;
+	margin-left:100px;
+}

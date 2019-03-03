@@ -1,0 +1,150 @@
+.MainPanel{
+	width:100%;
+	height:100%; 
+}
+
+#EndScreenPanel{
+	width:85%;  
+	height:75%; 
+	vertical-align:center;
+	background-color:#00000099;
+	horizontal-align:center;
+	flow-children: down;
+	border-radius:5px;
+}
+#Title{
+	width:100%;
+	height: 70px;
+	flow-children: right;
+	background-image: url("s2r://panorama/images/backgrounds/gallery_background.png");
+	background-size: 100% 100%;
+}
+#Title Label{
+	color: #5b6872;
+	vertical-align: center;
+	text-align: center;
+    font-size: 19px;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+.playerStr{
+	margin-top:5px;
+	flow-children:right;
+	width:100%;
+	height: 80px;
+	border-radius: 5px;
+}
+.playerStr Label{
+	text-align: center;
+	vertical-align: center;
+	font-size: 32px;
+}
+.rank{
+	width:90px;
+}
+
+.rating,
+.durationLife,
+.GlobalRank{
+	width:200px;
+}
+.xpBonus,
+.Coin,
+.deaths,
+.kills{
+	width:135px;
+}
+.assistance{
+	width: 170px;
+}
+.player{
+	padding-left:10px;
+	width:300px;
+	flow-children:right;
+	vertical-align:center;
+}
+#Avatar{ 
+	width:64px;
+	height:64px;
+	vertical-align: center;
+	horizontal-align:center;
+}
+
+#UserName{
+	width:250px; 
+	height:100%; 
+	padding-left:15px;
+}
+#UserName Label{
+	font-size: 28px;
+	text-align: center;
+	vertical-align: center;
+}
+#TeamPanel{
+	width:100%;
+	height:100%;
+	flow-children:down;
+	overflow: clip scroll;
+}
+.IsLocalPlayer {
+	background-color:#00000990;
+}
+#LoadingPanel{
+	width: 100%;
+	margin-top: -20px;
+	align: center center;
+	flow-children: down;
+}
+
+#LoadingPanel  Label {
+	width: 100%;
+	text-align: center;
+}
+#LoadingText{
+	margin-bottom: -12px;
+	font-size: 72px;
+	font-weight: bold;
+	color: #fff;
+}
+
+.Spinner{
+	width: 80px;
+	height: 80px;
+	horizontal-align: center;
+}
+#LoadingMessage{
+	margin-top: 8px;
+	font-size: 30px;
+}
+
+.CoinIcon
+{
+  
+	background-image: url("s2r://panorama/images/custom_game/custom_icon/coin.png");  
+	background-size: 100% 100%;
+	width: 35px;
+	height: 35px; 
+	vertical-align: center;
+}
+
+#StatusProgress{
+	align:center center;
+	background-color: #000000ff;
+	border-radius: 5px;
+}
+
+#StatusProgress .ProgressBarLeft
+{
+	background-color: skyblue;
+}
+
+#StatusProgress .ProgressBarRight
+{
+	background-color: #00000000;
+}
+
+#StatusProgress Label{
+	horizontal-align:right;
+	font-size: 16px;
+	color:white;
+}

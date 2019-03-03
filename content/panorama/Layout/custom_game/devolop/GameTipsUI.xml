@@ -1,0 +1,17 @@
+<root>
+    <styles>
+ 		<include src="file://{resources}/styles/custom_game/GameTipsUI.css" /> 
+    </styles>
+    <scripts>
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+		<include src="file://{resources}/scripts/custom_game/GameTipsUI.js" />
+	</scripts>
+	<Panel class="GameTipsUI" hittest="false">
+		<Panel id="GameTipsUI_Main" html="true">
+			<Label id="GameTipsTitle" text="TitleTest" class="GameTipsTitle">
+			</Label>			
+			<Label id="GameTipsDescription" text="DescriptionTest" class="GameTipsDescription"  html= "true">
+			</Label>
+		</Panel>
+    </Panel>
+</root>

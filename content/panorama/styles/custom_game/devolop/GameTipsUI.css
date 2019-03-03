@@ -1,0 +1,72 @@
+.GameTipsUI{
+	width:100%;
+	height:100%;
+}
+
+@keyframes 'GameTipsUIkopen'
+{
+    0%
+    {
+       transform: translateY(0) translateX(200px);
+    }
+    100%
+    {
+       transform: translateY(0) translateX(0px);
+    }
+}
+@keyframes 'GameTipsUIkfHide'
+{
+    0%
+    {
+       transform: translateY(0) translateX(0px);
+    }
+    100%
+    {
+       transform: translateY(0) translateX(800px);
+    }
+}
+.GameTipsButton{
+	width:30px;
+	height:30px;
+}
+#GameTipsUI_Main{
+	width:400px;
+	height:250px;
+	horizontal-align:right;
+	vertical-align:center;
+	margin-right:20px;
+	background-image:url("s2r://panorama/images/backgrounds/gallery_background_png.vtex");
+	background-size:100%;
+	flow-children:down;
+}
+.AnimationClass1{
+	animation-name: GameTipsUIkopen;
+	animation-duration: 0.44s;
+	animation-direction: alternate;
+	animation-timing-function: linear;
+}
+.AnimationClass2{
+	animation-name: GameTipsUIkfHide;
+	animation-duration: 0.44s;
+	animation-direction: alternate;
+	animation-timing-function: linear;
+}
+.GameTipsTitle{
+	text-align: center;
+	color: white;
+	width:100%;
+	font-family: 'RadianceM', 'Radiance';
+	font-size: 25px;
+	margin-top:20px;
+	vertical-align: top;
+	horizontal-align: center;
+}
+.GameTipsDescription{
+	color: white;
+	font-family: 'RadianceM', 'Radiance';
+	font-size: 20px;
+	margin-top:20px;
+	margin-left:20px;
+	vertical-align: top;
+	horizontal-align: left;
+} 

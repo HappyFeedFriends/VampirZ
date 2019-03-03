@@ -1,0 +1,27 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/HeroSelection_card.css" />
+		<include src="file://{resources}/styles/custom_game/util.css" />
+		<include src="file://{resources}/styles/custom_game/keyframes.css" />
+		<include src="file://{resources}/styles/custom_game/heroSelection.css" />
+	</styles> 
+
+	<scripts>
+
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+		<include src="file://{resources}/scripts/custom_game/heroSelection.js" /> 
+	</scripts>
+	<Panel class="HeroSelectionMain" hittest="true" >
+			<DOTAScenePanel id="BackgroundPanel" hittest="false" map="backgrounds/dashboard_parallax_halloween" particleonly="false" />		
+			<Panel hittest="true" id="HeroSelectionTimer"/>			
+			<Panel hittest="true" id="MainPickHero" />
+
+			<Panel hittest="true" id="MainSelectionHero">			
+				<Panel hittest="true" id="MapContainer">			
+				<Label  id="LabelMap" text="MapName" />			
+					<DOTAMinimap id="minimap" />
+				</Panel>
+			</Panel>
+	</Panel>
+</root>

@@ -1,0 +1,13 @@
+"AddonInfo"
+{
+  "CustomGameName" "VampirZ"
+  "TeamCount" "3"
+  "maps"      "vampirz_dark_forest"
+  "IsPlayable"  "1"
+  "version"		"1.0"
+  
+  "vampirz_dark_forest"
+  {
+          "MaxPlayers"                    "13"
+  }
+}

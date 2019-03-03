@@ -1,0 +1,49 @@
+.HeroInfo{
+	flow-children:down;
+}
+
+#Title{
+	font-size: 48px;
+    horizontal-align: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 0px 4px 1.0 red;
+    letter-spacing: 6px;
+    font-family: Radiance, FZLanTingHei-R-GBK, TH Sarabun New, Gulim,MingLiU;
+    text-align: center;
+}
+
+
+#HeroNameTitle{
+	border-bottom:3px solid silver;
+}
+
+.InfoPanel{
+	flow-children:down;
+}
+
+#Buffs Label{
+	font-size: 22px;
+	color:lime;
+}
+
+#DeBuffs Label{
+	font-size: 22px;
+	color:red;
+}
+
+#HeroNameTitle{
+	border-bottom: 3px solid silver;
+	margin-bottom: 33px;
+	width: 400px;
+}
+
+.LabelDeBuffs{
+	font-size: 26px;
+	color: red;
+}
+
+.LabelBuffs Label{
+	font-size: 26px;
+	color: lime;
+}

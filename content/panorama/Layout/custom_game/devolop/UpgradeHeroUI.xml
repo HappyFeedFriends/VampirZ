@@ -1,0 +1,15 @@
+<root>
+    <styles>
+ 		<include src="file://{resources}/styles/custom_game/util.css" />
+ 		<include src="file://{resources}/styles/custom_game/keyframes.css" />
+ 		<include src="file://{resources}/styles/custom_game/UpgradeHeroWindow.css" /> 
+    </styles>
+    <scripts>
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+		<include src="file://{resources}/scripts/custom_game/UpgradeHeroUI.js" />
+	</scripts>
+	<Panel class="UpgradeHeroWindowMain" hittest="false">
+		<Panel class="UpgradeHeroWindow" id="UpgradeHeroWindow">
+		</Panel>
+    </Panel>
+</root>

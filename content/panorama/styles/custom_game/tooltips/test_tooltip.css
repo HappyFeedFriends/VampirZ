@@ -1,0 +1,59 @@
+#Contents 
+{
+	flow-children: down;
+	width: 400px;
+}
+.UpgradeTooltip{
+	max-width: 500px;
+	min-width: 200px;
+	flow-children: down;
+}
+
+#TitleContainer
+{
+	flow-children:right;
+	width: 100%;
+}
+#Title
+{
+	color:white;
+	font-size: 24px;
+}
+#Level{
+	color:white;
+	font-size: 24px;
+	vertical-align: bottom;
+	horizontal-align: right;
+}
+
+#Description
+{
+	width: 100%;
+	border-top-width: 2px;
+	border-top-color: #626262;
+	border-top-style: solid;
+
+	padding: 14px 0px 0px px;
+}
+
+#Container
+{
+	width: 100%;
+	flow-children:right;
+}
+
+#CostContainer
+{
+	flow-children:right;
+	width: fit-children;
+	height: 20px;
+	vertical-align: top;
+	horizontal-align:right;
+}
+
+#LumberCost
+{
+	font-size: 20px;
+	color:gold;
+	vertical-align: center;
+}

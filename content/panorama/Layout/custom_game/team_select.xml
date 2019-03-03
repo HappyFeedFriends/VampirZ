@@ -1,0 +1,83 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/play.css" />
+		<include src="file://{resources}/styles/custom_game/team_select.css" />
+		<include src="file://{resources}/styles/custom_game/score_selection.css" />
+		<include src="file://{resources}/styles/custom_game/custom_loading_screen.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+		<include src="file://{resources}/scripts/custom_game/team_select.js" />
+	</scripts>
+	<Panel hittest="false" class="TeamSelect">
+		<Panel hittest="false" id="TeamSelectContainer" selectionpos="auto">`
+			<Panel id="VoteTeam" > 
+				<Panel id="VoteTeamHuman" class="VotingTeam" >
+					<RadioButton id="VoteTeamHumanButton" class="VotingTeamRadio" text="team_select_human" onactivate="SelectionTeam('Human')" >
+					</RadioButton>		 		
+				</Panel>	 		 
+				<Panel id="VoteTeamVampire" class="VotingTeam" >
+					<RadioButton id="VoteTeamVampireButton" class="VotingTeamRadio" text="team_select_vampire" onactivate="SelectionTeam('Vampire')" >
+					</RadioButton>		 		
+				</Panel>
+			</Panel>
+			<Panel hittest="false" id="TeamsSelectEmptySpace" />
+			<Panel id="TeamsList" >
+				<Panel id="TeamsListGroup" >
+					<Panel id="TeamListHeader">
+						<Label id="TeamListHeaderLabel" text="#custom_game_team_select" />
+						<Image id="TeamListLockedIcon" src="file://{images}/control_icons/lock_small.png" />
+					</Panel>
+					<Panel id="TeamsListRoot" />
+					<Button id="ShuffleTeamAssignmentButton" onactivate="OnShufflePlayersPressed()">
+						<Label text="#custom_game_team_select_shuffle" />
+						<Image src="file://{images}/control_icons/shuffle.psd" />
+					</Button>
+				</Panel>
+			</Panel>
+			<Panel id="GameAndPlayersRoot">
+				<Panel id="GameInfoPanel" >
+					
+					<!--Game mode and map-->
+
+					<Panel id="MapInfo">
+						<Label id="MapInfoLabel" text="#LoadingScreenMapInfo" />
+					</Panel> 
+					
+					<!--Countdown timer-->
+					<Panel id="StartGameCountdownTimer">
+						<Image id="TimerBg" src="file://{images}/status_icons/timer_background.psd" />
+						<Image id="TimerRing" src="file://{images}/status_icons/timer_ring.psd" />
+						<Label id="TeamSelectTimer" text="#custom_game_team_select_timer" />
+						<Panel id="TimerLabelBox" >
+							<Label id="TimerLabelAutoStart" text="#custom_game_team_select_auto_start" />
+							<Label id="TimerLabelGameStart" text="#custom_game_team_select_starting" />
+						</Panel>
+					</Panel>
+				</Panel>
+				<Panel id="UnassignedPlayerPanel" >
+					<Button id="UnassignedPlayersButton" onactivate="OnLeaveTeamPressed()">
+						<Panel id="UnassignedPlayersHeader">
+							<Label text="#custom_game_team_select_unassigned_players" />
+						</Panel>
+						<Panel id="UnassignedPlayersDivider" />
+						<Panel id="UnassignedPlayersContainer" />
+					</Button>		
+				
+					<Button id="AutoAssignButton" onactivate="OnAutoAssignPressed()">
+						<Image src="file://{images}/control_icons/double_arrow_left.png" />
+						<Label text="#custom_game_team_select_auto_assign" />
+					</Button> 
+				</Panel>
+				<Button id="CancelAndUnlockButton" class="PlayButton" onactivate="OnCancelAndUnlockPressed()">
+					<Label text="#custom_game_team_select_cancel_unlock" />
+				</Button>
+				<Button id="LockAndStartButton" class="PlayButton" onactivate="OnLockAndStartPressed()">
+					<Label text="#custom_game_team_select_lock_start" />
+				</Button>
+			</Panel> 
+		</Panel>	
+	</Panel>
+</root>
+

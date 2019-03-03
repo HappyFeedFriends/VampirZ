@@ -1,0 +1,8 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/keyframes.css" />
+ 		<include src="file://{resources}/styles/custom_game/UpgradeHeroWindow.css" /> 
+    </styles>
+	<Panel class="UpgradeHeroButton" hittest="true">
+    </Panel>
+</root>

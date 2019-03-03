@@ -1,0 +1,65 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/classesupgrade.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+		<include src="file://{resources}/scripts/custom_game/classesupgrade.js" />
+	</scripts>
+	<Panel class="CUpgradeMain" hittest="false">
+		<Panel id="UpgradePanel">
+			<Panel id="GidPanel" >
+				<Label id="Gid" text="Усиление класса"/>
+			</Panel>
+			<Panel id="TitlePanel">
+				<Label id="Title" text=""/>
+			</Panel>
+			<Panel id="Levels" >
+				<Panel id="FirstLevel" >
+					<Label id="levelst" text="0"/>
+				</Panel>
+				<Panel id="SecondLevel" >
+					<Label id="levelst" text="10"/>
+				</Panel>
+				<Panel id="FinalLevel" >
+					<Label id="levelst" text="20"/>
+				</Panel>
+			</Panel>
+			<Panel id="CUpgredePanel" >
+				<Panel id="StartClass" class="is_now_upgraded buttonsStylerightStart" onmouseover="ShowClassTitle('0')" onmouseout="HideClassTitle()">
+					<Label id="alltext" text="Вампир"/>
+				</Panel>
+				<Panel id="FirstUpgrade" >
+					<Button id="FirstUp" class="buttonsStyleleft" onactivate="CheckAndUp('FirstUp')" onmouseover="ShowClassTitle('1')" onmouseout="HideClassTitle()">>
+						<Label id="alltext2" text="Лорд"/>
+					</Button>
+					<Label id="levelst" text="или"/>
+					<Button id="SecondUp" class="buttonsStyleright" onactivate="CheckAndUp('SecondUp')" onmouseover="ShowClassTitle('2')" onmouseout="HideClassTitle()">>
+						<Label id="alltext2" text="Бесшумный убийца"/>
+					</Button>
+				</Panel>
+				<Panel id="SecondUpgrade">
+					<Panel id="LeftPanel" >
+						<Button id="SFirstUp" class="buttonsStyleleft" onactivate="CheckAndUp('SFirstUp')" onmouseover="ShowClassTitle('3')" onmouseout="HideClassTitle()">
+							<Label id="alltext3" text="Страж"/>
+						</Button>
+						<Label id="levelst2" text="или"/>
+						<Button id="SSecondUp" class="buttonsStyleright" onactivate="CheckAndUp('SSecondUp')" onmouseover="ShowClassTitle('4')" onmouseout="HideClassTitle()">
+							<Label id="alltext3" text="Воин"/>
+						</Button>
+					</Panel>
+					<Panel id="RightPanel" >
+						<Button id="SSFirstUp" class="buttonsStyleleft" onactivate="CheckAndUp('SSFirstUp')" onmouseover="ShowClassTitle('5')" onmouseout="HideClassTitle()">>
+							<Label id="alltext3" text="Ассасин"/>
+						</Button>
+						<Label id="levelst2" text="или"/>
+						<Button id="SSSecondUp" class="buttonsStyleright" onactivate="CheckAndUp('SSSecondUp')" onmouseover="ShowClassTitle('6')" onmouseout="HideClassTitle()">
+							<Label id="alltext3" text="Разведчик"/>
+						</Button>
+					</Panel>
+				</Panel>
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

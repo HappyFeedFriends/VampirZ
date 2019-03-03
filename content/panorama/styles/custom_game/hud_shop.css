@@ -1,0 +1,1129 @@
+@define headerHeight: 47px;
+@define itemCombinesHeight: 102px;
+@define mainPanelWidth: 320px;
+@define negMainPanelWidth: -320px;
+
+DOTAHUDShop
+{
+	transform: translateX( 320px );
+	visibility: collapse;
+
+	margin-top: 46px;
+}
+
+#Main
+{
+	width: mainPanelWidth;
+	background-color: #000000ee;
+	flow-children: up;
+	horizontal-align: right;
+}
+
+.HUDFlipped #Main
+{
+	horizontal-align: left;
+}
+
+#EditModeFlyout
+{
+	width: 262px;
+	z-index: -1;
+	opacity: 0;
+	visibility: collapse;
+
+	background-color: #000000ee;
+	flow-children: down;
+
+	margin-right: 262px;
+	margin-top: 40px;
+	padding-bottom: 14px;
+	transform: translateX( 262px );
+}
+
+.HUDFlipped #EditModeFlyout
+{
+	margin-right: 0px;
+	margin-left: 262px;
+	transform: translateX( -262px );
+}
+
+#EditModeHint
+{
+	color: white;
+	font-size: 15px;
+	width: 100%;
+	text-align: center;
+	margin-top: 14px;
+}
+
+DOTAHUDShop.ShopOpen.GuidesDisabled #GuidesButton,
+DOTAHUDShop.ShopOpen.ForceDefaultGuide #GuidesButton
+{
+	visibility: collapse;
+}
+
+.GuidesDisabled #GuideFlyout
+{
+	visibility: collapse;
+}
+
+.ForceDefaultGuide #GuidesButton
+{
+	visibility: collapse;
+}
+
+DOTAHUDShop.ShopOpen
+{
+	transform: translateX( 0px );
+	sound: "Shop.PanelUp";
+	visibility: visible;
+}
+
+DOTAHUDShop.ShopClosing
+{
+	sound: "Shop.PanelDown";
+}
+
+.HUDFlipped DOTAHUDShop
+{
+	transform: translateX( negMainPanelWidth  );
+}
+
+.HUDFlipped DOTAHUDShop.ShopOpen
+{
+	transform: translateX( 0px );
+}
+
+.ForceDefault .BuildHeaderContainer
+{
+	visibility: collapse;
+}
+
+#header
+{
+	width: 100%;
+	height: headerHeight;
+    //background-color: black;
+    background-image: url("s2r://panorama/images/hud/reborn/bg_item_breakdown_psd.vtex");
+    //background-position: top;
+    //background-image: url("s2r://panorama/images/hud/reborn/bg_item_build_psd.vtex");
+}
+
+#ShopTabs
+{
+	flow-children: right;
+	horizontal-align: right;
+	margin-right: 11px;
+	margin-top: 10px;
+}
+
+#GridButton
+{
+	horizontal-align: right;
+	vertical-align: center;
+	margin-right: 8px;
+	width: 28px;
+	height: 28px;
+	background-image: url("s2r://panorama/images/control_icons/grid_3x3_png.vtex");
+	background-size: 18px;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	wash-color: #57646d;
+    transition-property: wash-color, brightness;
+    transition-duration: 0.2s;
+    padding: 4px;
+}
+
+#GridButton:hover
+{
+    brightness: 2.0;
+}
+
+#GridButton:active
+{
+	wash-color: #999999;
+}
+
+#MainShopButton
+{
+	horizontal-align: right;
+	vertical-align: center;
+	margin-right: 8px;
+	width: 28px;
+	height: 28px;
+	background-image: url("s2r://panorama/images/control_icons/shop_icon_main_psd.vtex");
+	background-size: 28px;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	wash-color: #57646d;
+    transition-property: wash-color, brightness;
+    transition-duration: 0.2s;
+    padding: 4px;
+}
+
+#MainShopButton:hover
+{
+    brightness: 2.0;
+}
+
+#MainShopButton:active
+{
+	wash-color: #999999;
+}
+
+// active tab
+.ShowMainShop #MainShopButton
+{
+	wash-color: white;
+    background-color: #57646d77;
+    border-radius: 3px;
+}
+
+.ShowMainShop #GridButton:hover
+{
+    brightness: 1.0;
+}
+
+// side shop button
+#SideShopButton
+{
+	vertical-align: center;
+    width: 28px;
+    height: 28px;
+	background-image: url("s2r://panorama/images/control_icons/shop_icon_side_psd.vtex");
+	background-size: 28px;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	wash-color: #57646d;
+    transition-property: wash-color, brightness;
+    transition-duration: 0.2s;
+    visibility: visible;
+}
+
+#SideShopButton:hover
+{
+	brightness: 2.0;
+}
+
+#SideShopButton:active
+{
+	wash-color: #999999;
+}
+
+DOTAHUDShop.ShowSideShop #SideShopButton
+{
+	wash-color: white;
+    background-color: #57646d77;
+    border-radius: 3px;
+}
+
+DOTAHUDShop.ShowSideShop #SideShopButton:hover
+{
+    brightness: 1.0;
+}
+
+// secret shop button
+#SecretShopButton
+{
+	vertical-align: center;
+    width: 28px;
+    height: 28px;
+	background-image: url("s2r://panorama/images/control_icons/shop_icon_secret_psd.vtex");
+	background-size: 28px;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	wash-color: #57646d;
+    transition-property: wash-color, brightness;
+    transition-duration: 0.2s;
+    visibility: visible;
+}
+
+#SecretShopButton:hover
+{
+	brightness: 2.0;
+}
+
+#SecretShopButton:active
+{
+	wash-color: #999999;
+}
+
+DOTAHUDShop.ShowSecretShop #SecretShopButton
+{
+	wash-color: white;
+    background-color: #57646d77;
+    border-radius: 3px;
+}
+
+DOTAHUDShop.ShowSecretShop #SecretShopButton:hover
+{
+    brightness: 1.0;
+}
+
+#titles
+{
+	width: 100%;
+	visibility: collapse;
+}
+
+#title,
+#main_shop_title,
+#side_title,
+#secret_title,
+#custom_title
+{
+ 	font-size: 18px;
+	font-weight: bold;
+	color: #57646d;
+	width: 100%;
+	text-align: left;
+	text-transform: uppercase;
+	margin-top: 14px;
+    margin-left: 12px;
+    letter-spacing: 1px;
+    opacity: 0;
+}
+
+#title,
+.ShowMainShop #main_shop_title,
+.ShowSecretShop #secret_title,
+.ShowSideShop #side_title,
+.ShowCustomShop #custom_title
+{
+	opacity: 1;
+}
+
+
+#HeightLimiter
+{
+	width: 100%;
+	height: 724px;
+	z-index: 2;
+}
+#HeightLimiterContainer
+{
+    background-image: url("s2r://panorama/images/hud/reborn/bg_mainshop_psd.vtex");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.HUDFlipped #HeightLimiterContainer
+{
+    transform: scaleX(-1);
+}
+
+#CommonItems
+{
+	width: 100%;
+	vertical-align: bottom;
+	padding-bottom: 6px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #1c2027 ), to( #010101 ) );
+    background-image: url("s2r://panorama/images/hud/reborn/bg_pinned_items_psd.vtex");
+    background-size: cover;
+}
+
+#ItemsArea
+{
+	width: 100%;
+	height: 100%;
+	overflow: clip clip;
+}
+
+#ItemBuildContainer
+{
+	width: 100%;
+	height: 100%;
+	flow-children: down;
+}
+
+// Custom game SetHUDVisible support
+.HIDE_SHOP_SUGGESTEDITEMS #ItemBuildContainer
+{
+	visibility: collapse;
+}
+
+#ItemBuildSpacer
+{
+	height: fill-parent-flow( 1.0 );
+}
+
+
+#ItemBuild
+{
+	width: 100%;
+	visibility: visible;
+	overflow: clip squish;
+    min-height: 447px;
+	vertical-align: top;
+}
+
+#MainShop
+{
+	flow-children: down;
+    background-image: url("s2r://panorama/images/hud/reborn/main_shop_bg_psd.vtex");
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+#GridMainShop,
+#GridSideShop,
+#GridSecretShop,
+#GridCustomShop
+{
+	width: 100%;
+	visibility: collapse;
+	margin-top: 54px;
+    margin-bottom: 4px;
+}
+
+#GridSecretShop,
+#GridSideShop,
+#GridCustomShop
+{
+	margin-top: 79px;
+}
+
+
+.ShowMainShop #GridMainShop,
+.ShowSideShop #GridSideShop,
+.ShowSecretShop #GridSecretShop,
+.ShowCustomShop #GridCustomShop
+{
+	visibility: visible;
+}
+
+#GridMainShopContents
+{
+	width: 100%;
+	margin-top: 34px;
+}
+
+#GridSideShopItems,
+#GridSecretShopItems,
+#GridCustomShopItems
+{
+	horizontal-align: center;
+}
+
+.ShowSearchResults #SearchContainer
+{
+    background-image: url("s2r://panorama/images/hud/reborn/bg_search_results_psd.vtex");
+    box-shadow: #00000055 -2px -2px 4px 4px;
+    border-top: 1px solid #373f45;
+}
+
+#SearchShadow
+{
+    background-image: url("s2r://panorama/images/hud/reborn/shop_search_shadow_psd.vtex");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 12px;
+    visibility: collapse;
+    vertical-align: top;
+    z-index: 1000;
+    margin-top: -12px;
+}
+
+.ShowSearchResults #SearchShadow
+{
+    visibility: visible;
+}
+
+#SearchContainer
+{
+	width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 6px;
+	z-index: 5;
+	flow-children: down;
+	vertical-align: top;
+}
+
+#SearchBox
+{
+	flow-children: right;
+	background-color: black;
+    border-radius: 3px;
+    border: 1px solid #3d464c;
+}
+
+#SearchTextEntry
+{
+	background-color: black;
+	border: 0px;
+	width: fill-parent-flow( 1.0 );
+}
+
+#SearchTextEntry #PlaceholderText
+{
+	margin-top: 2px;
+}
+
+#ClearSearchButton
+{
+	width: 12px;
+	height: 12px;
+	vertical-align: middle;
+	visibility: collapse;
+	margin-right: 10px;
+}
+
+.ShowSearchResults #ClearSearchButton
+{
+	visibility: visible;
+}
+
+#SearchResults
+{
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+#ItemCombines
+{
+	width: 100%;
+	height: itemCombinesHeight;
+	background-color: #1c262fb2;
+	vertical-align: bottom;
+	z-index: 5;
+}
+
+#EditModeShopContents,
+#GridMainShopContents
+{
+	horizontal-align: center;
+    margin-left: 2px;
+}
+
+.ShopItemsCategory
+{
+	flow-children: down;
+	horizontal-align: center;
+}
+
+#EditModeBasicItemsCategory,
+#GridBasicItemsCategory
+{
+	opacity: 1.0;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+}
+
+.EditModeShowUpgradeItemsTab #EditModeBasicItemsCategory,
+.ShowUpgradeItemsTab #GridBasicItemsCategory
+{
+    opacity: 0.0;
+}
+
+#EditModeUpgradesCategory,
+#GridUpgradesCategory
+{
+    opacity: 0.0;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+}
+
+.EditModeShowUpgradeItemsTab #EditModeUpgradesCategory,
+.ShowUpgradeItemsTab #GridUpgradesCategory
+{
+    opacity: 1.0;
+}
+
+#EditModeGridTabs,
+#GridMainTabs
+{
+	margin-top: 10px;
+	flow-children: right;
+	horizontal-align: center;
+	border: 2.3px solid #5b687277;
+	border-radius: 3px;
+}
+
+#EditModeGridTabs .RadioBox,
+#GridMainTabs .RadioBox
+{
+	visibility: collapse;
+}
+
+#GridTabs Label,
+#EditModeGridTabs Label,
+#GridMainTabs Label
+{
+	color: #5b6872;
+	horizontal-align: center;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+#EditModeGridTabs RadioButton:hover Label,
+#GridMainTabs RadioButton:hover Label
+{
+	color: white;
+}
+
+#EditModeFlyout:not(.EditModeShowUpgradeItemsTab) #EditModeBasicTab Label,
+#GridMainShop:not(.ShowUpgradeItemsTab) #GridBasicTab Label
+{
+	color: white;
+}
+
+#EditModeFlyout.EditModeShowUpgradeItemsTab #EditModeUpgradesTab Label,
+#GridMainShop.ShowUpgradeItemsTab #GridModeUpgradesTab Label
+{
+	color: white;
+}
+
+#EditModeFlyout:not(.EditModeShowUpgradeItemsTab) #EditModeBasicTab,
+#GridMainShop:not(.ShowUpgradeItemsTab) #GridBasicTab
+{
+    background-color: #57646d77;
+}
+
+#EditModeFlyout.EditModeShowUpgradeItemsTab #EditModeUpgradesTab,
+#GridMainShop.ShowUpgradeItemsTab #GridModeUpgradesTab
+{
+    background-color: #57646d77;
+}
+
+#EditModeBasicTab,
+#EditModeUpgradesTab,
+#GridBasicTab,
+#GridModeUpgradesTab
+{
+	width: 117px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 6px;
+	padding-bottom: 3px;
+	background-color: black;
+}
+
+
+#RequestSuggestion
+{
+    width: 28px;
+    height: 28px;
+    horizontal-align: left;
+    vertical-align: top;
+    margin-left: 11px;
+    //wash-color: #798b99;
+    tooltip-position: top;
+   	border: 1px solid #5b687277; 
+	border-radius: 3px;
+	
+	background-color: black;
+	
+	transition-property: brightness;
+	transition-duration: .2s;
+}
+
+#RequestSuggestion:active
+{
+	box-shadow: 0px 0px 3px 0px #E769DA80;
+}
+
+#RequestSuggestionIcon
+{
+	width: 100%;
+	height: 100%;
+    background-image: url("s2r://panorama/images/hud/reborn/icon_suggest_item_psd.vtex");
+    background-size: 72%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    brightness: 0.5;
+}
+
+#RequestSuggestionHeroImage
+{
+	width: 100%;
+	height: 100%;
+	visibility: collapse;
+}
+
+#RequestSuggestion:active #RequestSuggestionIcon
+{
+    brightness: 1.0;
+}
+
+.PlayerRequestingItems #RequestSuggestion
+{
+	box-shadow: 0px 0px 6px 0px #E769DA80;
+}
+
+.PlayerRequestingItems #RequestSuggestionIcon
+{
+	visibility: collapse;
+}
+
+.PlayerRequestingItems #RequestSuggestionHeroImage
+{
+	visibility: visible;
+}
+
+
+#PopularItems
+{
+    width: 28px;
+    height: 28px;
+    horizontal-align: right;
+    vertical-align: top;
+    //margin-top: 1px;
+    margin-right: 11px;
+    //wash-color: #798b99;
+    tooltip-position: top;
+   	border: 1px solid #5b687277; 
+	border-radius: 3px;
+	
+	background-color: black;
+	
+	transition-property: brightness;
+	transition-duration: .2s;
+}
+
+#PopularItemsIcon
+{
+	width: 100%;
+	height: 100%;
+    background-image: url("s2r://panorama/images/icon_star_shadow_psd.vtex");
+    background-size: 72%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+	wash-color: #798b99;
+}
+
+.ShowPopular #PopularItems
+{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #acc0e566 ), color-stop( 0.4, #94b1e566 ), color-stop( 0.6, #94b1e566 ), to( #81a5e566 ) );
+	//wash-color: #eeeeff;
+}
+
+.ShowPopular #PopularItemsIcon
+{
+	wash-color: #eeeeff;
+}
+
+#PopularItems:hover
+{
+    brightness: 2;
+}
+
+
+.ShopItemsColumns
+{
+	flow-children: right;
+}
+
+.ShopItemsColumn
+{
+	flow-children: down;
+}
+
+.ShopItemsColumn DOTAShopItem
+{
+	width: 42px;
+	height: width-percentage( 72.7% );
+	margin-top: 3px;
+	margin-bottom: 3px;
+    margin-right: 6px;
+    margin-left: 4px;
+}
+
+#ShopSearchIcon
+{
+	background-image: url("s2r://panorama/images/control_icons/icon_search_shadow_psd.vtex");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+	height: 26px;
+	width: 26px;
+	vertical-align: center;
+	margin-left: 4px;
+    wash-color: #8da1b1;
+}
+
+DOTAHUDShopTextEntry
+{
+	font-family: Radiance,FZLanTingHei-R-GBK,TH Sarabun New,YDYGO 540,Gulim,MingLiU;
+
+	border: 1px solid baseBorder;
+	width: 352px;
+	height: 36px;
+
+	padding: 5px 7px 3px 7px;
+	
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #111111FF ), to( #222222FF ) );
+
+	color: white;
+	font-size: 20px;
+
+	text-overflow: clip;
+	white-space: nowrap;
+}
+
+DOTAHUDShopTextEntry:disabled
+{
+	border-color: #44444440;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #11111140 ), to( #22222240 ) );
+	color: #999999ff;
+}
+
+DOTAHUDShopTextEntry #PlaceholderText
+{
+	opacity: 1.0;
+
+	transition-property: opacity;
+	transition-duration: 0.2s;
+
+	margin-top: -2px;
+
+	color: #57646d;
+	font-size: 18px;
+}
+
+DOTAHUDShopTextEntry:focus #PlaceholderText, DOTAHUDShopTextEntry.HasInput #PlaceholderText
+{
+	opacity: 0.0;
+}
+
+
+#GuidesButton
+{
+	horizontal-align: right;
+    vertical-align: top;
+ 	margin-right: mainPanelWidth;
+ 	margin-top: 12px;
+	width: 34px;
+    height: 34px;
+    transition-property: brightness, opacity;
+    transition-duration: 0.24s;
+    tooltip-position: top;
+    tooltip-body-position: 50% 0%;
+	visibility: collapse;
+    background-image: url("s2r://panorama/images/hud/reborn/bg_item_build_psd.vtex");
+    opacity: 0.8;
+}
+
+#GuidesButton.HideGuide
+{
+   	background-image: url("s2r://panorama/images/hud/reborn/bg_item_build_psd.vtex");
+   	opacity: 0.8;
+}
+
+#GuidesButton.HideGuide:hover
+{
+   	opacity: 1;
+}
+
+.HUDFlipped #GuidesButton
+{
+	horizontal-align: left;
+ 	margin-right: 0px;
+ 	margin-left: mainPanelWidth;
+}
+
+#GuidesButtonIcon
+{
+	width: 100%;
+	height: 100%;
+	background-image: url("s2r://panorama/images/hud/reborn/close_guide_btn_psd.vtex");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 80%;
+    transition-property: transform;
+    transition-duration: 0.24s;
+}
+
+#GuidesButton.HideGuide #GuidesButtonIcon
+{
+	transform: rotateZ(180deg);
+}
+
+.HUDFlipped #GuidesButton #GuidesButtonIcon
+{
+    transform: rotateZ(180deg);
+}
+
+.HUDFlipped #GuidesButton.HideGuide #GuidesButtonIcon
+{
+    background-image: url("s2r://panorama/images/hud/reborn/close_guide_btn_psd.vtex");
+}
+
+
+DOTAHUDShop.ShopOpen #GuidesButton
+{
+	visibility: visible;
+}
+
+
+#GuidesButton:hover
+{
+    brightness: 2.0;
+}
+
+#GuidesButton:active
+{
+    wash-color: #999999;
+}
+
+
+#GuideFlyout
+{
+	width: 210px;
+	height: 826px;
+	min-height: 524px;
+	opacity: 0;
+
+	z-index: -1;
+
+	//background-color: gradient( linear, 0% 0%, 0% 100%, from( #202030f8 ), color-stop( 0.15, #202030f8 ), to( #20203088 ) );
+    margin-right: mainPanelWidth;
+	margin-top: 0px;
+	padding-bottom: 0px;
+	transform: translateX( 0px );
+    transition-property: transform, opacity;
+    transition-duration: 0.24s;
+	transition-timing-function: ease-in-out;
+}
+
+.PlusGuide #GuideFlyout
+{
+	width: 260px;
+}
+
+#GuideFlyoutContainer
+{
+    background-image: url("s2r://panorama/images/hud/reborn/bg_shop_guide_psd.vtex");
+    background-position: bottom;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.HUDFlipped #GuideFlyoutContainer
+{
+    transform: ScaleX(-1);
+}
+
+DOTAHUDShop.ShopOpen #GuideFlyout
+{
+	opacity: 1;
+}
+
+
+DOTAHUDShop.ShopOpen #GuideFlyout.HideGuide
+{
+	transform: translateX( 320px );
+	opacity: 0;
+}
+
+.HUDFlipped #GuideFlyout
+{
+	margin-left: 320px;
+	margin-right: 0px;
+}
+
+.HUDFlipped DOTAHUDShop.ShopOpen #GuideFlyout.HideGuide
+{
+	transform: translateX( -320px );
+}
+
+
+#Grid
+{
+	width: 300px;
+	min-height: 624px;
+
+	z-index: -1;
+	opacity: 0;
+
+	background-color: #000000ee;
+
+	margin-right: 262px;
+	margin-top: 40px;
+	padding-bottom: 14px;
+	transform: translateX( 262px );
+}
+
+.HUDFlipped #Grid
+{
+	margin-right: 0px;
+	margin-left: 262px;
+	transform: translateX( -262px );
+}
+
+DOTAHUDShop.ShopOpen.ShowGrid #Grid
+{
+	transform: translateX( 0px );
+	opacity: 1;
+}
+
+#MainShopBasicHotkeys
+{
+	flow-children: right;
+	margin-top: 0px;
+	margin-left: 0px;
+	z-index: 5;
+	visibility: collapse;
+}
+
+// selected hotkey glow
+DOTAHUDShop.DOTA_SHOP_CATEGORY_CONSUMABLES #HotkeyConsumables,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_ATTRIBUTES #HotkeyAttributes,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_WEAPONS_ARMOR #HotkeyArmaments,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_MISC #HotkeyArcane,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_SECRET_SHOP #HotkeySecret,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_BASICS #HotkeyBasics,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_SUPPORT #HotkeySupport,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_MAGICS #HotkeyCaster,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_WEAPONS #HotkeyWeapons,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_DEFENSE #HotkeyArmor,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_ARTIFACTS #HotkeyArtifacts,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_SIDE_SHOP_PAGE_1 #HotkeySide1,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_SIDE_SHOP_PAGE_2 #HotkeySide2,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_SECRET_SHOP #HotkeySecret
+{
+	box-shadow: #67747dff -3px -3px 6px 6px;
+	background-color: #67747dff;
+}
+
+// selected column glow
+DOTAHUDShop.DOTA_SHOP_CATEGORY_CONSUMABLES #ShopItems_consumables,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_ATTRIBUTES #ShopItems_attributes,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_WEAPONS_ARMOR #ShopItems_weapons_armor,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_MISC #ShopItems_misc,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_SECRET_SHOP #ShopItems_secretshop,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_BASICS #ShopItems_basics,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_SUPPORT #ShopItems_support,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_MAGICS #ShopItems_magics,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_WEAPONS #ShopItems_weapons,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_DEFENSE #ShopItems_defense,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_ARTIFACTS #ShopItems_artifacts,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_SIDE_SHOP_PAGE_1 #ShopItems_sideshop1,
+DOTAHUDShop.DOTA_SHOP_CATEGORY_SIDE_SHOP_PAGE_2 #ShopItems_sideshop2
+{
+	box-shadow: #47545dff -3px -3px 6px 6px;
+	background-color: #47545dff;
+}
+
+DOTAHUDShop.ShopHotkeyMode #GridMainShop:not(.ShowUpgradeItemsTab) #MainShopBasicHotkeys
+{
+	visibility: visible;
+	margin-top: 28px;
+	margin-left: 45px;
+}
+
+#MainShopBasicHotkeys DOTAHotkey
+{
+	margin-right: 34px;
+}
+
+#MainShopUpgradesHotkeys
+{
+	flow-children: right;
+	margin-top: 28px;
+	margin-left: 20px;
+	z-index: 5;
+	visibility: collapse;
+}
+
+DOTAHUDShop.ShopHotkeyMode #GridMainShop.ShowUpgradeItemsTab #MainShopUpgradesHotkeys
+{
+	visibility: visible;
+}
+
+#MainShopUpgradesHotkeys DOTAHotkey
+{
+	margin-right: 35px;
+}
+
+#MainShopUpgradesHotkeys #HotkeyArtifacts
+{
+	margin-right: 20px;
+}
+
+#SideShopHotkeys
+{
+	flow-children: right;
+	margin-top: 60px;
+	margin-left: 122px;
+	z-index: 5;
+	visibility: collapse;
+}
+
+DOTAHUDShop.ShopHotkeyMode.ShowSideShop #SideShopHotkeys
+{
+	visibility: visible;
+}
+
+#SideShopHotkeys DOTAHotkey
+{
+	margin-right: 32px;
+}
+
+#SecretShopHotkeys
+{
+	flow-children: right;
+	margin-top: 60px;
+	margin-left: 148px;
+	z-index: 5;
+	visibility: collapse;
+}
+
+DOTAHUDShop.ShopHotkeyMode.ShowSecretShop #SecretShopHotkeys
+{
+	visibility: visible;
+}
+
+
+#GridRowHotkeys
+{
+	flow-children: down;
+	margin-top: 100px;
+	margin-left: 17px;
+	visibility: collapse;
+}
+
+.ShowSecretShop #ShopSlot13,
+.ShowSecretShop #ShopSlot14
+{
+	visibility: collapse;
+}
+
+DOTAHUDShop.ShopHotkeyMode:not(.DOTA_SHOP_CATEGORY_NONE) #GridRowHotkeys
+{
+	visibility: visible;
+}
+
+.ShowUpgradeItemsTab #GridRowHotkeys
+{
+	margin-left: 0px;
+}
+
+.ShowSideShop #GridRowHotkeys
+{
+	margin-top: 90px;
+	margin-left: 88px;
+}
+
+.ShowSecretShop #GridRowHotkeys
+{
+	margin-top: 90px;
+	margin-left: 108px;
+}
+
+.ShowCustomShop #GridRowHotkeys
+{
+    margin-top: 90px;
+	margin-left: 108px;
+}
+
+#GridRowHotkeys DOTAHotkey
+{
+	margin-bottom: 22px;
+}

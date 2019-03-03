@@ -1,0 +1,319 @@
+""
+{
+	"item_saintly_bell"
+	{
+		"BaseClass"                 "item_lua"
+		"ScriptFile"                "items/humans/saintly_bell.lua"
+		"AbilityTextureName"      	"customImages/saintly_bell"
+		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityCooldown"       	"30"
+		"AbilityManaCost"       	"0"
+		"AbilityCastPoint"        	"0.1"
+		"AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCastRange"        	"1200"
+		"SpellImmunityType"       	"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"      "SPELL_DISPELLABLE_NO"
+		"ItemCost"            		"1600"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "regen"       	"12"
+			}
+			"02"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "radius"      	"800"
+			}
+			"03"
+			{
+			  "var_type"      "FIELD_FLOAT"
+			  "duration"      	"5.5"
+			}
+			"04"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "bell_speed"    	"800"
+			}
+		}
+	}
+
+	"item_vampire_slayer_sword"
+	{
+		"BaseClass"                 	"item_lua"
+		"ScriptFile"              		"items/humans/vampire_slayer_sword.lua"
+		"AbilityTextureName"      		"customImages/vampire_slayer_sword"
+		"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemCost"            			"3220"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+			"var_type"      "FIELD_INTEGER"
+			"chance"      			"25"
+			}
+			"02"
+			{
+			"var_type"      "FIELD_FLOAT"
+			"duration"      		"1.5"
+			}
+			"03"
+			{
+			"var_type"      "FIELD_FLOAT"
+			"duration_per_kill"   	"0.2"
+			}
+		}
+	}
+
+	"item_aspen_stake"
+	{
+		"BaseClass"                 		"item_lua"
+		"ScriptFile"                    	"items/humans/aspen_stake.lua"
+		"AbilityTextureName"      			"customImages/aspen_stake"
+		"AbilityBehavior"       			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"     		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"     		"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags"    		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityUnitDamageType"     		"DAMAGE_TYPE_PURE"
+		"AbilityCooldown"       			"22"
+		"AbilityManaCost"       			"0"
+		"AbilityCastPoint"        			"0.3"
+		"AbilityCastAnimation"     			"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCastRange"        			"200"
+		"SpellImmunityType"       			"SPELL_IMMUNITY_ENEMIES_YES"
+		"ItemCost"            				"2000"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "damage"      	"40"
+			}
+		}
+	}
+
+	"item_serafims_mantle"
+	{
+		"BaseClass"                 "item_lua"
+		"ScriptFile"                "items/humans/serafims_mantle.lua"
+		"AbilityTextureName"      	"customImages/serafims_mantle"
+		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemCost"            		"1430"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+			"var_type"      "FIELD_INTEGER"
+			"block"     		"20"
+			}
+		}
+	}
+
+	"item_dragon_shell"
+	{
+		"BaseClass"                 "item_lua"
+		"ScriptFile"                "items/humans/dragon_shell.lua"
+		"AbilityTextureName"      	"customImages/dragon_shell"
+		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemCost"            		"900"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "str"       	"10"
+			}
+			"02"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "armor"       "5"
+			}
+			"03"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "return"      "10"
+			}
+		}
+	}
+
+	"item_holy_magic_bow"
+	{
+		"BaseClass"                 "item_lua"
+		"ScriptFile"                "items/humans/holy_magic_bow.lua"
+		"AbilityTextureName"      	"customImages/holy_magic_bow"
+		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemCost"            		"1780"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "damage"      	"20"
+			}
+		}
+	}	
+	"item_warrior_gloves"
+	{
+	  	"BaseClass"                 "item_lua"
+	  	"ScriptFile"                    "items/humans/other.lua"
+	  	"AbilityTextureName"      "customImages/item_warrior_gloves"
+	  	"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  	"ItemCost"            "300"
+
+	  	"AbilitySpecial"
+	  	{
+			"01"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"armor"     "2"
+			}
+			"02"
+			{
+			      "var_type"      "FIELD_INTEGER"
+			      "str"     "3"
+			}
+		}
+	}
+
+	"item_ring_of_magic"
+	{
+		"BaseClass"                 "item_lua"
+		"ScriptFile"                    "items/humans/other.lua"
+		"AbilityTextureName"      "customImages/item_ring_of_magic"
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemCost"            "400"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"      "FIELD_FLOAT"
+				"mp_regen"      "2.5"
+			}
+		    "02"
+		    {
+				"var_type"      "FIELD_INTEGER"
+				"int"     "3"
+		    }
+		  }
+	}
+
+	"item_bendable_plate"
+	{
+		"BaseClass"                 "item_lua"
+		"ScriptFile"                    "items/humans/other.lua"
+		"AbilityTextureName"      "customImages/item_bendable_plate"
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemCost"            "200"
+
+		"AbilitySpecial"
+		{
+		    "01"
+		    {
+		      	"var_type"      "FIELD_INTEGER"
+		      	"as"        "10"
+		    }
+		    "02"
+		    {
+		      	"var_type"      "FIELD_INTEGER"
+		      	"agi"       "3"
+		    }
+		}
+	}
+
+	"item_traveller_boots"
+	{
+	  	"BaseClass"                 "item_lua"
+	  	"ScriptFile"                    "items/humans/other.lua"
+	  	"AbilityTextureName"      "customImages/item_traveller_boots"
+	  	"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  	"ItemCost"            "300"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+			    "var_type"      "FIELD_INTEGER"
+		      	"ms"        "50"
+		    }
+		}
+	}
+
+	"item_hoop"
+	{
+	  	"BaseClass"                 "item_lua"
+	  	"ScriptFile"                    "items/humans/other.lua"
+	  	"AbilityTextureName"      "customImages/item_hoop"
+	  	"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  	"ItemCost"            "225"
+
+	  	"AbilitySpecial"
+	  	{
+	    	"01"
+	    	{
+	    	  "var_type"      "FIELD_INTEGER"
+	    	  "all_attr"      "3"
+	    	}
+	  	}
+	}
+
+	"item_manastone"
+	{
+	  	"BaseClass"                 "item_lua"
+	  	"ScriptFile"                    "items/humans/other.lua"
+	  	"AbilityTextureName"      "customImages/item_manastone"
+	  	"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  	"ItemCost"            "200"
+
+	  	"AbilitySpecial"
+	 	 {
+	    	"01"
+	    	{
+	    	  "var_type"      "FIELD_INTEGER"
+	    	  "mana"        "100"
+	    	}
+	    	"02"
+	    	{
+	    	  "var_type"      "FIELD_INTEGER"
+	    	  "manacast"      "-10"
+	    	}
+	  	}
+	}
+	"item_magic_wreath"
+	{
+	  	"BaseClass"				"item_lua"
+	  	"ScriptFile"			"items/humans/other.lua"
+	  	"AbilityTextureName"    "customImages/item_magic_wreath"
+	  	"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  	"ItemCost"            "520"
+
+	  	"AbilitySpecial"
+	  	{
+	    	"01"
+	    	{
+	    	  	"var_type"      "FIELD_INTEGER"
+	    	  	"mana"        "200"
+	    	}
+	    	"02"
+	    	{
+	      		"var_type"      "FIELD_INTEGER"
+	      		"manacast"      "-10"
+	    	}
+	    	"03"
+	    	{
+	    	  	"var_type"      "FIELD_FLOAT"
+	    	  	"mp_regen"      "4"
+	    	}
+	    	"04"
+	    	{
+	    	  	"var_type"      "FIELD_INTEGER"
+	    	  	"all_attr"      "6"
+	    	}
+	  	}
+	}
+}

@@ -1,0 +1,33 @@
+<root>
+    <styles>
+ 		<include src="file://{resources}/styles/custom_game/util.css" />
+ 		<include src="file://{resources}/styles/custom_game/keyframes.css" />
+ 		<include src="file://{resources}/styles/custom_game/HealthBarUI.css" /> 
+    </styles>
+    <scripts>
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+		<include src="file://{resources}/scripts/custom_game/HealthBarUI.js" />
+	</scripts>
+	<Panel class="HealthBarUI" hittest="false">
+		<Panel id="HBBarMain" hittest="false">
+			<Label class="UnitNameLabel" id="UnitNameHB">
+			</Label>		
+			<Panel class="HealthBarMain" id="HealthBarMainUI">
+				<Panel class="UnitNameBarAll" id="UnitNameHealthBarBG">
+				</Panel>
+				<Label class="HealthBarLabel" id="HealthBarLabel">
+				</Label>				
+				<Label class="HealthBarRegenLabel" id="HealthBarRegenLabel">
+				</Label>
+			</Panel>			
+			<Panel class="ManaBarMain" id="ManaBarMainUI">
+				<Panel class="UnitNameBarAll" id="UnitNameManaBarBG">
+				</Panel>
+				<Label class="ManaBarLabel" id="ManaBarLabel">
+				</Label>				
+				<Label class="ManaBarRegenLabel" id="ManaBarRegenLabel">
+				</Label>
+			</Panel>
+		</Panel>
+    </Panel>
+</root>

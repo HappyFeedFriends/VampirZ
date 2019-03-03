@@ -1,0 +1,101 @@
+.UpgradeHeroButton 
+{
+	width: 64px;
+	height: 64px;
+	padding: 3px;
+	margin-top: 92px;
+	background-image: url("s2r://panorama/images/custom_game/custom_icon/button_bleeding.png");
+	background-size: 100% 100%;
+
+}
+.UpgradeHeroWindowMain{
+	width: 100%;
+	height: 80%;
+	
+}
+.UpgradeHeroWindow{
+	position: -15px 280px 0px;
+	width: 600px;
+	height: 420px;
+	background-color: #000000ea;
+	background-size: 100%;
+	flow-children:right;
+	border-radius:30px;
+}
+.UpgradeHeroWindowOpen{
+	animation-name: LeftToRight;
+	animation-duration: 0.25s;
+	animation-direction: alternate;
+	animation-timing-function: linear;
+}
+.LvlPanel{
+	width: 15%;
+	height: 100%;
+	flow-children:down;
+}
+.LvlPanel Label{
+	margin-top:5px;
+	height: 20%;
+	width: 100%;
+	text-align: center;
+	horizontal-align: center;
+	color: white;
+	font-family: 'Radiance';
+	font-size: 35px;
+	font-weight: bold;
+}
+.MainWindowPanel{
+	height: 100%;
+	width: 100%;
+	flow-children:down;
+}
+.MainWindowPanel Label{
+	height: 14%;
+	width: 100%;
+	text-align: center;
+	horizontal-align: center;
+	color: white;
+	font-family: 'Radiance';
+	font-size: 20px;
+	font-weight: bold;
+}
+.PanelWindow{
+	height: 20%;
+	width: 100%;
+	flow-children:right;
+}
+.PanelWindow Label{
+	height: 100%;
+	width: 100%;
+	margin-top:19px;
+	text-align: center;
+	horizontal-align: center;
+	color: white;
+	font-family: 'Radiance';
+	font-size: 20px;
+	font-weight: bold;
+}
+.PanelButton{
+	height: 100%;
+	width: 50%;
+	margin:5px;
+	border-radius:20px;
+	box-shadow: 0 0 3px white;
+}
+.PanelButton:Hover{
+	box-shadow: 0 0 3px orange;
+	transform: translateY(3px);
+}
+.PanelButton Label:disabled,
+.PanelButton:disabled{
+	brightness:0.1;
+}
+
+.PanelButton:Hover Label{
+	color: orange;
+}
+.LvlPanel Label:Hover{
+	color: orange;
+	transform: translateY(2px);
+}
+

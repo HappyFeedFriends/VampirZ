@@ -1,0 +1,467 @@
+""
+{
+  	"VampireBatTransform"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"45"
+		"AbilityManaCost"				"100 100 50 25"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireBatTransform"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"15 18 23 25"
+			}
+		}
+	}	
+	"VampireShield"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"25"
+		"BaseClass"         			"ability_lua"
+		"AbilityManaCost"				"140 150 160 175"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireShield"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"15"
+			}			
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"absorb_damage"		"200 350 440 500"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bloodCost_tooltip"	"140 150 160 175"
+			}	
+		}
+	}	
+	"VampireShadowMist"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCooldown"				"35"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityCastRange"				"500 650 750 1100"
+		"BaseClass"         			"ability_lua"
+		"AbilityManaCost"				"140 150 160 175"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireShadowMist"
+		"AOERadius"						"275"
+		"AbilitySpecial"
+		{		
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"delay"				"0.7"
+			}			
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"330 390 440 700"
+			}			
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"275 275 300 450"
+			}				
+		}
+	}	
+	"Vampire_Claws"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/Vampire_Claws"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_damage"		"35 45 55 65"
+			}			
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"healthCost"		"-25 -20 -18 -14"
+			}	
+					
+		}
+	}	
+	"Vampir_BloodCauldron"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityManaCost"				"320"		
+		"AbilityCastRange"				"1000"
+		"AbilityCastAnimation"			"0.15"
+		"AbilityCooldown"				"15"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/Vampir_BloodCauldron"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"160 190 260 440"
+			}			
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"damage_bonus"		"3 8 12 17"
+			}			
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"radius"			"210"
+			}			
+		}
+	}
+	"VampireDevourer"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityCooldown"				"3"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"	
+		"AbilityCastRange"				"200"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireDevourer"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"healing"			"30 37 42 55"
+			}															
+		}
+	}	
+	"VampireShadow_Veil"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityCooldown"				"27"
+		"AbilityCastRange"				"900"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireShadow_Veil"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"cost"				"1.4 1.35 1.23 1"
+			}				
+		}
+	}	
+	"VampireFlair"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"40"
+		"AbilityManaCost"				"220"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireFlair"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"			"12 14 16 17"
+			}				
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"radius"			"4500"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bloodCost_tooltip"	"220"
+			}			
+		}
+	}	
+	"VampireBloodSpear"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"45"
+		"AbilityManaCost"				"550"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireBloodSpear"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"damage"			"120 240 280 320"
+			}				
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"range"				"400 650 700 900"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bloodCost_tooltip"	"550"
+			}			
+		}
+	}	
+	"VampireAutophagy"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"	
+		"AbilityCooldown"				"33"
+		"AbilityManaCost"				"230"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityCastRange"				"650 700 780 900"
+		"AbilityTextureName"        	"customImages/VampireAutophagy"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bloodCost_tooltip"	"230"
+			}
+		}
+	}
+	"VampireSearchHumans"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"80 70 55 44"
+		"AbilityManaCost"				"350"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireSearchHumans"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"4200"
+			}			
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"3"
+			}			
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration_stunned"	"0.7"
+			}
+		}
+	}	
+	"VampireCallOfAlpha"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"160 140 140 130"
+		"AbilityManaCost"				"700"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireCallOfAlpha"
+		"AbilitySpecial"
+		{
+		}
+	}	
+	"VampireStigma"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP"	
+		"AbilityCooldown"				"40"
+		"AbilityCastRange"				"1200"
+		"AbilityManaCost"				"110"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireStigma"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"healing"			"3 4 5 6"
+			}				
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"10"
+			}			
+		}
+	}	
+	"VampireAttack"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP"	
+		"AbilityCooldown"				"55 35 20 15"
+		"AbilityCastRange"				"900 1400 1700 2200"
+		"AbilityManaCost"				"30 50 70 90"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireAttack"
+		"AbilitySpecial"
+		{		
+		}
+	}	
+	"VampireDarkScar"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"40"
+		"AbilityCastRange"				"900"
+		"AbilityManaCost"				"120 150 220 240"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireDarkScar"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_attack"			"2 3 4 5"
+			}				
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_damage"			"260 550 650 850"
+			}			
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bloodCost_tooltip"		"30 50 65 70"
+			}
+		}
+	}	
+	"VampireMirrorEdge"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityCooldown"				"10"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireMirrorEdge"
+		"AbilitySpecial"
+		{			
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"chance"			"10 25 40 45"
+			}				
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"reflect"			"55 70 80 100"
+			}		
+		}
+	}	
+	"VampireBloodPulse"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"25"
+		"AbilityCastRange"				"650"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireBloodPulse"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"				"650"
+			}				
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"				"30 130 165 260"
+			}			
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"				"4 6 8 12"
+			}				
+		}
+	}	
+	"VampireDevourment"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCooldown"				"70"
+		"AbilityManaCost"				"550"
+		"AbilityCastRange"				"900 1100 1400"
+		"AOERadius"						"1100"
+		"AbilityCastPoint"				"0.2"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireDevourment"
+		"AbilitySpecial"
+		{			
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"900 1100 1400"
+			}			
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bleedingDamage"	"50 100 150"
+			}			
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bleedingDuration"	"7"
+			}			
+		}
+	}
+	"VampireRage"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"45"
+		"AbilityManaCost"				"550"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/vampireAbility"
+		"AbilityTextureName"        	"customImages/VampireRage"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"			"12 14 16 17"
+			}				
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"radius"			"330 450 650 700"
+			}			
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"bonus_damage_pct"	"155"
+			}	
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bloodCost_tooltip"	"550"
+			}			
+		}
+	}
+}

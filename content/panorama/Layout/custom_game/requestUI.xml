@@ -1,0 +1,263 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.css" />
+		<include src="s2r://panorama/styles/compendiums/compendium_styles.vcss_c" />
+		<include src="s2r://panorama/styles/battle_pass/international2018/bp_international2018_shared.vcss_c" />
+		<include src="s2r://panorama/styles/battle_pass/international2018/bp_international2018_rewards.vcss_c" />
+		<include src="s2r://panorama/styles/profile_badge.vcss_c" />
+		<include src="s2r://panorama/styles/profile_card.vcss_c" />
+		<include src="s2r://panorama/styles/dashboard_page_shared.vcss_c" />
+		<include src="s2r://panorama/styles/dashboard_page_profile.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/requestUI.css" />
+		<include src="file://{resources}/styles/custom_game/keyframes.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+		<include src="file://{resources}/scripts/custom_game/requestUI.js" /> 
+	</scripts>
+		<script>
+
+		var OnPlayerGamesBoxClicked = function()
+		{
+			$( '#PlayerGamesBox' ).ToggleClass( 'Expanded' );
+			$.DispatchEvent( "DOTAEnsureRecentGamesLoaded", false );
+		};
+
+		var OnPlayerClickItems = function()
+		{
+			$( '#PlayerItems' ).ToggleClass( 'Expanded' );
+			$.DispatchEvent( "DOTAEnsureRecentGamesLoaded", false );
+		};
+		
+		var LifeTimeStatsClicked = function()
+		{
+			$( '#ProfileLifetimeStatsContainer' ).ToggleClass( 'Expanded' );
+		};
+		var test1 = function(){
+			$.Msg('test1'); 
+		}
+
+	</script> 
+	<snippets>
+		<snippet name="Player">
+				<Panel class="RatingsUsers">
+					<DOTAAvatarImage id="userAvatar"/>	
+					<DOTAUserName id="UserName" />
+				</Panel>
+		</snippet>
+		<snippet name="ItemSlot" >
+				<Panel class="ItemEconSlot">
+					<DOTAUIEconSetPreview id="PlayerItemSlot" itemdef="" drawbackground="true"  renderdeferred="true" deferredalpha="true" />
+				</Panel>
+		</snippet>
+	</snippets>
+	<Panel class="RequestMain" hittest="false"  >
+		<Panel id="Block" onactivate="ToggleProfile()" >
+				<Label text="ПРОФИЛЬ" />
+		</Panel>
+		<Panel id="RequestPanel" hittest="false"  >	
+			<Panel id="PlayerProfile" hittest="false" >
+				<Panel id="PlayerProfileTopBar" >
+					<RadioButton id="Button1" class="SecondaryTabButton" text ="userAccount"/>
+					<Label text ="/"/>
+					<RadioButton id="Button2" class="SecondaryTabButton" text ="table_rating"/>
+					<Label  text ="/"/>			 
+					<RadioButton id="Button3" class="SecondaryTabButton" text ="ModelShop"/> 
+					<Label  text ="/"/>			 
+					<RadioButton id="Button4" class="SecondaryTabButton" disabled="true" text ="news"/> 	
+					<!--<Label  text ="/"/>			 
+					<RadioButton id="Button5" class="SecondaryTabButton" disabled="true" text ="help"/>  -->		 			
+					<Button id="DOTAQuitButton" class="TopBarSmallButton"/>
+				</Panel>
+				<!-- Page => User account  -->
+				<Panel id="UserProfileMain" class="PagesClass"  > 
+					<Panel id="UserProfile1">
+						<Panel id="PlayerProfileData" hittest="false">
+							<Panel id="UserIcon" > 				
+								<DOTAAvatarImage id="UserAvatar"/>	
+							</Panel>
+							<Panel id="UserTop" hittest="false">
+								<DOTAUserName id="UserName" />
+								<Label id="UserMMR"/>
+							</Panel>
+						</Panel>
+						<Panel id="RankingInfo"> 				
+							<Panel id="RankingInfoText"> 				
+								<Label id="AllRanking" text = "ranking_top"/> 
+								<Label id="PlaceRanking"/>
+							</Panel>
+							<Panel id="RankingInfoImage">
+								<Label id="RankUserTextMedal" text="TBD"/>
+							</Panel> 
+						</Panel>						 
+						<Panel id="ProfileLifetimeStatsContainer" class="StatsContainer"> 
+							<Label id="LifetimeStatsHeader" class="ProfileBoxHeader" text="#DOTA_Profile_Other_Alltime_Stats" />
+							<Panel class="TopBottomFlow StatsReduction" id="StatsList">
+								<ProfileStat id="Kills" stat="Kills" /> 
+								<ProfileStat id="AllGame" stat="CountGame" />
+								<ProfileStat id="LoseCount" stat="Lose" /> 
+								<ProfileStat id="WinCount" stat="Win" />
+							</Panel>
+						</Panel>
+					</Panel>					
+					<Panel id="UserProfile2">
+						<Panel id="PlayerGamesBox">
+							<Panel class="ComingSoon">
+								<Label text="#DOTA_VR_ComingSoon" />
+							</Panel> 
+							<!--<Label id="LastGamesHeader" class="ProfileBoxHeader" text="#DOTA_Profile_Last_Match" />
+							<Panel id="RecentMatchesPerformanceContainer">
+								<Label id="RecentGamesHeader" class="ProfileBoxHeader" text="#DOTA_Profile_Previous_Matches_Performance" />
+									<Panel id="PanelMatches" class="LeftRightFlow">
+									<Panel class="RecentMatch TopBottomFlow" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( #Profile_match_result );" > 
+										<DOTAHeroImage id="RecentHero1" class="RecentHeroIcon" heroimagestyle="icon" heroname="npc_dota_hero_nevermore" />
+										<Label class="RecentWinLossLabel" html = "true" text="loseResult"/>
+									</Panel>
+									<Panel class="RecentMatch TopBottomFlow" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( #Profile_match_result );">
+										<DOTAHeroImage id="RecentHero2" class="RecentHeroIcon" heroimagestyle="icon" heroname="npc_dota_hero_nevermore"/>
+										<Label class="RecentWinLossLabel" html = "true" text="WinResult"/>
+									</Panel>
+									<Panel class="RecentMatch TopBottomFlow" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( #Profile_match_result );">
+										<DOTAHeroImage id="RecentHero3" class="RecentHeroIcon" heroimagestyle="icon" heroname="npc_dota_hero_nevermore" />
+										<Label class="RecentWinLossLabel" html = "true" text="WinResult"/>
+									</Panel>
+									<Panel class="RecentMatch TopBottomFlow" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( #Profile_match_result );" >
+										<DOTAHeroImage id="RecentHero4" class="RecentHeroIcon" heroimagestyle="icon" heroname="npc_dota_hero_nevermore" />
+										<Label class="RecentWinLossLabel" html = "true" text="loseResult"/>
+									</Panel>									
+									<Panel class="RecentMatch TopBottomFlow" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( #Profile_match_result );" >
+										<DOTAHeroImage id="RecentHero5" class="RecentHeroIcon" heroimagestyle="icon" heroname="npc_dota_hero_omniknight" />
+										<Label class="RecentWinLossLabel" html = "true" text="WinResult"/>
+									</Panel>									
+									<Panel class="RecentMatch TopBottomFlow" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( #Profile_match_result );" >
+										<DOTAHeroImage id="RecentHero6" class="RecentHeroIcon" heroimagestyle="icon" heroname="npc_dota_hero_lycan" />
+										<Label class="RecentWinLossLabel" html = "true" text="loseResult"/>
+									</Panel>									
+									<Panel class="RecentMatch TopBottomFlow" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( #Profile_match_result );" >
+										<DOTAHeroImage id="RecentHero7" class="RecentHeroIcon" heroimagestyle="icon" heroname="npc_dota_hero_sniper" />
+										
+										<Label class="RecentWinLossLabel" html = "true" text="WinResult"/>
+									</Panel>									
+									<Panel class="RecentMatch TopBottomFlow" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( #Profile_match_result );" >
+										<DOTAHeroImage id="RecentHero8" class="RecentHeroIcon" heroimagestyle="icon" heroname="npc_dota_hero_wisp" />
+										<Label class="RecentWinLossLabel" html = "true" text="loseResult"/>
+									</Panel>									
+									<Panel class="RecentMatch TopBottomFlow" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip( #Profile_match_result );" >
+										<DOTAHeroImage id="RecentHero8" class="RecentHeroIcon" heroimagestyle="icon" heroname="npc_dota_hero_wisp" />
+										<Label class="RecentWinLossLabel" html = "true" text="loseResult"/>
+									</Panel>
+								</Panel>
+							</Panel>
+							<Label id="AllRecentGamesHeader" class="ProfileBoxHeader" text="#DOTA_Profile_All_Recent_Matches" />
+							<Panel class="MoreDetailsButton" onactivate="OnPlayerGamesBoxClicked()">
+								<Label class="Expand" text="+"/>
+								<Label class="Collapse" text="-"/> 
+							</Panel>
+							<Panel id="Details">
+								<Panel id="HeroMovieContainers">
+									<DOTAHeroMovie id="HeroMovie" scaling="none"/>
+								</Panel>
+								<Panel id="TextDetails" hittest="false">
+								<Label id="HeroName" text="{s:hero_name}"/>
+								<Panel class="SmallerDetails"><Label class="StatCategory" text="#map"/><Label id="map" class="StatValue" text="{s:game_mode}"/></Panel>
+								<Panel class="SmallerDetails"><Label class="StatCategory" text="#DOTA_Frontpage_LastMatch_KDA"/><Label id="kda" class="StatValue" text="{i:kills} / {i:deaths} / {i:assists}"/></Panel>
+								<Panel class="SmallerDetails"><Label class="StatCategory" text="#DOTA_Frontpage_LastMatch_Duration"/><Label id="duration" class="StatValue" text="#DOTA_RecentGame_Duration"/></Panel>
+								<Panel class="SmallerDetails"><Label class="StatCategory" text="#Class"/><Label id="classGame" class="StatValue" text="#className"/></Panel>
+								<Panel id="Win" class="SmallerDetails"><Label class="StatCategory" text="#DOTA_Frontpage_LastMatch_Result"/><Label class="StatValue Green" text="#dota_profile_recent_game_result_win"/></Panel>
+								<Panel id="Loss" class="SmallerDetails"><Label class="StatCategory" text="#DOTA_Frontpage_LastMatch_Result"/><Label class="StatValue Red" text="#dota_profile_recent_game_result_loss"/></Panel>
+								<Panel id="NotScored" class="SmallerDetails"><Label class="StatCategory" text="#DOTA_Frontpage_LastMatch_Result"/><Label class="StatValue" text="#dota_profile_recent_game_result_notscored"/></Panel>
+								<Panel id="LastMatchHeader">
+									<Label id="Date" class="DateTimeLabel" text="{t:s:timestamp}"/>
+									<Label id="Time" class="DateTimeLabel" text="{t:t:timestamp}"/>
+								</Panel>
+								</Panel>
+							</Panel> 
+							<Panel id="RecentGames">
+								<Panel class="RecentGamesHeader">
+									<Label class="Timestamp" text="#dota_profile_recent_game_header_timestamp" />
+									<Label class="HeroName" text="#dota_profile_recent_game_header_hero_name" />
+									<Label class="Result" text="#dota_profile_recent_game_header_result" />
+									<Label class="Duration" text="#dota_profile_recent_game_header_duration" />
+									<Label class="GameType" text="#map" />
+								</Panel>
+							</Panel> -->
+						</Panel> 
+						<Panel id="PlayerItems" >
+							<Panel id="itemHeader" > 
+								<Label id="ItemsHeader" class="ProfileBoxHeader" text="Player_ItemsList" /> 
+								<Panel class="MoreDetailsButton" onactivate="OnPlayerClickItems()">
+									<Label class="Expand" text="+"/>
+									<Label class="Collapse" text="-"/> 
+								</Panel>
+							</Panel>
+							<Panel id="ItemContainer" />
+						</Panel>
+					</Panel>									
+				</Panel>  
+				<!-- Page = > friends/global Rating  -->
+				<Panel id="RatingList" class="PagesClass" >
+					<!-- Friend Table  -->
+					<Panel id="FriendsRating">
+						<Panel id="TopBarDescription">
+							<Label id="PlaceRank" text = "placeRank"/> 
+							<Label id="UserName" text = "FriendUser"/> 
+							<Label id="rating" text = "rating"/>
+						</Panel>
+						<Panel id="RankingPanels">      
+							<Panel id="ratingRanks"/>							
+							<Panel id="ratingUsers"/>						
+							<Panel id="ratingMMR"/>		 					
+						</Panel> 
+					</Panel> 
+					<!-- Top 10   -->
+					<Panel id="GlobalRating">
+						<Panel id="TopBarDescription">
+							<Label id="PlaceRank" text = "placeRank"/> 
+							<Label id="UserName" text = "UserName"/> 
+							<Label id="rating" text = "rating"/>
+						</Panel>
+						<Panel id="RankingPanels">       
+							<Panel id="ratingRanks"/>		 					
+							<Panel id="ratingUsers"/>														
+							<Panel id="ratingMMR"/>							
+						</Panel>
+					</Panel>
+				</Panel>    
+				<!-- Models Shop -->
+				<Panel id="ModelShop" class="PageClass" >
+					<Panel id="ModelShopContainer" />
+					<Label id="VCoinValue" html="true" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip('#VcoinInfoLabel')" />
+					<!--<DropDown id="IconModel" menuclass="IconModel" oninputsubmit="ReplaceIconModel()" onmouseout="UIHideTextTooltip();" onmouseover="UIShowTextTooltip('#DropDownInf')" >  
+							<Label id="SortIcon" text="КАРТИНКИ"  />
+							<Label id="SortModel"  text="МОДЕЛИ"/>
+					</DropDown> -->  
+					<Panel id="IsBuyItem" > 
+							<Label id="MainText" text=""/>
+							<Label id="IsBuyItems" text="IsBuyItems"/>
+							<Panel id="ItemsButtons" >
+								<Label id="YesBuyItem" class="BuyItemButton" html="true" text ="YES"/>   
+								<Label id="NoBuyItem" class="BuyItemButton" html="true" text ="NO" />   
+							</Panel>   
+							<Panel id="LoadingPanel">
+								<Panel class="Spinner" />
+								<Label id="LoadingMessage" text="Connection servers..."/>
+							</Panel>   
+					</Panel> 
+				</Panel>
+				<Panel id="News" class="PagesClass" >
+						<Panel id="NewsColon"/>
+						<Image id="GlobalNewsIcon" src="https://dota2.ru/img/uploads/19/02/1052536.jpg" >
+							<Label id="TextLabel" text="Важнейшая новость" />
+							<Label id="TextTitle" text="VampirZ" />
+						</Image>
+						<Panel id="MainPostPanel"  > 
+								<Label id="LabelPost" text=""/>
+								<Image id="ImagePost" src=""/>
+								<Label id="TitlePost" html="true" text=""/>   
+								<DOTAUIEconSetPreview id="SetPost" drawbackground="true" allowrotation="true" renderdeferred="true" itemdef="" />       
+						</Panel>
+				</Panel>
+			</Panel> 
+		</Panel>
+	</Panel>
+</root>

@@ -1,0 +1,22 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}//styles/custom_game/tooltips/playerProfileTooltip.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+	</scripts>
+	<script>
+
+		function setupTooltip(){	
+			var SteamID = $.GetContextPanel().GetAttributeString("SteamID", "not found")
+			$.("Avatar").steamid = SteamID;
+		}
+	</script>
+
+	<Panel class="PlayerProfile" hittest="false" ontooltiploaded="setupTooltip()"  >
+		<DOTAAvatarImage id="Avatar"/>	
+		<Label id="Description" html="true" text="description" />
+		<Label id="Level" text="#Upgrade_level" />
+	</Panel>
+</root>

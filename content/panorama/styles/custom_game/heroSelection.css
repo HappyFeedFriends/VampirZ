@@ -1,0 +1,217 @@
+
+.HeroSelectionMain{
+	width: 100%;
+	height: 100%;
+	z-index: 25;
+}
+#HeroSelectionTimer{
+	position: 0 50px 0;
+	width: 10%;
+	height: 10%;
+	horizontal-align:center;
+	flow-children: down;
+}
+#HeroSelectionTimer Label{
+	text-align: center;
+	vertical-align: center;
+	horizontal-align: center;
+	color: white;
+	font-family: 'Radiance';
+	font-size: 40px;
+	font-weight: bold;
+}
+#MainSelectionHero{
+	width: 100%;
+	height: 100%;
+}
+#BackgroundPanel {
+	width: 100%;
+	height: 100%;
+	background-image: url("s2r://panorama/images/custom_game/custom_icon/hud_heroSelection.png");
+	background-size: 100%;
+	z-index: -1000;
+}
+#MainPickHero{
+	position: 0 140px 0;
+	flow-children: down;
+	width: 100%;
+	height: 100%;
+}
+.AttributesPanel{
+	horizontal-align:center;
+	width: 95%;
+	height: 280px;
+	flow-children: right-wrap;
+}
+
+.HeroPanel{
+	height: 100px;
+	width: 70px;
+	margin:3px;
+	saturation: 0.6;
+	margin-bottom:12px;
+	flow-children: right-wrap;
+	box-shadow: 0 0 4px #535c63;
+}
+
+.HeroPanel:hover{
+	transform: translateY(5px) translateX(4px) scaleX(1.1) scaleY(1.1);
+	saturation: 1;
+	box-shadow: 0 0 8px white;
+}
+
+.information{
+	height: 100%;
+	width: 100%;
+	flow-children: left;
+}
+
+.abilityHero{
+	position: 30px 120px 0;
+	vertical-align:top;
+	horizontal-align:center;
+	height: 10%;
+	width: 90%;
+	flow-children: right;
+}
+.AbilityPanel{
+	height: 70%;
+	width: 13%;
+	margin:3px;
+	border-radius:2px;
+	box-shadow: 0 0 4px #535c63;
+}
+.AbilityPanel:Hover{
+	brightness:0.9;
+}
+.ScenePanelHero{
+	position: 0 100px 0;
+	horizontal-align:center;
+	height: 60%;
+	width: 75%;
+	z-index: -1;
+}
+
+.ButtonPickHero{
+	position: 0 -200px 0;
+	border-radius:2px;
+	height: 7.5%;
+	width: 55%;
+	vertical-align:bottom;
+	horizontal-align:center;
+	border: 1px solid silver;
+}
+.ButtonRepickHero:disabled,
+.ButtonPickHero:disabled{
+	brightness:0.4;
+}
+.ButtonRepickHero:active,
+.ButtonPickHero:active{
+	padding-bottom:4px;
+    padding-left:4px;
+    padding-right:4px;
+    padding-top:4px;
+}
+.ButtonPickHero Label{
+	text-align: center;
+	vertical-align: center;
+	horizontal-align: center;
+	color: white;
+	font-family: 'RadianceM', 'Radiance';
+	font-size: 20px;
+	font-weight: bold;
+}
+.ButtonRepickHero{
+	height: 7.5%;
+	width: 30%;
+	vertical-align:bottom;
+	horizontal-align:center;
+	position: 0 -110px 0;
+	border-radius:2px;
+	border: 1px solid silver;
+}
+.ButtonRandomHero{
+	border-radius:20px;
+	height: 7.5%;
+	width: 30%;
+	vertical-align:bottom;
+	horizontal-align:center;
+	position: 75px -110px 0;
+	background-color: #ffa500;
+}
+.ButtonRepickHero Label{
+	text-align: center;
+	vertical-align: center;
+	horizontal-align: center;
+	color: white;
+	font-family: 'RadianceM', 'Radiance';
+	font-size: 20px;
+	font-weight: bold;
+}
+.ButtonRepickHero:Hover,
+.ButtonPickHero:Hover{
+	brightness:0.9;
+	transform: scaleX(1.05) scaleY(1.05);
+	box-shadow: 0 0 15px #535c63;
+}
+.heroDataPanel{
+	vertical-align:center;
+	height: 90%;
+	width: 33%;
+}
+.HeroInformation{
+	vertical-align:center;
+	height: 90%;
+	width: 30%;
+}
+.HeroEffects{
+	position: 0 120px 0;
+	height: 100%;
+	width: 100%;
+	flow-children: down;
+}
+.HeroEffects Label{
+	text-align: center;
+	vertical-align: center;
+	horizontal-align: center;
+	color: green;
+	font-family: 'Radiance';
+	font-size: 23px;
+	font-weight: bold;
+}
+.HeroEffectLabel{
+	margin-top:25px;
+	border-bottom: 2px solid #99999950;
+}
+.HeroEffectPanel{
+	margin-top:12px;
+	vertical-align:top;
+	width: 100%;
+	flow-children: down;
+}
+.EffectPanelInfo{
+	margin-top:70px;
+	width: 100%;
+	flow-children: down;
+}
+#MapContainer{
+	width:360px;
+	height:360px;
+	horizontal-align:left;
+	vertical-align:bottom;
+	margin-bottom:250px;
+	margin-left:150px;
+	flow-children: down;
+}
+#MapContainer Label{
+	text-align: center;
+	vertical-align: center;
+	horizontal-align: center;
+	font-family: 'Radiance';
+	font-size: 23px;
+	font-weight: bold;
+}
+#minimap{
+	width:100%;
+	height:100%;
+}

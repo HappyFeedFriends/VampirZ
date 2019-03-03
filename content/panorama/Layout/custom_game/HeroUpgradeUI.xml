@@ -1,0 +1,74 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/HeroUpgradeUI.css" />
+		<include src="file://{resources}/styles/custom_game/util.css" />
+	</styles>
+
+	<scripts>
+
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+		<include src="file://{resources}/scripts/custom_game/HeroUpgradeUI.js" /> 
+	</scripts>
+	<Panel class="MainUpgradeHero" hittest="false">
+			<Panel hittest="true" id="HeroUpgradeMain" >
+				<Panel id="HeroUpgrade1" class="HeroUpgrade" > 
+						<Label id="HeroUpgradeLabel" text="HeroUpgradeWarrior" />
+						<Panel id="HeroUpgradeLevel4" class="HeroUpgradeType" >
+							<Image id="HeroUpgrade_1" />
+							<Image id="HeroUpgrade_2" />
+							<Image id="HeroUpgrade_3" />
+							<Image id="HeroUpgrade_4" />
+						</Panel>
+						<Panel id="HeroUpgradeLevel3" class="HeroUpgradeType" >
+							<Image id="HeroUpgrade_1" />
+							<Image id="HeroUpgrade_2" />
+						</Panel>
+						<Panel id="HeroUpgradeLevel2" class="HeroUpgradeType" >
+							<Image id="HeroUpgrade_1" />
+						</Panel>
+						<Panel id="HeroUpgradeLevel1" class="HeroUpgradeType" >
+							<Image id="HeroUpgrade_1" />
+						</Panel>
+				</Panel>
+				<Panel id="HeroUpgrade2" class="HeroUpgrade" >
+						<Label id="HeroUpgradeLabel" text="HeroUpgradeWarrior" />
+						<Panel id="HeroUpgradeLevel4" class="HeroUpgradeType" >
+							<Image id="HeroUpgrade_1" />
+							<Image id="HeroUpgrade_2" />
+							<Image id="HeroUpgrade_3" />
+							<Image id="HeroUpgrade_4" />
+						</Panel>
+						<Panel id="HeroUpgradeLevel3" class="HeroUpgradeType" >
+							<Image id="HeroUpgrade_1" />
+							<Image id="HeroUpgrade_2" />
+						</Panel>
+						<Panel id="HeroUpgradeLevel2" class="HeroUpgradeType" >
+							<Image id="HeroUpgrade_1" />
+						</Panel>
+						<Panel id="HeroUpgradeLevel1" class="HeroUpgradeType" >
+							<Image id="HeroUpgrade_1" />
+						</Panel>
+				</Panel>
+				<Panel id="HeroUpgrade3" class="HeroUpgrade" >
+						<Label id="HeroUpgradeLabel" text="HeroUpgradeWarrior" />
+						<Panel id="HeroUpgradeLevel4" class="HeroUpgradeType" >
+							<Image id="HeroUpgrade_1" />
+							<Image id="HeroUpgrade_2" />
+							<Image id="HeroUpgrade_3" />
+							<Image id="HeroUpgrade_4" />
+						</Panel>
+						<Panel id="HeroUpgradeLevel3" class="HeroUpgradeType" >
+							<Image id="HeroUpgrade_1" />
+							<Image id="HeroUpgrade_2" />
+						</Panel>
+						<Panel id="HeroUpgradeLevel2" class="HeroUpgradeType" >
+							<Image id="HeroUpgrade_1" />
+						</Panel>
+						<Panel id="HeroUpgradeLevel1" class="HeroUpgradeType" >
+							<Image id="HeroUpgrade_1" />
+						</Panel>
+				</Panel>
+			</Panel>
+	</Panel>
+</root>

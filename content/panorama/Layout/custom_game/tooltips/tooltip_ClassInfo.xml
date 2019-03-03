@@ -1,0 +1,51 @@
+﻿<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}//styles/custom_game/tooltips/tooltip_heroInfo.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+	</scripts>
+	<script> 
+		function setupTooltip(){		  
+			var HeroName = $.GetContextPanel().GetAttributeString("heroName", "not found");
+			var BuffEffects = $.GetContextPanel().GetAttributeString("buffs", "not_positivity_effects");
+			var DeBuffEffects = $.GetContextPanel().GetAttributeString("debuffs", "not_negativity_effects");
+			$('#Title').text = $.Localize(HeroName); 
+			BuffEffects = JSON.parse(BuffEffects)
+			DeBuffEffects = JSON.parse(DeBuffEffects)  
+			$('#Buffs').RemoveAndDeleteChildren()
+			$('#DeBuffs').RemoveAndDeleteChildren()
+			$('#DeBuffs').style.flowChildren ="down"
+			if (typeof(BuffEffects) == 'object')
+				for (var localize in BuffEffects){
+					var panel = $.CreatePanel( "Label", $('#Buffs'), '' );
+					panel.text = $.Localize('tooltip_effect_positive_' + localize) + " " + BuffEffects[localize];
+				}
+			else{
+				var panel = $.CreatePanel( "Label", $('#Buffs'), '' );
+				panel.text = $.Localize(BuffEffects);
+			}
+			$.Msg(DeBuffEffects)
+			if (typeof(DeBuffEffects) == 'object')
+				for (var localize in DeBuffEffects){
+					var panel = $.CreatePanel( "Label", $('#DeBuffs'), '' );
+					panel.text = $.Localize('tooltip_effect_negative_' + localize) + " " + DeBuffEffects[localize];
+				}
+			else{
+				var panel = $.CreatePanel( "Label", $('#DeBuffs'), '' );
+				panel.text = $.Localize(DeBuffEffects);
+			}
+		}
+	</script>
+
+	<Panel hittest="false" hittestchildren="false" ontooltiploaded="setupTooltip()" class="HeroInfo"  >
+		<Panel id="HeroNameTitle" > 
+			<Label id="Title" text="" /> 
+		</Panel>
+		<Label id="LabelBuffs" class="LabelBuffs" text="Позитивные эффекты"/> 
+		<Panel id="Buffs" class="InfoPanel" />
+		<Label id="LabelDeBuffs" class="LabelDeBuffs"  text="Негативные эффекты" />
+		<Panel id="DeBuffs" class="InfoPanel" />
+	</Panel>
+</root>

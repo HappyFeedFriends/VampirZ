@@ -1,0 +1,180 @@
+""
+{
+	"item_dark_prince_ring"
+	{
+		"BaseClass"             		"item_lua"
+		"ScriptFile"                    "items/vampirs/dark_prince_ring.lua"
+		"AbilityTextureName"			"customImages/dark_prince_ring"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemCost"            			"300"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"resistance"		"25"
+			}
+		}
+	}
+
+	"item_bleeding_claws"
+	{
+		"BaseClass"             		"item_lua"
+		"ScriptFile"                    "items/vampirs/bleeding_claws.lua"
+		"AbilityTextureName"			"customImages/bleeding_claws"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"ItemCost"            			"1200"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"chance"			"25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"12"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"interval"			"0.3"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"			"1.5"
+			}
+		}
+	}
+
+	"item_solemn_blade"
+	{
+		"BaseClass"             		"item_lua"
+		"ScriptFile"                    "items/vampirs/solemn_blade.lua"
+		"AbilityTextureName"			"customImages/solemn_blade"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemCost"            			"500"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"30"
+			}
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"vampirism"			"10"
+			}
+		}
+	}
+
+	"item_void_dagger"
+	{
+		"BaseClass"             		"item_lua"
+		"ScriptFile"                    "items/vampirs/void_dagger.lua"
+		"AbilityTextureName"			"customImages/void_dagger"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemCost"            			"2100"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"vision_per_distance"	"50"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"movespeed_per_distance"	"1.5"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"distance_value"	"100"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"max_distance"		"1200"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"min_distance"		"100"
+			}
+		}
+	}
+
+	"item_darkness_king_crown"
+	{
+		"BaseClass"             		"item_lua"
+		"ScriptFile"                    "items/vampirs/darkness_king_crown.lua"
+		"AbilityTextureName"			"customImages/darkness_king_crown"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NONE"
+		"AbilityCooldown"				"30"
+		"AbilityManaCost"				"0"
+		"AbilityCastPoint"				"0.1"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+		"ItemCost"            			"2900"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"zombies_regen"		"15"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"vampirs_vision_bonus"	"200"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"aura_radius"			"1300"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"humans_vision_reduce"	"-30"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"vision_if_point"	"750"
+			}
+			"06"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"vision_if_human"	"-100"
+			}
+			"07"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"vision_if_human_dur"	"4"
+			}
+			"08"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"vision_if_point_dur"	"6"
+			}
+		}
+	}
+}

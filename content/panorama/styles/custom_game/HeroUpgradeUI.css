@@ -1,0 +1,82 @@
+.MainUpgradeHero{
+	width:100%;
+	height:100%;
+}
+#HeroUpgradeMain{
+	width: 1400px;
+	height: 820px;
+	vertical-align:center;
+	horizontal-align:center;
+	position: 0 -50px 0;
+	background-image: url("s2r://panorama/images/backgrounds/dashboard_background.psd");
+	background-size:100% 100%;
+	border: 1px solid white;
+	flow-children: right;
+}
+.HeroUpgrade{
+	width: 466.66px;
+	height: 100%;
+	border: 1px solid white;
+	flow-children: down;
+
+}
+
+.HeroUpgrade > Label{
+	margin-top:20px;
+	margin-bottom:-20px;
+	text-align: center;
+	vertical-align: center;
+	horizontal-align: center;
+	color: white;
+	font-family: RadianceM;  
+	font-size: 28px;
+}
+#HeroUpgradeGetCost{
+	text-align: center;
+	vertical-align: center;
+	horizontal-align: center;
+	color: white;
+	font-family: 'FZLanTingHei-R-GBK';  
+	font-size: 25px;
+}
+#HeroUpgradeGetCost:hover{
+	color:gold;
+}
+.HeroUpgradeType{
+	width: 100%;
+	height: 25%;
+	flow-children: right;
+	margin-left:20px;
+	margin-right:20px;
+}
+
+.HeroUpgradeType > Image{
+	width: 64px;
+	height: 64px;
+	vertical-align:center;
+	border-radius:5px;
+}
+.HeroUpgradeType > Image:active{
+	padding:3px;
+}
+.HeroUpgradeType > Image:hover{
+	border: 1px solid white;
+}
+.HeroUpgradeType:disabled > Image,
+.HeroUpgrade:disabled,
+.HeroUpgradeType > Image:disabled{
+	saturation:0;
+}
+.IsSelection{
+	border: 1px solid orange;
+}
+#HeroUpgradeLevel4 > Image{
+	margin-left:9%;
+}
+#HeroUpgradeLevel3 > Image{
+	margin-left:25%;
+}
+#HeroUpgradeLevel1 > Image,
+#HeroUpgradeLevel2 > Image{
+	horizontal-align:center;
+}

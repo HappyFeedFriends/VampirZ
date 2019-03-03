@@ -1,0 +1,53 @@
+.HealthBarUI{
+	width:45%;
+	height:20%;
+	position: 0 100px 0;
+	horizontal-align:center;
+}
+#UnitNameHealthBar{
+	width:100%;
+	height:20%;
+}
+#HBBarMain{
+	width:100%;
+	height:100%;
+	flow-children:down;
+}
+#ManaBarMainUI,
+#HealthBarMainUI{
+	width:100%;
+	height:19%;
+	font-weight: bold;
+	border-radius:6px;
+	border: 3px solid silver;
+	background-color: #000000aa 0px 0px 2px 2px;	
+}
+#ManaBarMainUI Label,
+#HealthBarMainUI Label{
+	text-align: center;
+	color: white;
+	font-family: 'RadianceM', 'Radiance';
+	font-size: 25px;
+	vertical-align: center;
+	horizontal-align: center;
+}
+.UnitNameBarAll{
+	width:100%;
+	height:100%;
+	clip: rect( 0%, 100%, 100%, 0% );
+}
+#UnitNameHealthBarBG{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #425d25  ), color-stop( 0.2, #5BA539 ), color-stop( .5, #4D9030), to( #425d25) );
+}
+#UnitNameManaBarBG{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #2b4287 ), color-stop( 0.2, #4165ce ), color-stop( .5, #4a73ea), to( #2b4287 ) );
+}
+#UnitNameHB{
+	text-align: center;
+	vertical-align: center;
+	horizontal-align: center;
+	color: white;
+	font-family: 'RadianceM', 'Radiance';
+	font-size: 22px;
+	font-weight: bold;	
+}

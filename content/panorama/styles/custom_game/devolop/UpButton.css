@@ -1,0 +1,21 @@
+.CUpgradeMain {
+	width: 65px;
+	height: 65px;
+	margin-top: 95px;
+}
+
+#ButtonB {
+	width: 100%;
+	height: 100%;
+	background-color: #535c63;
+	saturation: 0.1;
+}
+
+#ButtonB:hover {
+	z-index: 100;
+	saturation: 1;
+}
+
+#ButtonB:active {
+	transform: scaleX(0.9) scaleY(0.9);
+}

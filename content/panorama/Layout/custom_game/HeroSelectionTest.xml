@@ -1,0 +1,41 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/keyframes.css" />
+		<include src="file://{resources}/styles/custom_game/heroSelection_test.css" />
+        <include src="file://{resources}/styles/custom_game/keyframes.css" />
+	</styles> 
+    <script >
+    </script>
+	<scripts>
+ 
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+		<include src="file://{resources}/scripts/custom_game/heroSelection_test.js" /> 
+	</scripts>
+	<Panel class="HeroSelectionMain" hittest="false" > 
+			<Panel id="HeroInfo" >
+				<Panel id="Name" > 
+					<Panel id="HeroNameInfo" >
+						<Label id="LabelName" text="" class="LabelName" />
+						<!--<Image id="QuestionIcon" src="s2r://panorama/images/control_icons/arrow_popout_png.vtex" /> -->
+					</Panel>
+                    <Panel id="ScenePanelContainer" />
+					<Panel id="HeroAbilities"/>
+				</Panel>
+			</Panel>
+
+			<Panel id="HeroList" >
+                <Label id="TimerText" text="--:--"></Label> 
+                <Label class="HeroHeader" text="#HeroListHeader" ></Label> 
+	            <Panel id="Heroes"  />
+            </Panel> 
+
+            <Panel id="RightSide" hittestchildren="true">
+                <Label id="PlayersLabel" text="PlayerHeaders" class="LabelName"/> 
+                <Panel id="PlayersContent" /> 
+            </Panel>
+
+            <Panel id="HeroSelectionBackgroundScene" hittest="false" />
+            <Panel id="HeroSelectionTopGradient" hittest="false"/>
+	</Panel>
+</root>

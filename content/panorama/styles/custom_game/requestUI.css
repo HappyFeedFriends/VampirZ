@@ -1,0 +1,807 @@
+#BackgroundPanel,
+#TextError,
+.RequestMain{
+	width:100%;
+	height:100%;
+}
+#PlayerProfile{
+	flow-children: down;
+	width:100%;
+	height:100%;
+}
+.PagesClass{
+	flow-children: right;
+	width:100%;
+	height:100%;
+	margin-top: 8px;
+}
+
+#Block
+{
+	width: 200px;
+	height: 40px;
+	align:  center top;
+	margin-top: 40px;
+	background-image: url("s2r://panorama/images/hud/reborn/bg_timer_psd.vtex");
+	//background-color:  gradient( linear, 0% 0, 0 100%, from( #394048 ), color-stop( 0.9, #4b565e ), to( #4b565e ) );
+	background-size: 100% 100%;
+}
+#Block > Label{
+	align: center center;
+	color: #eaebeb;
+	text-align: center center;
+	font-size: 19px;
+	font-weight: normal;
+	letter-spacing: 2px;
+	margin-top: 2px;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 3px 2.0 #00000025;
+}
+
+#Block:hover Label
+{
+	color: #6A94D4;
+
+}
+#Block:active
+{
+	saturation: 1.6;
+}
+.PageClass{
+	width:100%;
+	height:100%;
+	margin-top: 8px;
+}
+	//background-color:#0008;
+#RequestPanel{
+	width:70%;
+	height:70%;
+	position: 0 -50px 0;
+	horizontal-align:center;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/backgrounds/gallery_background.png");
+	background-size: 100% 100%;
+	border-radius: 5px 5px 0px 0px;
+}
+#PlayerProfileTopBar{
+	width:100%;
+	height:6.5%;
+	flow-children: right;
+	border-bottom: 1px solid silver;
+}
+
+#PlayerProfileTopBar > Label{
+	color: grey;
+	font-family: 'RadianceM';
+	horizontal-align:center;
+	vertical-align:center;
+	margin-left:5px;
+	font-size: 25px;
+}
+ 
+#TextError > Label{
+	color: white;
+	font-family: 'RadianceM';
+	horizontal-align:center;
+	vertical-align: top;
+	font-size: 45px;
+}
+
+#UserProfile1{
+	width:35%;
+	height:100%; 
+	flow-children: down;
+}
+#PlayerProfileData{
+	flow-children: right;
+}
+#UserProfile2{
+	width:62%;
+	height:100%; 
+	flow-children: down;
+
+}
+.ComingSoon
+{
+	opacity: 1.0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	//background-image: url("s2r://panorama/images/vr/hero_loadout_sets_comingsoon_psd.vtex");
+	border: 6px solid #666;
+}
+
+.ComingSoon Label
+{
+	width: 100%;
+	color: #FFDDAA;
+	font-weight: bold;
+	font-size: 80px;
+	text-align: center;
+	text-shadow: 0px 0px 8px #000;
+	vertical-align: middle;
+}
+#PlayerGamesBox
+{
+	background-color: #0008;
+	width: 80%;
+	height: 165px;
+	border: 1px solid transparent;
+	opacity: 1;
+	transition-property: height, background-color, transform, opacity;
+	transition-duration: .4s;
+	transition-timing-function: ease-in-out;
+	margin-left:20%;
+}
+#PlayerGamesBox.Expanded,
+#UserFeedBox.Expanded,
+#AllHeroChallengeBox.Expanded
+{
+	height: 98%;
+	transform: translateY(0px);
+	opacity: 1;
+}
+
+#ProfileLifetimeStatsContainer.Expanded
+{
+	height: 200px;
+	transform: translateY(0px);
+	opacity: 1;
+}
+
+#StatsList
+{
+	width: 220px;
+	horizontal-align: center;
+	transition-property: opacity;
+	transition-duration: 0.3s;
+	transition-timing-function: ease-in-out;
+	opacity: 1;
+}
+
+#HeroMovie
+{
+	width: 120px;
+	height: 160px;
+	margin-left: -20px;
+	margin-top: -32px;
+}
+#HeroMovieContainers
+{
+	width: 100px;
+	height: 120px;
+	box-shadow: #00000066 -3px -3px 6px 6px;
+	margin-left: 0px;
+	margin-right: 12px;
+	margin-top: 4px;
+	overflow: clip;
+	opacity-mask: url("s2r://panorama/images/masks/softedge_box_sharper_png.vtex");
+}
+#PanelMatches
+{
+	vertical-align: center;
+}
+#UserIcon{
+	width:180px;
+	height:128px;
+	flow-children: down;
+}
+#UserTop > DOTAUserName{
+	horizontal-align: center;
+	color: white;
+}
+#UserTop > DOTAUserName > Label {
+	font-size: 24px;
+	color: #768e8d;
+	font-family: 'defaultFont';
+}
+#UserIcon > DOTAAvatarImage{
+	horizontal-align: center;
+	width:128px;
+	height:100%;
+	border: 1px solid silver;
+	border-radius:5px;	
+}
+#UserIcon > DOTAAvatarImage:Hover{
+	border: 3px solid #768e8d33;
+}
+#RankingInfo{
+	width:100%;
+	height:100px;
+	flow-children: right;
+}
+#RankingInfoImage{
+	width:110px;
+	height:110px;
+	margin-right:55px;
+	background-size:100% 100%;
+}
+#RankingInfoImage Label{
+	horizontal-align: center;
+	vertical-align: bottom; 
+	font-size: 20px;
+	color:white;
+	font-family: 'Goudy Trajan Medium';
+	margin-bottom:4px;
+	margin-left:5px;
+}
+#RankingInfoText{
+	flow-children: down;
+	margin-left:18%;
+}
+#RankingInfoText > Label{
+	horizontal-align: center;
+	color: orange;
+	font-family: 'Goudy Trajan Medium';
+	margin-top:20px;
+	font-size: 19px;
+	
+}
+
+
+#UserMMR{
+	horizontal-align: center;
+	color: white;
+	font-family: 'Goudy Trajan Medium';
+	margin-top:30px;
+	margin-left:60px;
+	font-size: 25px;
+	horizontal-align: center;
+}
+#UserTop{
+	horizontal-align: left;
+	vertical-align: top;
+	margin-top:30px;
+	flow-children: down;
+}
+
+
+#UserProfileText{
+	horizontal-align: center;
+	color: white;
+	font-family: 'Goudy Trajan Medium';
+	font-size: 21px;
+}
+#UserData{
+	horizontal-align: left;
+	width:100%;
+	flow-children: down;
+	margin-top:10px; 
+}
+#UserData > Label{
+	horizontal-align: center;
+	color: white;
+	font-family: 'RadianceM';
+	font-size: 23px;
+	margin-top:23px; 
+}
+#UserDataList{
+	width:100%;
+	height:100%;
+	flow-children: right;
+}
+#UserHeroData{
+	horizontal-align: center;
+	flow-children: right-wrap;
+	margin-top:10px;	
+}
+#UserHeroData > Image{
+	width:71px;
+	height:94px;
+	margin-left:10px;
+}
+#FriendsRating,
+#GlobalRating{
+	horizontal-align: right;
+	margin-right:25px;
+	width:50%;
+	height:98%;
+	//border-radius:5px; 
+	//box-shadow: 0 0 4px #535c63;
+	flow-children: down;
+	//background-color:#0C000044;
+}
+
+#FriendsRating{
+	margin-left:15px;
+}
+#TopBarDescription{
+	width:100%;
+	height:5%;
+	flow-children: right;
+	margin-top:5px;
+}
+#TopBarDescription > Label{
+	font-size: 21px;
+	font-family: 'Goudy Trajan Medium';
+	//color: #768e8d;
+	color: #7f7679;
+	vertical-align:center;
+	margin-left:44px;
+}
+#rating{
+	text-align: right;
+}
+
+#RankingPanels{
+	overflow: clip scroll;
+	width:100%;
+	flow-children: right;	
+}
+#RankingPanels VerticalScrollBar{
+	opacity:1; 
+}	
+#UserName{
+	width:260px;
+	text-align:center;
+}
+
+.RatingsUsers{
+	height:70px;
+	width:100%;
+	margin-top:10px;
+	flow-children: right;
+}
+.RatingsUsers DOTAAvatarImage{
+	vertical-align:center;
+	height:100%;
+	width:21%;
+	margin-right:10px;
+	border-radius:5px;
+}
+.RatingsUsers > DOTAAvatarImage:Hover{
+	border: 2px solid #768e8d33;
+}
+.RatingsUsers > DOTAUserName > Label{
+	font-size: 22px;
+}
+
+.RatingsUsers > DOTAUserName{
+	vertical-align:center;
+	text-align:left;  
+}
+
+#ratingRanks{
+	width:20%;
+	flow-children: down;
+}
+#ratingUsers{
+	width:54%;
+	flow-children: down;
+}
+#ratingMMR{
+	width:26%;
+	flow-children: down;
+}
+#ratingRanks > Label,
+#ratingMMR > Label{
+	font-size: 32px;
+	font-family: 'Goudy Trajan Medium';
+	margin-top:23px;
+	margin-bottom:20px;
+	color: #768e8d;
+}
+#ratingRanks > Label{
+	horizontal-align:center;
+}
+#FriendsRating #RankingPanels #ratingMMR Label {
+	horizontal-align:center;
+}
+
+.SpinnerLoading
+{
+	width: 280px;
+	height: 580px;
+	horizontal-align:center;
+	vertical-align:center;
+	background-image: url("s2r://panorama/images/status_icons/loadingthrobber_round_psd.vtex");
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: contain;
+
+	animation-name: SpinnerRotate;
+	animation-duration: 1.0s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+.SecondaryTabButton
+{
+	margin-right: 10px;
+	margin-left: 25px;
+	vertical-align: middle;
+	horizontal-align: center;
+	wash-color: white;
+
+	transition-property: wash-color;
+	transition-duration: 0.6s;
+	transition-timing-function: ease-in-out;
+
+	flow-children: right;
+}
+.SecondaryTabButton Label
+{
+	color: #768e8d;
+	vertical-align: middle;
+	font-size: 20px;
+	text-transform: uppercase;
+	margin: 0px;
+	letter-spacing: 3px; 
+}
+#buttonModel:hover,
+.SecondaryTabButton:hover Label
+{
+	color: white;
+}
+#buttonModel:disabled,
+.SecondaryTabButton:disabled Label,
+.SecondaryTabButton:disabled:hover Label
+{
+	color: #768e8d33;
+}
+.SecondaryTabButton:active
+{
+	sound: "ui_rollover_micro";
+}
+
+.SecondaryTabButton .RadioBox
+{
+	visibility: collapse;
+}
+
+#DOTAQuitButton
+{
+	width: 62px;
+    height: 57px;
+    background-image: url("s2r://panorama/images/control_icons/quit.png"); 
+	//background-color: #ff000008;
+    background-size: 30px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	//wash-color: #bd5e2d;
+	horizontal-align:right;
+	transition-property: background-color, wash-color;
+	transition-delay: 0.0s;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-out;
+}
+
+#DOTAQuitButton:hover
+{
+	//background-color: #ff000011;
+	wash-color: #e55137;
+}
+#DOTAQuitButton.Activated
+{
+    sound: "ui.menu_quit";
+}
+
+.EconPanel{
+	width:19%;
+	height:300px;
+}
+.EconPanel DOTAEconItem{
+	align:center center;
+}
+#LifetimeStatsHeader{
+	opacity:1;
+}
+.SwapRightProfile{
+	animation-name: EndPlayerFadeRight2;
+	animation-duration:0.7s;
+}
+.SwapLeftRating{
+	animation-name: EndPlayerFadeLeft2;
+	animation-duration:0.7s;
+}
+
+.SwapRight{ 
+	animation-name: EndPlayerFadeRight;
+	animation-duration:.7s;
+}
+.SwapLeft{ 
+	animation-name: EndPlayerFadeLeft;  
+	animation-duration:.7s;  
+}
+
+#ProfileLifetimeStatsContainer
+{
+	height:175px;
+	width: 80%;
+	horizontal-align:left;
+	margin-left:30px;
+	margin-top:20px;
+}
+
+.StatsReduction{
+	vertical-align: center;
+	margin-top:15px;
+}
+.EconButton{
+	horizontal-align:right;
+	vertical-align:center;
+	background-size: 100% 100%;
+	width:30px;
+	height:40px;
+	wash-color:#444a55;
+}
+.EconButton:hover{
+	wash-color:white;
+}
+#VCoinValue{
+	color: #768e8d;
+	font-size: 24px;
+
+	height: 30px;
+	vertical-align:top;
+	padding-left:40px;
+
+} 
+
+.EconCost{
+	color: #768e8d;
+	font-size: 23px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	horizontal-align:center;
+	vertical-align:bottom;
+
+}
+
+#IconModel{
+	align:right top;
+	margin-right:20px;
+}
+.EconCost Image{
+	height: 24px;
+	vertical-align:center;
+}
+.CoinIcon
+{
+	width: 25px;
+	height: 25px; 
+	vertical-align: center;
+}
+
+#PlayerItems{
+	width:80%;
+	background-color: #0008;
+	border: 1px solid transparent;
+	opacity: 1;
+	transition-property: height, background-color, transform, opacity;
+	transition-duration: .4s;
+	transition-timing-function: ease-in-out;
+	margin-left:20%;
+	margin-top:25px;
+	flow-children:down;
+	height: 195px; 
+}
+#itemHeader,
+#ItemContainer{
+	width: 100%;
+	flow-children: right-wrap;
+}
+.ItemEconSlot{
+	width:160px;
+	height: 160px;
+	margin-top:5px;
+	margin-left:5px;
+}
+#PlayerItems.Expanded{
+	height: 480px; 
+
+}
+#PlayerItems.Expanded > #ItemContainer{
+	overflow: clip scroll;
+}
+#ModelShopContainer{
+	width: 100%;
+	flow-children:right-wrap;
+	overflow: clip scroll;
+}
+.IsBuyItem,
+#IsBuyItem{
+	horizontal-align:center;
+	vertical-align:center;
+	width:450px;
+	height: 250px;
+	background-color: gradient( linear, 100% 0, 0 100%, from( #000 ), to ( #010 ) ); 
+	flow-children:down;
+	border-radius: 5px;
+}
+.IsBuyItem, 
+#IsBuyItem Label{
+	color: #768e8d;
+	vertical-align: center;
+	horizontal-align: center;
+
+	margin-top: 35%;
+}
+#ItemsButtons{
+	flow-children:right;
+	horizontal-align: center;
+	margin-top: 8%; 
+	width:40%;
+	height: 50px;
+}
+#IsBuyItems{
+	font-size: 20px;
+}
+.BuyItemButton{
+	width:80%;
+	font-size: 23px;
+}
+
+.BuyItemButton:hover{
+	text-shadow: 0px 0px 4px #468;
+}
+
+#MainText{
+	font-size:24px;
+	text-align: center;
+}
+
+#LoadingPanel{
+	width: 100%;
+	height: 100%;
+
+	align: center center;
+	flow-children: down;
+}
+
+#LoadingPanel  Label {
+	width: 100%;
+	text-align: center;
+}
+
+.Spinner{
+	width: 100px;
+	height: 100px;
+	margin-top: 25px;
+	align: center center;
+}
+#LoadingMessage{
+	margin-top: 8px;
+	font-size: 25px;
+}
+
+#NewsColon{
+	width:17.5%; 
+	padding-left: 13px;
+	flow-children:down;
+	overflow: clip scroll;
+	align:center top;
+
+}
+#LabelPost,
+#TextLabelColon,
+#TextLabel{
+	color: #528EA5;
+	background-color: black;
+	font-size: 19px;
+	padding: 3px 8px 1px 12px;
+	text-shadow: 0px 0px 8px 2.0 #000000;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+	font-weight: medium;
+	transition-property: color;
+	transition-duration: 0.15s;
+	transition-timing-function: ease-in; 
+	horizontal-align:center;
+}
+#TextTitleColon,
+#TextTitle
+{
+	color: #cccccc;
+	font-size: 25px;
+	margin-left: 30px;
+	margin-bottom: 6px;
+	letter-spacing: 3px;
+	text-shadow: 0px 1px 3px 3.0 #000000;	
+	vertical-align:bottom; 
+}
+#TextLabelColon{
+	font-size: 12px;
+	horizontal-align:left;
+}
+#TextTitleColon{
+	font-size: 13px;
+}
+#NewsColon Image:hover #TextTitleColon,
+#GlobalNewsIcon:Hover #TextTitle
+{
+	color: gradient( linear, 0% 0%, 100% 100%, from( #07A003 ), to( #116977 ) );
+}
+#News{
+	flow-children:left;
+}
+#NewsColon Image{
+	width: 205px;
+	height: 165px;
+	vertical-align: center;
+	horizontal-align:center;
+	border-top:5px;
+	border-bottom: 5px;
+	brightness: 0.7;
+}
+#NewsColon Image:hover #TextLabelColon,
+#GlobalNewsIcon:Hover #TextLabel{
+	color: #fff;
+}
+#GlobalNewsIcon:hover,
+#NewsColon Image:hover{
+	pre-transform-scale2d: 1.03;
+	brightness: 1.3;
+}
+#MainPostPanel,
+#GlobalNewsIcon{
+	width:82.4%;
+	horizontal-align:center;
+	vertical-align:center;
+	margin-left: 8px;
+	brightness: 1.1;
+}
+#GlobalNewsIcon{
+	height:97%;
+}
+
+#MainPostPanel{
+	brightness:1;
+
+	border:1px solid silver;
+	flow-children:down;
+	overflow: clip scroll;
+}
+#LabelPost{
+	font-size: 30px;
+	margin-top: 20px;
+	horizontal-align: left;
+}
+#ImagePost{
+	max-width:75%;
+	max-height:450px;
+	horizontal-align:center;
+	margin-top: 20px;
+}
+#TitlePost{
+	font-size: 21px;
+	padding-left: 20px;
+	padding-top: 20px;
+}
+
+#SetPost{
+	height: 300px;
+	width: 200px;
+	horizontal-align: center;
+	vertical-align: bottom; 
+}
+
+#RandomButton{
+	background-image: url("s2r://panorama/images/control_icons/random_dice_psd.vtex");
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	align:center center;
+	wash-color:red;
+	width:35%;
+	height:35%;
+}
+#RandomButton:Hover{
+	pre-transform-scale2d: 1.10;
+	brightness: 1.4;
+}
+
+#AlreadyOwnedIcon
+{
+	horizontal-align: right;
+	vertical-align: top;
+
+	width: 44px;
+	height: 44px;
+	wash-color: #ddd;
+	margin-top: 45px;
+	margin-right: 20px;
+	background-image: url("s2r://panorama/images/topbar/armory_icon_white_png.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
