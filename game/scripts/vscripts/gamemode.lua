@@ -1,4 +1,8 @@
 AllPlayersInterval = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23}
+AllPlayersIntervalArray = {}
+for k,v in pairs(AllPlayersInterval) do 
+	AllPlayersIntervalArray[v] = {}
+end 
 if VampireZ == nil then
     _G.VampireZ = class({})
 	PickersHeroes = {}
@@ -53,7 +57,7 @@ function VampireZ:OnGameInProgress()
 	SpawnNeutrals:Init()
 	--HeroSelection:SetRandomVampire()
 	Vampires:SetAlpha(HeroSelection2.FirstVampire)
-	Vampires:Think()
+	DUMMY_UNIT:AddNewModifier(DUMMY_UNIT,nil,'modifier_global_aura',{duration = -1})
 	Cave:Create()
 	for i = 0, DOTA_MAX_PLAYERS - 1 do
 		if PlayerResource:IsValidPlayerID(i) then
@@ -68,6 +72,11 @@ function VampireZ:PreGame()
 	PlayerTables:CreateTable("DataPlayer", {
 		info = PLAYER_DATA,
 	},PLAYER_DATA)	
+	CustomNetTables:SetTableValue("UpgradeHeroSetting", "info", {})
+	if DUMMY_UNIT == nil then
+		DUMMY_UNIT = CreateUnitByName('npc_dummy_unit', Vector(0,0,0), true, nil, nil, DOTA_TEAM_NEUTRALS)
+		DUMMY_UNIT:AddNewModifier(DUMMY_UNIT,nil,'modifier_hero_out_of_game',{duration = -1})
+	end
 	--HeroSelection:Init()
 end
 function VampireZ:HeroSelection()
@@ -153,7 +162,7 @@ end
 
 function VampireZ:PickedTeamHero(data)
 	local team = data.Team
-	local pID = data.PlayerID
+	local pID = data.pID
 	PickersHeroes[pID] = team
 end 
 

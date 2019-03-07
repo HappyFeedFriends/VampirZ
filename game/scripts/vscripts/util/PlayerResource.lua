@@ -16,6 +16,16 @@ function GetTeamPlayerCount(iTeam)
 	return counter
 end
 
+function CDOTA_PlayerResource:GetAllPlayerCount()
+	local counter = 0
+	for i = 0, DOTA_MAX_PLAYERS - 1 do
+		if PlayerResource:IsValidPlayerID(i) and tostring(PlayerResource:GetSteamID(i)) ~= "0" then
+			counter = counter + 1
+		end
+	end
+	return counter
+end
+
 function CDOTA_PlayerResource:GetAllTeamPlayerIDs()
   return filter(partial(self.IsValidPlayerID, self), range(0, self:GetPlayerCount()))
 end

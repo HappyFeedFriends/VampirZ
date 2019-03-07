@@ -81,34 +81,19 @@ end
 
 function HeroSelection2:SetFirstVampire()
 	if HeroSelection2.FirstVampire then return HeroSelection2.FirstVampire end
-	local Pickers = false
-	for index,value in pairs(PickersHeroes) do
-		if value and value == DOTA_TEAM_BADGUYS then
-			Pickers = true
-			break
-		end
-	end 
-	if Pickers then
 		for index,value in pairs(PickersHeroes) do 
-			if ( RollPercentage(50) and PlayerResource:IsValidPlayerID(index) and not IsPlayerAbandoned(index)) then
+			if ( RollPercentage(50) and PlayerResource:IsValidPlayerID(index) and not IsPlayerAbandoned(index) and value == DOTA_TEAM_BADGUYS) then
 				HeroSelection2.FirstVampire = index
 				break
 			end
 		end 
 		if not HeroSelection2.FirstVampire then
 			for index,value in pairs(PickersHeroes) do 
-				if ( PlayerResource:IsValidPlayerID(index) and not IsPlayerAbandoned(index)) then
+				if ( PlayerResource:IsValidPlayerID(index) and not IsPlayerAbandoned(index) and value == DOTA_TEAM_BADGUYS) then
 					HeroSelection2.FirstVampire = index
 					break
 				end
 			end 
-		end
-	else
-		for i = 0, DOTA_MAX_PLAYERS - 1 do
-			if RollPercentage(50) and PlayerResource:IsValidPlayerID(i) and not IsPlayerAbandoned(i) then
-				HeroSelection2.FirstVampire = i
-				break 
-			end
 		end
 		if not HeroSelection2.FirstVampire then
 			for i = 0, DOTA_MAX_PLAYERS - 1 do
@@ -118,8 +103,8 @@ function HeroSelection2:SetFirstVampire()
 				end
 			end
 		end
-	end
 	--HeroSelection2.FirstVampire = 1
 	return HeroSelection2.FirstVampire 
 end
+
 

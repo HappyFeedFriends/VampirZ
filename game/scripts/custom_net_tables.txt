@@ -6,10 +6,12 @@
     "selection",
     "Shops",
     "HeroSelection",
-    "UpgradeHero",
+    "UpgradeHeroKV",
 	  "modifiers_value",
 	  "request",
     "game_state_end",
     "wearables",
+    "UpgradeHeroSetting",
+    "UpgradeHeroClasses",
   ]
 }

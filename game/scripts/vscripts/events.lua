@@ -2,8 +2,10 @@ function VampireZ:StartGameEvents()
   	ListenToGameEvent('entity_killed', Dynamic_Wrap(VampireZ, 'OnEntityKilled'), self)
   	ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(VampireZ, 'OnGameRulesStateChange'), self)
   	ListenToGameEvent('npc_spawned', Dynamic_Wrap(VampireZ, 'OnNPCSpawned'), self)
+  --	ListenToGameEvent("player_reconnected", Dynamic_Wrap(VampireZ, 'On_player_reconnected '), self)
   	ListenToGameEvent("player_chat", Dynamic_Wrap(VampireZ, 'OnPlayerChat'), self)
   	CustomGameEventManager:RegisterListener("BuyItem", Dynamic_Wrap(CustomShop, 'BuyItem'))
+
   	--CustomGameEventManager:RegisterListener("PickedHero", Dynamic_Wrap(HeroSelection, 'PickedHero'))
   	--CustomGameEventManager:RegisterListener("SetHeroPicked", Dynamic_Wrap(HeroSelection, 'SetHeroPicked'))
   	CustomGameEventManager:RegisterListener("SetClassHero", Dynamic_Wrap(UpgradeHero, 'SetClassHero'))
@@ -16,7 +18,6 @@ function VampireZ:StartGameEvents()
 	CustomGameEventManager:RegisterListener("SelectHero", Dynamic_Wrap(HeroSelection2, 'SelectHero'))
 end
 
---Cave:Create()
 function VampireZ:OnGameRulesStateChange(keys) 
 	local newState = GameRules:State_Get()
 	if newState == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
@@ -47,18 +48,23 @@ local SpawnedUnit = EntIndexToHScript(keys.entindex)
 			--local data = not Vampires:IsVampire(pID) and {pID = pID,heroName = SpawnedUnit:GetUnitName()} or 
 			--Vampires:IsAlpha(pID) and {pID = pID,class = 'Alpha'} or 
 			--{pID = pID,class = 'Beta'}
-			--UpgradeHero:SetClassHero({pID = pID,heroName = SpawnedUnit:GetUnitName()})
+			--if SpawnedUnit:GetUnitName() ~= 'npc_dota_hero_target_dummy' then
+				--UpgradeHero:SetClassHero({
+				--	pID = pID,
+				--	heroName = SpawnedUnit:GetUnitName()
+				--})
+			--end
 		end
 		if SpawnedUnit.vampireSet then
 			SpawnedUnit.vampireSet = nil
 			SpawnedUnit:Teleport(Entities:FindByName(nil,'VampirFirstSpawn'):GetAbsOrigin());
 			Vampires:SetVampire(pID)
 		end
-		if Vampires:IsVampire(pID) then
-			SpawnedUnit:AddNewModifier(SpawnedUnit,nil,"modifier_IsVampire",{duration = -1})
-		else
-			SpawnedUnit:RemoveModifierByName("modifier_IsVampire")
-		end
+		--if Vampires:IsVampire(pID) then
+		--	SpawnedUnit:AddNewModifier(SpawnedUnit,nil,"modifier_IsVampire",{duration = -1})
+		--else
+		--	SpawnedUnit:RemoveModifierByName("modifier_IsVampire")
+		--end
 		if GameRules:State_Get() < DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 			SpawnedUnit:AddNewModifier(SpawnedUnit,nil,"modifier_stunned",{duration = -1})
 		end 
@@ -98,7 +104,7 @@ local damagebits = keys.damagebits
 			Gold:ModifyGold(pID,gold,true)
 		end 
 	end 
-	if killedUnit:IsRealHero() and killedUnit:IsVampire() then
+	if killerEntity and killedUnit:IsRealHero() and killedUnit:IsVampire() then
 		if killerEntity:IsUpgrade("SpecialUpgrade_3_Gunner_5") then
 			for i=0, 8 do
 				local current_item = killerEntity:GetItemInSlot(i)

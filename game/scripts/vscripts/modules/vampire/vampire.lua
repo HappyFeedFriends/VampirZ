@@ -6,6 +6,7 @@ START_GOLD = 200
 START_BLOOD = 50
 
 function Vampires:ModifyBlood(pID,modify)
+
 	if not Vampires:IsVampire(pID) then return end
 	local blood = Vampires:GetBlood(pID)
 	Vampires:SetBlood(pID,blood + modify)
@@ -30,11 +31,12 @@ end
 
 function Vampires:SetVampire(pID,alpha)
 if tonumber(pID) < 0 or Vampires:IsVampire(pID) then return end
-	local t = PlayerTables:GetTableValue("DataPlayer", "info")
+	local t = PlayerTables:GetTableValue("DataPlayer", "info") or {}
 	local entityHero = PlayerResource:GetPlayer(pID):GetAssignedHero()
 	t[pID].vampire = true
-	t[pID].blood = START_BLOOD
+	t[pID].blood  = t[pID].blood or START_BLOOD
 	t[pID].gold = 0
+	t[pID].IsAlpha = alpha
 	PlayerTables:SetTableValue("DataPlayer", "info", t)
 	if alpha and not entityHero:IsNull() then
 		entityHero:Teleport(Entities:FindByName(nil,'VampirFirstSpawn'):GetAbsOrigin());
@@ -59,6 +61,7 @@ if tonumber(pID) < 0 or Vampires:IsVampire(pID) then return end
 		request:SetWinner(DOTA_TEAM_BADGUYS)
 		return
 	end
+	PlayerResource:GetPlayer(pID):GetAssignedHero():AddNewModifier(PlayerResource:GetPlayer(pID):GetAssignedHero(),nil,"modifier_IsVampire",{duration = -1})
 end
 
 function Vampires:SetAlpha(pID)
@@ -78,6 +81,7 @@ if pID < 0 or not Vampires:IsVampire(pID)  then return end
 	t[pID].vampire = false
 	t[pID].blood = 0
 	t[pID].gold = START_GOLD
+	t[pID].IsAlpha = false
 	PlayerTables:SetTableValue("DataPlayer", "info", t)
 	local entityHero = PlayerResource:GetPlayer(pID):GetAssignedHero()
 	UpgradeHero:SetClassHero({
@@ -90,23 +94,7 @@ if pID < 0 or not Vampires:IsVampire(pID)  then return end
 		GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, GameRules:GetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS) - 1)
 	end
 	PlayerResource:SetCameraTarget(pID, nil)
-end
-
-function Vampires:Think()
-	Timers:CreateTimer(3,function()
-		if GameRules:State_Get() > DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then return end
-		for i = 0, 23 do
-			if PlayerResource:IsValidPlayer(i) then
-				if Vampires:IsVampire(i) then
-					Vampires:ModifyBlood(i,4)
-					PlayerResource:GetPlayer(i):GetAssignedHero():AddExperience(30.0,0,true,true)
-				else
-					Gold:ModifyGold(i,2)
-				end
-			end
-		end
-		return 3
-	end)
+	PlayerResource:GetPlayer(pID):GetAssignedHero():RemoveModifierByName("modifier_IsVampire")
 end
 
 function Vampires:IsVampire(pID)
@@ -118,7 +106,7 @@ function CDOTA_BaseNPC:IsVampire()
 end 
 
 function Vampires:IsAlpha(pID)
-	return pID >= 0 and (UpgradeHero:GetClassHero(pID) == "Alpha" or HeroSelection2.FirstVampire == pID)
+	return pID >= 0 and (PlayerTables:GetTableValue("DataPlayer", "info")[pID].IsAlpha or HeroSelection2.FirstVampire == pID)
 end 
 
 function  CDOTA_BaseNPC:IsAlpha()

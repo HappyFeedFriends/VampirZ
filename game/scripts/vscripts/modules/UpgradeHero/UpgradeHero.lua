@@ -15,22 +15,32 @@ if not UpgradeHero then
 end
 ModuleRequire(...,"data")
 function UpgradeHero:PreLoad()
-	--CustomNetTables:SetTableValue("UpgradeHero", "AllClasses", ALL_CLASSES)
-	--CustomNetTables:SetTableValue("UpgradeHero", "Settings", SETTINGS_CLASSES)
-	PlayerTables:CreateTable("UpgradeHeroKV", UPGRADE_CLASS_SETTING,true)		
+	--[[CustomNetTables:SetTableValue("UpgradeHeroKV", 'Mans',UPGRADE_CLASS_SETTING['Mans'])	
+	CustomNetTables:SetTableValue("UpgradeHeroKV", 'Vampire',UPGRADE_CLASS_SETTING['Vampires'])
+	CustomNetTables:SetTableValue("UpgradeHeroKV", 'levels',UPGRADE_CLASS_SETTING['levels'])
+	CustomNetTables:SetTableValue("UpgradeHeroSetting", 'Images',UpgradeHero:GetImages())	
+	CustomNetTables:SetTableValue("UpgradeHeroSetting", 'SavesUpgrades', {})
+	CustomNetTables:SetTableValue("UpgradeHeroSetting", 'LockedUpgrade', {})]]
 	PlayerTables:CreateTable("UpgradeHeroSetting", {
 		SavesUpgrades = {},
 		LockedUpgrade = {},
+		info = {},
 		Images = UpgradeHero:GetImages(),
+		Vampire = UPGRADE_CLASS_SETTING['Vampires'],
+		Mans = UPGRADE_CLASS_SETTING['Mans'],
+		levels = UPGRADE_CLASS_SETTING['levels'],
 	},true)		
 end 
-
+--UpgradeHero:PreLoad()
+--PlayerResource:ReplaceHeroWith(0, 'npc_dota_hero_omniknight', 0, 0 ) 
+--Vampires:SetVampire(0) 
+--UpgradeHero:SetClassHero({pID = 0})   
+--Vampires:RemoveAlpha(0)
 function UpgradeHero:SetClassHero(data,adm)
 	if data.pID >= 0 then
-		local t = PlayerTables:GetTableValue("DataPlayer", "info")
-		if not t then print("[UpgradeHero] Critical Error: Table = ",t) return  end
-		t[data.pID].classHero = data.class or GetKeyValueByHeroName(data.heroName or PlayerResource:GetSelectedHeroEntity( data.pID ):GetUnitName(), "HeroClassName")  or -1
-		PlayerTables:SetTableValue("DataPlayer", "info", t)
+		local t = PlayerTables:GetTableValue("UpgradeHeroSetting", "info") or {}
+		t[data.pID] = data.class or GetKeyValueByHeroName(data.heroName or PlayerResource:GetSelectedHeroEntity( data.pID ):GetUnitName(), "HeroClassName")  or -1
+		PlayerTables:SetTableValue("UpgradeHeroSetting", "info", t)
 		CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(data.pID), "UpdateUpgradeHero", {})
 	end
 end
@@ -40,14 +50,15 @@ function UpgradeHero:AddUpgradeClass(data)
 	local UpgradeName = data.UpgradeName
 	local IsLocked = data.IsLocked == 0
 	local IsNotUpgrade = data.IsNoUpgradePrevious == 0
+	PrintTable(data)
 	local hero = PlayerResource:GetSelectedHeroEntity( pID )
 	if IsLocked then Containers:DisplayError(pID,"#hud_error_locked_upgrade") return end
 	if IsNotUpgrade then Containers:DisplayError(pID,"#hud_error_not_previous_upgrade") return end
 	local data = UpgradeHero:GetUpgradeData(UpgradeName,pID)
 	if data.AbilityCaster and not hero:FindAbilityByName(data.AbilityCaster) then  Containers:DisplayError(pID,"#hud_error_not_found_ability_class") return end
 	local t = PlayerTables:GetTableValue("UpgradeHeroSetting", "SavesUpgrades")
-	if not t[pID] or type(t[pID]) ~= "table" then t[pID] = {} end
-	t[pID][UpgradeName] = true 
+	t[pID] = t[pID] or {}
+	t[pID][UpgradeName] = true  
 	PlayerTables:SetTableValue("UpgradeHeroSetting", "SavesUpgrades", t) 
 	if data and type(data) == "table" then
 		if data.GetAddAbility and type(data.GetAddAbility) == "string" and hero and not hero:FindAbilityByName( data.GetAddAbility ) then
@@ -82,7 +93,7 @@ function UpgradeHero:RemoveDotaAbility(hero)
 end 
 
 
-function UpgradeHero:LockedUpgrades(data)
+function UpgradeHero:LockedUpgrades(data)  
 	local pID = data.PlayerID
 	local t = PlayerTables:GetTableValue("UpgradeHeroSetting", "LockedUpgrade")
 	if not t[pID] or type(t[pID]) ~= "table" then t[pID] = {} end
@@ -155,5 +166,7 @@ function UpgradeHero:GetUpgradedClasses(pID)
 end 
 
 function UpgradeHero:GetClassHero(pID)
-	return pID >= 0 and PlayerTables:GetTableValue("DataPlayer", "info") and PlayerTables:GetTableValue("DataPlayer", "info")[pID].classHero or -1
+	return pID >= 0 and PlayerTables:GetTableValue("UpgradeHeroSetting", "info")[pID] or -1
 end
+
+

@@ -1,9 +1,9 @@
 if not request then
 	request = class({})
-	request.http = "http://memesofdota.ru/request.php" --IsInToolsMode() and "http://localhost/request.php" or "http://memesofdota.ru/request.php" 
+	request.http = IsInToolsMode() and "http://localhost/request.php" or "http://memesofdota.ru/request.php" 
 	request.authKey = GetDedicatedServerKey("authKey")
 end
-request.http = "http://memesofdota.ru/request.php"
+ 
 ModuleRequire(...,"data")
 function request:GetDataServer(callback,pID,GetType,customUrl,newData)
 	if pID and tostring(PlayerResource:GetSteamID(pID)) == "0" then 
@@ -71,9 +71,9 @@ function request:IsWinner(pID,teamWin)
 end
 
 function request:PreLoad()
-	request.CountLimit = math.max(math.round((math.max(PlayerResource:GetPlayerCount(),2) - 1)/3),1)
+	request.CountLimit = math.max(math.round((math.max(PlayerResource:GetAllPlayerCount(),2) - 1)/3),1)
 	for i=0,DOTA_MAX_PLAYERS - 1 do
-		if PlayerResource:IsValidPlayerID(i) and PlayerResource:GetSteamID(i) ~= 0 then
+		if PlayerResource:IsValidPlayerID(i) then
 			request:GetDataServer(function(data)
 				CustomNetTables:SetTableValue("request", tostring(i), data)
 			end ,i)
@@ -144,8 +144,9 @@ function request:OnGameEnd(TeamWin)
 				IsCheat =  USER_DATA[pID]["UsableCheat"] or GameRules:IsCheatMode(),
 				HeroName = PlayerResource:GetSelectedHeroEntity(pID):GetUnitName(),
 				Position = USER_DATA[pID]["DeathNumber"],
-				MaxPositions = math.max(PlayerResource:GetPlayerCount(),2) - 1,
+				MaxPositions = math.max(PlayerResource:GetAllPlayerCount(),2) - 1,
 				CountLose = request.CountLimit,
+				IsSoloGame = PlayerResource:GetAllPlayerCount() <= 1,
 			}
 			if IsInToolsMode() then
 				UserData.IsCheat = false
@@ -158,7 +159,7 @@ function request:OnGameEnd(TeamWin)
 					MMR = data.MMR,
 					OLD_MMR = data.OLD_MMR,
 					Coin = data.NewCoin,
-					Rank = data.Rank,
+					Rank = data.Rank or 'TBD',
 					OLD_Rank = t.Rank or "TBD",
 					IsWin = UserData.IsWin,
 					--LevelXp = data.Level,
@@ -174,4 +175,5 @@ function request:OnGameEnd(TeamWin)
 end 
 
 --request:PreLoad()
+
 --request:OnGameEnd(3)

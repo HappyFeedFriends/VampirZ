@@ -20,5 +20,8 @@ function Activate()
   GameRules.GameMode:Init()
 end
 
+LinkLuaModifier("modifier_global_aura_effect", "util/modifiers", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_global_aura", "util/modifiers", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_IsVampire", "util/modifiers", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_hero_out_of_game", "util/modifiers", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_charges", "ability/modifier_charges", LUA_MODIFIER_MOTION_NONE)
