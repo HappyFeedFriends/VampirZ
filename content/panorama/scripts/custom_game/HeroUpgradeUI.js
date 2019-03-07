@@ -1,32 +1,37 @@
 var MainPanel = $.GetContextPanel().FindChildTraverse('HeroUpgradeMain');   
-var Settings = PlayerTables.GetAllTableValues('UpgradeHeroSetting');
-var Images = PlayerTables.GetTableValue('UpgradeHeroSetting','Images');
 var AllPanels = AllPanels || {};
 var ForcePick = CustomNetTables.GetTableValue('HeroSelection','Setting')['defaultHero'];
- 
-var UpdateCount = 0;
 var OldClass = -1;
- 
-function UpdateAllPanels(){
-	var SettingTable = PlayerTables.GetAllTableValues('UpgradeHeroKV'); 
-	var ClassesSetting = IsVampire(GetPlayerID()) && SettingTable.Vampires || SettingTable.Mans 
-	var Image = IsVampire(GetPlayerID()) && Images.Vampires || Images.Mans 
-	var classSetting = ClassesSetting[GetClassHero()];    
-	var number;
-	var Levels = [];
-	for (var vehicle in SettingTable.levels) 
-		Levels.push(SettingTable.levels[vehicle]);
+   
+var ChildNamesObj = {
+	'HeroUpgrade_2':'HeroUpgrade_1',
+	'HeroUpgrade_1':'HeroUpgrade_2',
+	'HeroUpgrade_3':'HeroUpgrade_4',
+	'HeroUpgrade_4':'HeroUpgrade_3',
+}
+
+function UpdateAllPanels(){ 
+	//var SettingTable = PlayerTables.GetAllTableValues('UpgradeHeroKV'); 
+	var ClassesSetting = PlayerTables.GetTableValue('UpgradeHeroSetting',IsVampire(GetPlayerID()) ? 'Vampire' : 'Mans');
+	var Images = PlayerTables.GetTableValue('UpgradeHeroSetting','Images');
+	var levels = PlayerTables.GetTableValue('UpgradeHeroSetting','levels');
+	var Image = IsVampire(GetPlayerID()) && Images.Vampires || Images.Mans  
+	var classSetting = ClassesSetting[GetClassHero()]; 
+	var number;      
+	var Levels = []; 
+	for (var vehicle in levels) 
+		Levels.push(levels[vehicle]);
 	if (GetClassHero() == -1) return;
 	Levels.reverse();
-	for (i=1;i<=3;i++){
+	for (i = 1; i <= 3 ;++i){
 		number = 0;   
-		lvl = 0;   
-		var Panel = MainPanel.FindChild('HeroUpgrade' + i) 
+		lvl = 0;    
+		var Panel = MainPanel.FindChild('HeroUpgrade' + i)  
 		Panel.FindChild('HeroUpgradeLabel').text = $.Localize('HeroUpgrade_' + GetClassHero() + "_" + i) 
 		if (classSetting && classSetting[i] !== 'locked'){
 			var info = classSetting[i];
 			Panel.enabled = true;
-			Panel.hittest = true;			
+			Panel.hittest = true; 			
 			var sortable = [];
 			for (var vehicle in info) 
 				sortable.push(info[vehicle]);
@@ -34,7 +39,7 @@ function UpdateAllPanels(){
 			_.each(Panel.Children(),function(child){
 				UnHiddenPanel(child);
 				if (child.id.match('HeroUpgradeLevel')){
-					if (lvl >= 4) lvl = 0; 
+					lvl = lvl >= 4 ? 0 : lvl;
 					_.each(child.Children(),function(childs){
 						if (childs.id.match("HeroUpgrade_")){
 							var title = sortable[number].replace('_',"_" + i + "_" + GetClassHero() + "_"); 
@@ -76,12 +81,12 @@ function UpdateAllPanels(){
 
 function OnactivateChilds(child,childs,IiD,lvls,data){
 	return function(){
-		if (IsUpgradePreviousPanels(child.id,child.GetParent()) || child.id == "HeroUpgradeLevel1"){
+		data.IsNoUpgradePrevious = IsUpgradePreviousPanels(child.id,child.GetParent()) || child.id == "HeroUpgradeLevel1";
+		if (data.IsNoUpgradePrevious){
 			if (Players.GetLevel(GetPlayerID()) >= lvls)
 				DisabledPanelsByName(child.id,childs.id,'HeroUpgrade' + IiD);
 			}
 		data.IsLocked = Players.GetLevel(GetPlayerID()) >= lvls;
-		data.IsNoUpgradePrevious = IsUpgradePreviousPanels(child.id,child.GetParent()) || child.id == "HeroUpgradeLevel1";
 		GameEvents.SendCustomGameEventToServer('AddUpgradeClass', data )
 	}
 }
@@ -142,6 +147,7 @@ function IsUpgradePreviousPanels(PanelName){
 }  
 } 
 */
+
 function DisabledPanelsByName(PanelName,childName,MainChild){
 	var data = {}
 	_.each(MainPanel.Children(),function(childs){
@@ -151,12 +157,13 @@ function DisabledPanelsByName(PanelName,childName,MainChild){
 			var lvlPanel = PanelName.replace("HeroUpgradeLevel",""); 
 			var NewPanel = "HeroUpgradeLevel" + String(Number(lvlPanel) + 1);
 			var NewPanelChild1 = "HeroUpgrade_" + String(Number(lvlChild));  
-			var NewPanelChild2 = "HeroUpgrade_" + String(Number(lvlChild) + 1);			
-			childs.FindChildTraverse(NewPanel).FindChildTraverse(NewPanelChild1).enabled = false;
-			childs.FindChildTraverse(NewPanel).FindChildTraverse(NewPanelChild2).enabled = false;
-			data[childs.FindChildTraverse(NewPanel).FindChildTraverse(NewPanelChild2).UpgradeName] = true;
-			data[childs.FindChildTraverse(NewPanel).FindChildTraverse(NewPanelChild1).UpgradeName] = true;
-			if (MainChild && childs.id != MainChild && !IsHiddenPanel(childs)){
+			var NewPanelChild2 = "HeroUpgrade_" + String(Number(lvlChild) + 1);		
+			var panel1 = childs.FindChildTraverse(NewPanel).FindChildTraverse(NewPanelChild1);
+			var panel2 = childs.FindChildTraverse(NewPanel).FindChildTraverse(NewPanelChild2);
+			panel1.enabled = false; panel2.enabled = false;
+			data[panel1.UpgradeName] = true;
+			data[panel2.UpgradeName] = true;  
+			/*if (MainChild && childs.id != MainChild && !IsHiddenPanel(childs)){
 				_.each(childs.Children(),function(child){
 					_.each(child.Children(),function(childes){
 						if (childes.id.match("HeroUpgrade_")){
@@ -165,40 +172,46 @@ function DisabledPanelsByName(PanelName,childName,MainChild){
 						}
 					});
 				});
-			}
-		} 
-		if (MainChild && childs.id != MainChild && !IsHiddenPanel(childs)){
+			} */
+		}   
 			if (MainChild && childs.id != MainChild && !IsHiddenPanel(childs)){
 				_.each(childs.Children(),function(child){
 					_.each(child.Children(),function(childes){
 						if (childes.id.match("HeroUpgrade_")){
 							childes.enabled = false;
-							data[childes.UpgradeName] = true;
+							if (!IsAlpha(GetPlayerID()))      
+								data[childes.UpgradeName] = true 
 						}
 					});
 				});
 			}
-			//childs.enabled = false;
-		}
 		var OffPanel = childs.FindChildTraverse(PanelName);
 		OffPanel.enabled = false;
 	}); 
 	var panel = MainPanel.FindChild(MainChild) && 
 	MainPanel.FindChild(MainChild).FindChild(PanelName) && 
 	MainPanel.FindChild(MainChild).FindChild(PanelName).FindChild(childName);
-	if (!panel) return 
-	data[panel.UpgradeName] = true;
-	panel.enabled = false;
+	var panel2 = MainPanel.FindChild(MainChild) && 
+	MainPanel.FindChild(MainChild).FindChild(PanelName) && 
+	MainPanel.FindChild(MainChild).FindChild(PanelName).FindChild(ChildNamesObj[childName]);
+	if (panel){
+		data[panel.UpgradeName] = true; 
+		panel.enabled = false; 
+	}   
+	if (panel2){
+		data[panel2.UpgradeName] = true; 
+		panel2.enabled = false;
+	}   
 	if (LengthTable(data) > 0) 
 	GameEvents.SendCustomGameEventToServer('LockedUpgrades', {data:data} );
 }    
+
 function EnabledAllPanels(){
 	_.each(MainPanel.Children(),function(childs){
 		if (!IsHiddenPanel(childs))
 		_.each(childs.Children(),function(child){
 			_.each(child.Children(),function(childes){
 				childes.enabled = true
-				childes.ActivateDisable = false
 			});
 		});  
 	});
@@ -215,26 +228,24 @@ function DisablePanelByTitle(title){
 		});
 	});
 }  
-function Update(){ 
-	EnabledAllPanels();
-	UpdateAllPanels();  
+
+function Update(){  
+	EnabledAllPanels(); 
+	UpdateAllPanels();   
 	var ClassesUpgradeSaves = PlayerTables.GetTableValue('UpgradeHeroSetting','SavesUpgrades');
 	var LockedClasses = PlayerTables.GetTableValue('UpgradeHeroSetting','LockedUpgrade');
-	if (UpdateCount < 1){
-		UpdateCount++;
-		RegisterKeyBind("LearnStats", ToggleHeroUpgradePanel);
-	}
-
-	if (ClassesUpgradeSaves[GetPlayerID()]){  
+	RegisterKeyBind("LearnStats", ToggleHeroUpgradePanel);
+	if (ClassesUpgradeSaves[GetPlayerID()]){   
 		for (var name in ClassesUpgradeSaves[GetPlayerID()]){
-			var panel = AllPanels[name]
+			var panel = AllPanels[name];
 			if (panel && OldClass !== GetClassHero())
-				DisabledPanelsByName(panel.id)
+				DisabledPanelsByName(panel.id);
 		} 
-	} 	       
+	} 	    
+
 	if (LockedClasses[GetPlayerID()]){ 
 		for (var name in LockedClasses[GetPlayerID()]){
-			DisablePanelByTitle(name)
+			DisablePanelByTitle(name);
 		}
 	}
 	OldClass = GetClassHero();
@@ -242,12 +253,12 @@ function Update(){
 	if (classIcon) {
 		classIcon.SetPanelEvent('onactivate',function() {
 			ToggleHeroUpgradePanel();
-		})
-		var text = $.Localize('heroupgrade_icon_description').replace('{key}',GameUI.CustomUIConfig().GetKeyBind('LearnStats'))
+		});
+		var text = $.Localize('heroupgrade_icon_description').replace('{key}',GameUI.CustomUIConfig().GetKeyBind('LearnStats'));
 		classIcon.SetPanelEvent('onmouseover',ShowText(classIcon,text));
 		classIcon.SetPanelEvent('onmouseout',HideText());
 	}
-}  
+}   
 
 function ToggleHeroUpgradePanel(){
 	if (IsHiddenPanel(MainPanel)){
@@ -259,12 +270,11 @@ function ToggleHeroUpgradePanel(){
 		HidePanel(MainPanel)
 }
 
-(function(){    
-	HidePanel(MainPanel); 
+(function(){     
+	HidePanel(MainPanel);         
 	if (Game.GetPlayerInfo(Game.GetLocalPlayerInfo().player_id).player_selected_hero != ForcePick)
-		Update();
+		DynamicSubscribePTListener('UpgradeHeroSetting',Update) 
 	GameEvents.Subscribe('UpdateUpgradeHero',Update);
-
 		GameUI.SetMouseCallback(function (eventName, arg) {
 		if (GameUI.GetClickBehaviors() == CLICK_BEHAVIORS.DOTA_CLICK_BEHAVIOR_NONE) {
 			if (eventName == "pressed" && !IsHiddenPanel(MainPanel)) {
@@ -275,7 +285,7 @@ function ToggleHeroUpgradePanel(){
 					(MainPanel.actualyoffset + MainPanel.contentheight) < cursorPos[1]) {
 					ToggleHeroUpgradePanel();
 				} 
-			}
+			} 
 		}
 		return false;
 	});

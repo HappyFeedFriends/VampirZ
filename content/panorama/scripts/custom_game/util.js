@@ -82,7 +82,11 @@ function GetInfoTableVampires(){
 	return PlayerTables.GetTableValue('DataPlayer','info')
 } 
 function IsVampire(pID){
-	return GetInfoTableVampires() && pID >= 0  && (GetInfoTableVampires()[pID].vampire == 1 || pID == CustomNetTables.GetTableValue('HeroSelection','Setting')['FirstVampire']);
+	return IsAlpha(pID) || (GetInfoTableVampires() && pID >= 0  && (GetInfoTableVampires()[pID].vampire == 1));
+}
+
+function IsAlpha(pID){
+	return GetInfoTableVampires() && pID >= 0  && (GetInfoTableVampires()[pID].IsAlpha == 1) || CustomNetTables.GetTableValue('HeroSelection','Setting')['FirstVampire'] == String(pID);
 }
 
 function GetBlood(pID){
@@ -95,8 +99,9 @@ function GetGold(pID){
 
 function GetClassHero(pID){
 	pID = pID || GetPlayerID();
-	return GetInfoTableVampires() && GetInfoTableVampires()[pID].classHero || -1
+	return PlayerTables.GetTableValue('UpgradeHeroSetting','info')[String(pID)] || -1
 }
+
 function IsHeroName(str) {
 	return IsDotaHeroName(str);
 }
@@ -158,7 +163,7 @@ function HideText(title)
 
 function SelectionTeam(args){
 	args = args == "Human" && DOTATeam_t.DOTA_TEAM_GOODGUYS || DOTATeam_t.DOTA_TEAM_BADGUYS;
-	GameEvents.SendCustomGameEventToServer( "PickedTeamHero", {PlayerID: GetPlayerID(), Team:args} );
+	GameEvents.SendCustomGameEventToServer( "PickedTeamHero", {pID: GetPlayerID(), Team:args} );
 }
 
 function PrefixPlayer(id) {
@@ -338,7 +343,7 @@ function FormatGold (gold) {
 
 function DynamicSubscribePTListener(table, callback, OnConnectedCallback) {
 	if (PlayerTables.IsConnected()) {
-		//$.Msg("Update " + table + " / PT connected")
+		$.Msg("Update " + table + " / PT connected")
 		var tableData = PlayerTables.GetAllTableValues(table);
 		if (tableData != null)
 			callback(table, tableData, {});
@@ -347,7 +352,7 @@ function DynamicSubscribePTListener(table, callback, OnConnectedCallback) {
 			OnConnectedCallback(ptid);
 		}
 	} else {
-		//$.Msg("Update " + table + " / PT not connected, repeat")
+		$.Msg("Update " + table + " / PT not connected, repeat")
 		$.Schedule(0.1, function() {
 			DynamicSubscribePTListener(table, callback, OnConnectedCallback);
 		});
