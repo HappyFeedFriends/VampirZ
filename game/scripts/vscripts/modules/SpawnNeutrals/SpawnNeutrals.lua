@@ -6,6 +6,7 @@ if not SpawnNeutrals then
 	SpawnNeutrals.MiniBossCount = 0
 	SpawnNeutrals.UnitsCount = 0
 end
+
 ModuleRequire(...,"data")
 function SpawnNeutrals:PreLoad()
 	for name,value in pairs(NEUTRALS_SPAWN_UNITS) do
@@ -57,7 +58,7 @@ function SpawnNeutrals:Init()
 				SpawnNeutrals:SpawnByEntityUnits(Origin)
 			end
 		end
-	return NEUTRALS_SPAWN_SETTINGS.WavesDelay * 60
+	return NEUTRALS_SPAWN_SETTINGS.WavesDelay
 	end)
 end
 

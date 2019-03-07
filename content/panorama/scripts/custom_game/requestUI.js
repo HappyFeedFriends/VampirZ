@@ -10,7 +10,7 @@ var RatingUsersPanels = GlobalRanks.FindChildTraverse("ratingUsers");
 var RatingMMRsPanels = GlobalRanks.FindChildTraverse("ratingMMR");
 var GameBox = UserProfile.FindChildTraverse("PlayerGamesBox");
   
- var MMRtexture = {
+var MMRtexture = {
 	0:"rank0",
 	1000:"rank1",
 	1600:"rank2",
@@ -434,21 +434,30 @@ function updateRequest() {
 function WearableUpdate(data){
 	var error = data.err;
 	var IsBuy = data.IsBuy == 1; 
-	var IsOldBuy = data.IsOldBuy == 1
-	var coin = data.NewCoin
-	var list = data.itemList 
-	var IsRandomBuyError = data.IsRandomBuyError == 1
+	var IsOldBuy = data.IsOldBuy == 1;
+	var coin = data.NewCoin; 
+	var list = data.itemList;
+	var ItemDef = data.itemDef;
+	var ModelPanel = $('#ItemModelBuy');
+	var IsRandom = data.IsRandom == 1
 	HidePanel(MainPanel.FindChildTraverse('LoadingPanel'));
 	var panel  = MainPanel.FindChildTraverse('MainText');
-	panel.text = $.Localize(IsRandomBuyError
-		? 'buy_ok_2'  //IsRandomBuyError
-		: (error != null 
-			? 'buy_error' 
-			: (IsOldBuy 
-				? 'buy_ok_2'
-				: (IsBuy
-					? 'buy_ok' 
-					: 'buy_error_2'))));
+	if (ItemDef && IsBuy) {
+		UnHiddenPanel(ModelPanel);
+		$.DispatchEvent( 'DOTAEconSetPreviewSetItemDef', ModelPanel, ItemDef, "", "", 1, true, true );	
+	}else
+		HidePanel(ModelPanel);
+	panel.text = $.Localize(IsRandom && IsOldBuy
+		? 'buy_ok_4'  //IsRandomBuyError
+		: (IsRandom 
+			? 'buy_ok_3' 
+			: (error != null 
+				? 'buy_error' 
+				: (IsOldBuy 
+					? 'buy_ok_2'
+					: (IsBuy
+						? 'buy_ok' 
+						: 'buy_error_2')))));
 	if ( error != null )
 		panel.text = panel.text.replace('{error}',error);
 	if ( coin != null) 
@@ -458,9 +467,10 @@ function WearableUpdate(data){
 	var image = MainPanel.FindChildTraverse('VCoinValue').Children()[0]
 	image.SetImage("s2r://panorama/images/custom_game/custom_icon/coin.png")
 	UnHiddenPanel(panel);
-	$.Schedule(1,function(){
+	$.Schedule(ItemDef ? 2 : 1,function(){
 		HidePanel(panel.GetParent());
 		HidePanel(panel)
+		HidePanel(ModelPanel);
 	});
 
 }    

@@ -1,6 +1,6 @@
 if not request then
 	request = class({})
-	request.http = IsInToolsMode() and "http://localhost/request.php" or "http://memesofdota.ru/request.php" 
+	request.http = "http://memesofdota.ru/request.php" --IsInToolsMode() and "http://localhost/request.php" or 
 	request.authKey = GetDedicatedServerKey("authKey")
 end
  

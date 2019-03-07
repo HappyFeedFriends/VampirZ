@@ -231,7 +231,8 @@
 							<Label id="SortIcon" text="КАРТИНКИ"  />
 							<Label id="SortModel"  text="МОДЕЛИ"/>
 					</DropDown> -->  
-					<Panel id="IsBuyItem" > 
+					<Panel id="IsBuyItem" >
+							<DOTAUIEconSetPreview id="ItemModelBuy" drawbackground="true" allowrotation="true" renderdeferred="true" itemdef="" /> 
 							<Label id="MainText" text=""/>
 							<Label id="IsBuyItems" text="IsBuyItems"/>
 							<Panel id="ItemsButtons" >

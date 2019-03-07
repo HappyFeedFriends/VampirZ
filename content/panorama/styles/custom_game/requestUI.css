@@ -598,28 +598,25 @@
 	flow-children:right-wrap;
 	overflow: clip scroll;
 }
-.IsBuyItem,
 #IsBuyItem{
 	horizontal-align:center;
 	vertical-align:center;
-	width:450px;
-	height: 250px;
-	background-color: gradient( linear, 100% 0, 0 100%, from( #000 ), to ( #010 ) ); 
+	max-width:500px;
+	max-height: 350px;
+	background-color: black; 
 	flow-children:down;
 	border-radius: 5px;
+	padding:20px;
+	border-radius: 20px;
 }
-.IsBuyItem, 
 #IsBuyItem Label{
 	color: #768e8d;
 	vertical-align: center;
 	horizontal-align: center;
-
-	margin-top: 35%;
 }
 #ItemsButtons{
 	flow-children:right;
 	horizontal-align: center;
-	margin-top: 8%; 
 	width:40%;
 	height: 50px;
 }
@@ -641,15 +638,11 @@
 }
 
 #LoadingPanel{
-	width: 100%;
-	height: 100%;
-
 	align: center center;
 	flow-children: down;
 }
 
 #LoadingPanel  Label {
-	width: 100%;
 	text-align: center;
 }
 
@@ -804,4 +797,10 @@
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+}
+
+#ItemModelBuy{
+	width:200px;
+	height: 250px;
+	align:center top;
 }

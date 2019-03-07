@@ -1,10 +1,10 @@
 NEUTRALS_SPAWN_SETTINGS = {
-	CreepPerSpawn = 5,
+	CreepPerSpawn = 6,
 	SpawnChanceMiniBoss = 35,
-	WavesDelay = 5,
+	WavesDelay = 4 * 60,
 	Limits = {
 		CreepMapLimit = 100,
-		MiniBossLimit = 3,
+		MiniBossLimit = 4,
 		CountActiveSpawns = 3,
 	},
 }
@@ -14,13 +14,13 @@ end
 NEUTRALS_SPAWN_UNITS = {
 	["npc_VampirZ_zombie"] = {
 		StatsPerSpawn = {
-			health = 75,
-			armor = 0.0,
+			health = 78,
+			armor = 0.1,
 			damage = 16,
-			AttackSpeed = 50,
+			AttackSpeed = 25,
 			MoveSpeed = 25,
-			xp = 3,
-			gold = 5,
+			xp = 5,
+			gold = 4,
 			healthRegen = 0
 		},
 		Models ={
@@ -30,8 +30,8 @@ NEUTRALS_SPAWN_UNITS = {
 		 [12] = "models/items/undying/idol_of_ruination/ruin_wight_minion.vmdl",
 		},
 		MiniBoss = {
-			ModelScale = 1.7,
-			MultiplyStats = 2,
+			ModelScale = 1.5,
+			MultiplyStats = 1.7,
 			Models = {
 				"models/items/undying/flesh_golem/davy_jones_set_davy_jones_set_kraken/davy_jones_set_davy_jones_set_kraken.vmdl",
 				"models/items/undying/flesh_golem/corrupted_scourge_corpse_hive/corrupted_scourge_corpse_hive.vmdl",
@@ -46,21 +46,21 @@ NEUTRALS_SPAWN_UNITS = {
 	},
 	["npc_VampirZ_skeleton"] = {
 		StatsPerSpawn = {
-			health = 25,
+			health = 78,
 			armor = 0.5,
-			damage = 50,
-			AttackSpeed = 60,
+			damage = 26,
+			AttackSpeed = 40,
 			MoveSpeed = 25,
 			xp = 6,
 			gold = 10,
-			healthRegen = 4.0
+			healthRegen = 2.0
 		},
 		Models ={
 			[1]  = "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl",
 		},
 		MiniBoss = {
 			ModelScale = 2.9,
-			MultiplyStats = 2.7,
+			MultiplyStats = 3.7,
 			Models = {
 				"models/items/wraith_king/wk_ti8_creep/wk_ti8_creep.vmdl",
 				"models/items/wraith_king/wk_ti8_creep/wk_ti8_creep_crimson.vmdl",
@@ -74,13 +74,13 @@ NEUTRALS_SPAWN_UNITS = {
 	},		
 	["npc_VampirZ_angry_spirit"] = {
 		StatsPerSpawn = {
-			health = 15,
+			health = 90,
 			armor = 1.0,
-			damage = 50,
-			AttackSpeed = 100,
-			MoveSpeed = 200,
-			xp = 15,
-			gold = 15,
+			damage = 30,
+			AttackSpeed = 32,
+			MoveSpeed = 320,
+			xp = 4,
+			gold = 10,
 			healthRegen = 0,
 		},
 		Models = {
@@ -89,7 +89,7 @@ NEUTRALS_SPAWN_UNITS = {
 		},
 		MiniBoss = {
 			ModelScale = 2,
-			MultiplyStats = 2,
+			MultiplyStats = 2.7,
 			Models = {
 				"models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_red.vmdl",
 				"models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl",

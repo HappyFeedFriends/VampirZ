@@ -30,7 +30,8 @@ function wearables:OnDressingItem(data)
 		local IsOldBuy = data.IsOldBuy
 		local coin = data.NewCoin
 		local itemList = data.itemList
-		data['IsRandomBuyError'] = IsOldBuy and IsRandom
+		data['itemDef'] = IsBuy and itemDef or nil
+		data['IsRandom'] = IsRandom
 		if IsBuy  then
 			wearables:SetWearables( hero,itemDef,nil,true )
 			local t = CustomNetTables:GetTableValue('request',tostring(pID)) or {}
