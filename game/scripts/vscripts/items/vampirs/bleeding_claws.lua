@@ -2,7 +2,9 @@ LinkLuaModifier( "modifier_bleeding_claws", "items/vampirs/bleeding_claws.lua" ,
 LinkLuaModifier( "modifier_bleeding_claws_debuff", "items/vampirs/bleeding_claws.lua" ,LUA_MODIFIER_MOTION_NONE )
 
 if item_bleeding_claws == nil then
-    item_bleeding_claws = class({})
+    item_bleeding_claws = class({
+    	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+    	})
 end
 
 --------------------------------------------------------------------------------
@@ -14,7 +16,9 @@ end
 --------------------------------------------------------------------------------
 
 
-modifier_bleeding_claws = class({})
+modifier_bleeding_claws = class({
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+	})
 
 
 --------------------------------------------------------------------------------
@@ -52,7 +56,9 @@ function modifier_bleeding_claws:IsHidden() return true end
 --------------------------------------------------------------------------------
 
 
-modifier_bleeding_claws_debuff = class({})
+modifier_bleeding_claws_debuff = class({
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+	})
 
 
 --------------------------------------------------------------------------------

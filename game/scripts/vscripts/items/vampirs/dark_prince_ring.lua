@@ -13,7 +13,9 @@ end
 --------------------------------------------------------------------------------
 
 
-modifier_dark_prince_ring = class({})
+modifier_dark_prince_ring = class({
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+	})
 
 
 --------------------------------------------------------------------------------

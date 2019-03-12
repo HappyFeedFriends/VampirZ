@@ -13,7 +13,9 @@ end
 --------------------------------------------------------------------------------
 
 
-modifier_void_dagger = class({})
+modifier_void_dagger = class({
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+	})
 
 
 --------------------------------------------------------------------------------

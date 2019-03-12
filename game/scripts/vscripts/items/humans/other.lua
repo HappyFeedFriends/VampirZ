@@ -21,6 +21,7 @@ modifier_warrior_gloves = class({
     DeclareFunctions        = function(self) return {MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,MODIFIER_PROPERTY_STATS_STRENGTH_BONUS} end,
     GetModifierPhysicalArmorBonus = function(self) return self:GetAbility():GetSpecialValueFor("armor") end,
     GetModifierBonusStats_Strength = function(self) return self:GetAbility():GetSpecialValueFor("str") end,
+    GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
 })
 
 -----------------------------------------------------
@@ -46,6 +47,7 @@ modifier_ring_of_magic = class({
     DeclareFunctions        = function(self) return {MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,MODIFIER_PROPERTY_STATS_INTELLECT_BONUS} end,
     GetModifierConstantManaRegen = function(self) return self:GetAbility():GetSpecialValueFor("mp_regen") end,
     GetModifierBonusStats_Intellect = function(self) return self:GetAbility():GetSpecialValueFor("int") end,
+    GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
 })
 
 -----------------------------------------------------
@@ -71,6 +73,7 @@ modifier_bendable_plate = class({
     DeclareFunctions        = function(self) return {MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,MODIFIER_PROPERTY_STATS_AGILITY_BONUS} end,
     GetModifierAttackSpeedBonus_Constant = function(self) return self:GetAbility():GetSpecialValueFor("as") end,
     GetModifierBonusStats_Agility = function(self) return self:GetAbility():GetSpecialValueFor("agi") end,
+    GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
 })
 
 -----------------------------------------------------
@@ -95,6 +98,7 @@ modifier_traveller_boots = class({
     RemoveOnDeath           = function(self) return false end,
     DeclareFunctions        = function(self) return {MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT} end,
     GetModifierMoveSpeedBonus_Constant = function(self) return self:GetAbility():GetSpecialValueFor("ms") end,
+    GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
 })
 
 -----------------------------------------------------
@@ -121,6 +125,7 @@ modifier_hoop = class({
     GetModifierBonusStats_Strength = function(self) return self:GetAbility():GetSpecialValueFor("all_attr") end,
     GetModifierBonusStats_Agility = function(self) return self:GetAbility():GetSpecialValueFor("all_attr") end,
     GetModifierBonusStats_Intellect = function(self) return self:GetAbility():GetSpecialValueFor("all_attr") end,
+    GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
 })
 
 -----------------------------------------------------
@@ -146,6 +151,7 @@ modifier_manastone = class({
     DeclareFunctions        = function(self) return {MODIFIER_PROPERTY_MANACOST_PERCENTAGE,MODIFIER_PROPERTY_MANA_BONUS} end,
     GetModifierPercentageManacost = function(self) return self:GetAbility():GetSpecialValueFor("manacast") end,
     GetModifierManaBonus = function(self) return self:GetAbility():GetSpecialValueFor("mana") end,
+    GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
 })
 
 -----------------------------------------------------
@@ -175,4 +181,5 @@ modifier_magic_wreath = class({
     GetModifierBonusStats_Agility = function(self) return self:GetAbility():GetSpecialValueFor("all_attr") end,
     GetModifierBonusStats_Intellect = function(self) return self:GetAbility():GetSpecialValueFor("all_attr") end,
     GetModifierConstantManaRegen = function(self) return self:GetAbility():GetSpecialValueFor("mp_regen") end,
+    GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
 })

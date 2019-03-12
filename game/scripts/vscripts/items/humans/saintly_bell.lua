@@ -68,7 +68,9 @@ end
 --------------------------------------------------------------------------------
 
 
-modifier_saintly_bell_passive = class({})
+modifier_saintly_bell_passive = class({
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+	})
 
 
 --------------------------------------------------------------------------------
@@ -96,7 +98,9 @@ function modifier_saintly_bell_passive:IsHidden() return false end
 --------------------------------------------------------------------------------
 
 
-modifier_saintly_bell_agr = class({})
+modifier_saintly_bell_agr = class({
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+	})
 
 function modifier_saintly_bell_agr:OnCreated()
 	self:GetParent().aggresive = true

@@ -15,6 +15,7 @@ modifier_item_colt_buff = class({
 	IsBuff                  = function(self) return true end,
 	RemoveOnDeath 			= function(self) return true end,
 	DeclareFunctions		= function(self) return {MODIFIER_EVENT_ON_ATTACK_LANDED} end,
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
 })
 
 function modifier_item_colt_buff:OnAttackLanded(data)
@@ -41,6 +42,7 @@ modifier_item_pistol_buff = class({
 	DeclareFunctions		= function(self) return {MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT} end,
 	GetModifierPreAttack_BonusDamage = function(self) return self:GetSharedKey("damage") end,
 	GetModifierAttackSpeedBonus_Constant = function(self) return self:GetSharedKey("as") end,
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
 })
 
 function modifier_item_pistol_buff:OnCreated()
@@ -63,6 +65,7 @@ modifier_item_automatic_buff = class({
 	DeclareFunctions		= function(self) return {MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT} end,
 	GetModifierPreAttack_BonusDamage = function(self) return self:GetSharedKey("damage") end,
 	GetModifierAttackSpeedBonus_Constant = function(self) return self:GetSharedKey("as") end,
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
 })
 
 function modifier_item_automatic_buff:OnCreated()
@@ -85,6 +88,7 @@ modifier_item_awp_buff = class({
 	GetModifierPreAttack_BonusDamage 		= function(self) return self:GetSharedKey("damageAWP") end,
 	GetModifierAttackSpeedBonus_Constant 	= function(self) return self:GetSharedKey("as") end,
 	GetModifierAttackRangeBonus 			= function(self) return self:GetSharedKey("attackRange") end,
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
 })
 function modifier_item_awp_buff:OnCreated()
 	if IsServer() then
@@ -104,6 +108,7 @@ modifier_item_rifle_buff = class({
 	IsBuff                  = function(self) return true end,
 	RemoveOnDeath 			= function(self) return true end,
 	DeclareFunctions		= function(self) return {MODIFIER_EVENT_ON_ATTACK_LANDED} end,
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
 })
 
 function modifier_item_rifle_buff:OnAttackLanded(data)

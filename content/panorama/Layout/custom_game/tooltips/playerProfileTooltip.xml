@@ -5,16 +5,13 @@
 	</styles>
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/util.js" />
+		<include src="file://{resources}/scripts/custom_game/tooltips.js" />
 	</scripts>
 	<script>
 
-		function setupTooltip(){	
-			var SteamID = $.GetContextPanel().GetAttributeString("SteamID", "not found")
-			$.("Avatar").steamid = SteamID;
-		}
 	</script>
 
-	<Panel class="PlayerProfile" hittest="false" ontooltiploaded="setupTooltip()"  >
+	<Panel class="PlayerProfile" hittest="false" ontooltiploaded="SetupTooltipProfile()"  >
 		<DOTAAvatarImage id="Avatar"/>	
 		<Label id="Description" html="true" text="description" />
 		<Label id="Level" text="#Upgrade_level" />

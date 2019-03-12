@@ -72,11 +72,12 @@ CHAT_COMMANDS =
 			SPAWN_UNIT = false
 		end
 	},	
+
 	["SPAWN_ON"] = 
 	{
 		ACCESS = DEV_ACCESS,
 		funcs = function(args,PlayerId)
-			SPAWN_UNIT = false
+			SPAWN_UNIT = true
 		end
 	},	
 	["REMOVEALLUNITS"] = 

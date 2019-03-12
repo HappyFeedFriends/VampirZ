@@ -106,5 +106,3 @@ function HeroSelection2:SetFirstVampire()
 	--HeroSelection2.FirstVampire = 1
 	return HeroSelection2.FirstVampire 
 end
-
-

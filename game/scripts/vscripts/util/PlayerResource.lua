@@ -16,6 +16,15 @@ function GetTeamPlayerCount(iTeam)
 	return counter
 end
 
+function CDOTA_PlayerResource:PlayerIterate(callback)
+	if not callback then print('Not Callback Function!')  return end
+	for i = 0, DOTA_MAX_PLAYERS - 1 do
+		if PlayerResource:IsValidPlayerID(i) then
+			callback(i)
+		end
+	end
+end
+
 function CDOTA_PlayerResource:GetAllPlayerCount()
 	local counter = 0
 	for i = 0, DOTA_MAX_PLAYERS - 1 do

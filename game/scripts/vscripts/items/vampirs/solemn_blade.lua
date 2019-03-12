@@ -13,7 +13,9 @@ end
 --------------------------------------------------------------------------------
 
 
-modifier_solemn_blade = class({})
+modifier_solemn_blade = class({
+    GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+    })
 
 
 --------------------------------------------------------------------------------

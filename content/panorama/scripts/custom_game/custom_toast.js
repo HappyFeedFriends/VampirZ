@@ -63,13 +63,16 @@ rowText = rowText.replace('{denied_icon}', "<img class='DeniedIcon'/>").replace(
 	if (data.killerPlayer != null) {
 		rowText = rowText.replace('{killer_name}', CreateHeroElements(data.killerPlayer));
 	}
-
+ 
 	if (data.victimUnitName)  
 		rowText = rowText.replace('{victim_name}', "<font color='#B22222'>" + $.Localize(data.victimUnitName) + '</font>');
 	if (data.team != null) 
 		rowText = rowText.replace('{team_name}', "<font color='" + GameUI.CustomUIConfig().team_colors[data.team] + "'>" + GameUI.CustomUIConfig().team_names[data.team] + '</font>');
 	if (data.gold != null)
-		rowText = rowText.replace('{gold}', "<font color='"+ (data.vampire && "red" || "gold") +"'>" + FormatGold(data.gold) + "</font> <img class='"+ (data.vampire && "CombatEventBloodIcon" || "CombatEventGoldIcon") +"' />");
+		rowText = rowText.replace('{gold}', 
+			"<font color='"+ (data.vampire && "red" || "gold") +"'>" + FormatGold(data.gold) + 
+			"</font> <img class='"+ (data.vampire && "CombatEventBloodIcon" || "CombatEventGoldIcon")  + "' />" + 
+			(!data.vampire && data.PlayersTeam != null && data.PlayersTeam > 1 ? ("+ " + "<font color='"+ (data.vampire && "red" || "gold") +"'>" + FormatGold(Math.round(data.gold/data.PlayersTeam)) + "</font> " + $.Localize("KillAllBonus")) : ""));
 	if (data.variables){
 		for (var k in data.variables) {
 			rowText = rowText.replace(k, $.Localize(data.variables[k]));
@@ -85,4 +88,5 @@ rowText = rowText.replace('{denied_icon}', "<img class='DeniedIcon'/>").replace(
 };
 (function() {
 	GameEvents.Subscribe('create_custom_toast', CreateCustomToast);
+	$('#CustomToastManager').RemoveAndDeleteChildren();
 })();

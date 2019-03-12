@@ -1,10 +1,10 @@
 NEUTRALS_SPAWN_SETTINGS = {
-	CreepPerSpawn = 6,
+	CreepPerSpawn = 5,
 	SpawnChanceMiniBoss = 35,
 	WavesDelay = 4 * 60,
 	Limits = {
 		CreepMapLimit = 100,
-		MiniBossLimit = 4,
+		MiniBossLimit = 5,
 		CountActiveSpawns = 3,
 	},
 }
@@ -19,8 +19,8 @@ NEUTRALS_SPAWN_UNITS = {
 			damage = 16,
 			AttackSpeed = 25,
 			MoveSpeed = 25,
-			xp = 5,
-			gold = 4,
+			xp = 25,
+			gold = 6,
 			healthRegen = 0
 		},
 		Models ={
@@ -51,8 +51,8 @@ NEUTRALS_SPAWN_UNITS = {
 			damage = 26,
 			AttackSpeed = 40,
 			MoveSpeed = 25,
-			xp = 6,
-			gold = 10,
+			xp = 30,
+			gold = 14,
 			healthRegen = 2.0
 		},
 		Models ={
@@ -78,9 +78,9 @@ NEUTRALS_SPAWN_UNITS = {
 			armor = 1.0,
 			damage = 30,
 			AttackSpeed = 32,
-			MoveSpeed = 320,
-			xp = 4,
-			gold = 10,
+			MoveSpeed = 280,
+			xp = 35,
+			gold = 14,
 			healthRegen = 0,
 		},
 		Models = {

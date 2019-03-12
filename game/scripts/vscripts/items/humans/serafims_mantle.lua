@@ -13,7 +13,9 @@ end
 --------------------------------------------------------------------------------
 
 
-modifier_serafims_mantle = class({})
+modifier_serafims_mantle = class({
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+	})
 
 
 --------------------------------------------------------------------------------

@@ -27,3 +27,8 @@ function setupTooltipSpecialUpgrade(){
 	$("#Title").text = $.Localize(UpgradeName);
 	$("#Description").text = LocalizationChange(UpgradeName + "_description",AbilityUpgradeName);
 }
+
+function SetupTooltipProfile(){	
+	var SteamID = $.GetContextPanel().GetAttributeString("SteamID", "not found")
+	$("Avatar").steamid = SteamID;
+}

@@ -13,7 +13,9 @@ end
 --------------------------------------------------------------------------------
 
 
-modifier_vampire_slayer_sword = class({})
+modifier_vampire_slayer_sword = class({
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+	})
 
 
 --------------------------------------------------------------------------------

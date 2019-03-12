@@ -5,12 +5,13 @@ ModuleRequire(...,"data")
 function kills:OnEntityKilled(killer,killedUnit)
 	local data
 	if killer:IsHero() and not killedUnit:IsCourier() then
+		local gold = kills:GetPlayerStreak(killedUnit:GetPlayerID())
 		data = 
 		{
 			type = "kill",
 			killerPlayer = killer:GetPlayerID(),
 			victimPlayer = killedUnit:GetPlayerID(),
-			gold = kills:GetPlayerStreak(killedUnit:GetPlayerID()),
+			gold = gold,
 		}
 		if PlayerResource:GetStreak(killedUnit:GetPlayerID()) > 1 and killer:GetPlayerID() ~= killedUnit:GetPlayerID() then
 			data.type = "generic"
@@ -19,12 +20,20 @@ function kills:OnEntityKilled(killer,killedUnit)
 				["{kill_streak}"] = PlayerResource:GetStreak(killedUnit:GetPlayerID()),
 			}
 		end 
-		if Vampires:IsVampire(killer:GetPlayerID()) then
-			data.vampire = true
-		end
+		data.vampire = Vampires:IsVampire(killer:GetPlayerID())
 		if killer ~= killedUnit then
-			kills:ModifyMoneyKill(kills:GetPlayerStreak(killedUnit:GetPlayerID()),killer,killedUnit) 
-		end 
+			kills:ModifyMoneyKill(gold,killer) 
+		end  
+		if killer:GetTeam() == DOTA_TEAM_GOODGUYS then
+			data.PlayersTeam = min(GetTeamPlayerCount(DOTA_TEAM_GOODGUYS) - 1,1)
+			PlayerResource:PlayerIterate(function(ID)
+				if PlayerResource:GetTeam(ID) == PlayerResource:GetTeam(killer:GetPlayerID())  then
+					local hero = PlayerResource:GetSelectedHeroEntity(ID)
+					kills:ModifyMoneyKill(math.round(gold/data.PlayersTeam),hero) 
+					hero:AddExperience(max(killedUnit:GetDeathXP()*1.5,140),0,true,true)
+				end
+			end)
+		end
 		kills:CreateCustomToast(data)
 	elseif killer:IsCreep() then
 		kills:KillerCreeps(killer,killedUnit)
@@ -71,14 +80,14 @@ function kills:GetPlayerStreak(Player)
 end 
 function kills:CreateCustomToast(data,type,killerPlayer,victimPlayer,gold,player,victimUnitName,team,runeType,variables)
 	CustomGameEventManager:Send_ServerToAllClients("create_custom_toast", data or {
-	type = type,
-	killerPlayer = killerPlayer,
-	victimPlayer = victimPlayer,
-	gold = gold,
-	player = player,
-	victimUnitName = victimUnitName,
-	team = team,
-	runeType = runeType,
-	variables = variables, -- table
+		type = type,
+		killerPlayer = killerPlayer,
+		victimPlayer = victimPlayer,
+		gold = gold,
+		player = player,
+		victimUnitName = victimUnitName,
+		team = team,
+		runeType = runeType,
+		variables = variables, -- table
 	})
 end

@@ -101,7 +101,14 @@ local damagebits = keys.damagebits
 		if killerEntity and killerEntity:IsHero() then
 			local pID = killerEntity:GetPlayerID()
 			gold = gold + killedUnit:GetGoldBounty()
-			Gold:ModifyGold(pID,gold,true)
+			PlayerResource:PlayerIterate(function(ID)
+				if PlayerResource:GetTeam(ID) == PlayerResource:GetTeam(pID) then
+					Gold:ModifyGold(ID,gold,true)
+					if pID ~= ID then
+						PlayerResource:GetSelectedHeroEntity(ID):AddExperience(killedUnit:GetDeathXP(),0,true,true)
+					end
+				end
+			end)
 		end 
 	end 
 	if killerEntity and killedUnit:IsRealHero() and killedUnit:IsVampire() then
@@ -127,13 +134,13 @@ function VampireZ:OnPlayerChat(keys)
 	local ID = keys.userid
 	local PlayerId = keys.playerid
 	if PlayerId and PlayerId >= 0 then
-		local teamOnly = keys.teamonly
-		local SteamdID = PlayerResource:GetSteamAccountID(PlayerId)
+		--local teamOnly = keys.teamonly
+		--local SteamdID = PlayerResource:GetSteamAccountID(PlayerId)
 		local player = PlayerResource:GetPlayer(PlayerId)
-		local playerName = PlayerResource:GetPlayerName(PlayerId)
-		local hero = player:GetAssignedHero()
-		local team = PlayerResource:GetTeam(PlayerId)
-		local hero_table = PlayerResource:GetSelectedHeroEntity(PlayerId)	
+		--local playerName = PlayerResource:GetPlayerName(PlayerId)
+		--local hero = player:GetAssignedHero()
+		--local team = PlayerResource:GetTeam(PlayerId)
+		--local hero_table = PlayerResource:GetSelectedHeroEntity(PlayerId)	
 		local commands = {}
 		for v in string.gmatch(string.sub(text, 2), "%S+") do 
 			table.insert(commands, v) 

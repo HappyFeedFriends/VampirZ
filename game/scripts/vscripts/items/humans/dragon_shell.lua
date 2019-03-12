@@ -13,7 +13,9 @@ end
 --------------------------------------------------------------------------------
 
 
-modifier_dragon_shell = class({})
+modifier_dragon_shell = class({
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+	})
 
 
 --------------------------------------------------------------------------------

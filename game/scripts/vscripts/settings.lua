@@ -52,7 +52,7 @@ USE_CUSTOM_XP_VALUES = true             -- Should we use custom XP values to lev
 XP_PER_LEVEL_TABLE = {}
 XP_PER_LEVEL_TABLE[1] = 0
 for i = 2, MAX_LEVEL do
-  	XP_PER_LEVEL_TABLE[i] = XP_PER_LEVEL_TABLE[i-1] + 230
+  	XP_PER_LEVEL_TABLE[i] = XP_PER_LEVEL_TABLE[i-1] + i * 230
 end
 
 ENABLE_FIRST_BLOOD = false              

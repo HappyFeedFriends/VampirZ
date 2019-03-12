@@ -13,7 +13,9 @@ end
 --------------------------------------------------------------------------------
 
 
-modifier_holy_magic_bow = class({})
+modifier_holy_magic_bow = class({
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+	})
 
 
 --------------------------------------------------------------------------------

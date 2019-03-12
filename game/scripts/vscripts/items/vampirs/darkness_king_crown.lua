@@ -34,7 +34,9 @@ end
 --------------------------------------------------------------------------------
 
 
-modifier_darkness_king_crown = class({})
+modifier_darkness_king_crown = class({
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+	})
 
 
 --------------------------------------------------------------------------------
@@ -83,7 +85,9 @@ function modifier_darkness_king_crown:IsHidden() return true end
 --------------------------------------------------------------------------------
 
 
-modifier_darkness_king_crown_zombies = class({})
+modifier_darkness_king_crown_zombies = class({
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+	})
 
 
 --------------------------------------------------------------------------------
@@ -111,7 +115,9 @@ function modifier_darkness_king_crown_zombies:IsHidden() return false end
 --------------------------------------------------------------------------------
 
 
-modifier_darkness_king_crown_vampirs = class({})
+modifier_darkness_king_crown_vampirs = class({
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+	})
 
 
 --------------------------------------------------------------------------------
@@ -146,7 +152,9 @@ function modifier_darkness_king_crown_vampirs:IsHidden() return false end
 --------------------------------------------------------------------------------
 
 
-modifier_darkness_king_crown_humans = class({})
+modifier_darkness_king_crown_humans = class({
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+	})
 
 
 --------------------------------------------------------------------------------
@@ -174,7 +182,9 @@ function modifier_darkness_king_crown_humans:IsHidden() return false end
 --------------------------------------------------------------------------------
 
 
-modifier_darkness_king_crown_if_target = class({})
+modifier_darkness_king_crown_if_target = class({
+	GetAttributes = function(  ) return MODIFIER_ATTRIBUTE_MULTIPLE end
+	})
 
 
 --------------------------------------------------------------------------------

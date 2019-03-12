@@ -113,7 +113,7 @@ function modifier_global_aura_effect:OnIntervalThink()
 	if IsServer() and self:GetParent():IsRealHero() and self:GetParent():GetPlayerID() ~= nil then
 		if self:GetParent():IsVampire() then
 			self:GetParent():ModifyBlood(4)
-			self:GetParent():AddExperience(25.0,0,true,true)
+			self:GetParent():AddExperience((30.0/(self:GetParent():IsAlpha() and 1 or 2) * (self:GetParent():GetLevel() > 6 and 2 or 1)),0,true,true)
 		else
 			Gold:ModifyGold(self:GetParent():GetPlayerID(),2)
 		end
