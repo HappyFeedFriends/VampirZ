@@ -142,7 +142,7 @@ function VampireZ:Init()
 	GameRules:SetCustomGameSetupAutoLaunchDelay( AUTO_LAUNCH_DELAY )
 	GameRules:LockCustomGameSetupTeamAssignment( LOCK_TEAM_SETUP )
 	GameRules:EnableCustomGameSetupAutoLaunch( ENABLE_AUTO_LAUNCH )
-	GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, 12)
+	GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, 13)
 	GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, 0)
 	if USE_CUSTOM_TEAM_COLORS then
 		for team,color in pairs(TEAM_COLORS) do
