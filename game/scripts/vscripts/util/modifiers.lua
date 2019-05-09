@@ -35,7 +35,7 @@ function modifier_IsVampire:OnIntervalThink()
 			local data = self:GetParent():GetUpgradeData("SpecialUpgrade_2_Alpha_3")
 			sum_damage = sum_damage + (sum_damage/100 * data.Value)
 		end 
-		local pct = math.floor(sum_damage/100 * 35)
+		local pct = math.floor(sum_damage/100 * 40)
 		local IsDay =  (not self:GetParent():IsUpgrade("SpecialUpgrade_2_Alpha_5") and GameRules:IsDaytime())
 		if self:GetParent():HasModifier('modifier_cave') then
 			IsDay = false

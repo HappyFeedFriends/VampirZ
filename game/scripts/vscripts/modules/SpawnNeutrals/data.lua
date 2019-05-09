@@ -1,11 +1,12 @@
 NEUTRALS_SPAWN_SETTINGS = {
-	CreepPerSpawn = 5,
-	SpawnChanceMiniBoss = 35,
-	WavesDelay = 4 * 60,
+	CreepPerSpawn = 4,
+	SpawnChanceMiniBoss = 42,
+	WavesDelay = 5 * 60,
 	Limits = {
-		CreepMapLimit = 100,
-		MiniBossLimit = 5,
+		CreepMapLimit = 140,
+		MiniBossLimit = 3,
 		CountActiveSpawns = 3,
+		NightHunters = 1,
 	},
 }
 if SPAWN_UNIT == nil then
@@ -30,7 +31,7 @@ NEUTRALS_SPAWN_UNITS = {
 		 [12] = "models/items/undying/idol_of_ruination/ruin_wight_minion.vmdl",
 		},
 		MiniBoss = {
-			ModelScale = 1.5,
+			ModelScale = 1,
 			MultiplyStats = 1.7,
 			Models = {
 				"models/items/undying/flesh_golem/davy_jones_set_davy_jones_set_kraken/davy_jones_set_davy_jones_set_kraken.vmdl",
@@ -46,21 +47,21 @@ NEUTRALS_SPAWN_UNITS = {
 	},
 	["npc_VampirZ_skeleton"] = {
 		StatsPerSpawn = {
-			health = 78,
-			armor = 0.5,
+			health = 95,
+			armor = 0.3,
 			damage = 26,
 			AttackSpeed = 40,
 			MoveSpeed = 25,
 			xp = 30,
-			gold = 14,
+			gold = 12,
 			healthRegen = 2.0
 		},
 		Models ={
 			[1]  = "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl",
 		},
 		MiniBoss = {
-			ModelScale = 2.9,
-			MultiplyStats = 3.7,
+			ModelScale = 2,
+			MultiplyStats = 2.7,
 			Models = {
 				"models/items/wraith_king/wk_ti8_creep/wk_ti8_creep.vmdl",
 				"models/items/wraith_king/wk_ti8_creep/wk_ti8_creep_crimson.vmdl",
@@ -74,11 +75,11 @@ NEUTRALS_SPAWN_UNITS = {
 	},		
 	["npc_VampirZ_angry_spirit"] = {
 		StatsPerSpawn = {
-			health = 90,
-			armor = 1.0,
-			damage = 30,
+			health = 82,
+			armor = 0.5,
+			damage = 25,
 			AttackSpeed = 32,
-			MoveSpeed = 280,
+			MoveSpeed = 250,
 			xp = 35,
 			gold = 14,
 			healthRegen = 0,
@@ -88,8 +89,8 @@ NEUTRALS_SPAWN_UNITS = {
 			[5] = "models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_b.vmdl",
 		},
 		MiniBoss = {
-			ModelScale = 2,
-			MultiplyStats = 2.7,
+			ModelScale = 1.6,
+			MultiplyStats = 3.2,
 			Models = {
 				"models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_red.vmdl",
 				"models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl",
@@ -103,6 +104,28 @@ NEUTRALS_SPAWN_UNITS = {
 	},
 }
 
+NIGHT_HUNTER_DATA = {
+	name = 'npc_VampirZ_Boss_night_hunter',
+	GoldPerBag = 50,
+	CountBagOfGold = 1,--80,
+	Xp = 3500,
+	DecTimeToDeath = 5 * 60,
+	STATS = {
+		health = 26500,
+		armor = 15,
+		magicResist = 60,
+		movespeed = 400,
+		AttackSpeed = 200,
+		healthRegen = 15,
+		ManaRegen = 5,
+		Damage = {
+			110,
+			360,
+			200
+		}
+	}
+
+}
 --[[NEUTRALS_SPAWN_BOSSES = {
 	["npc_VampirZ_Boss_Zombie"] = {
 		Ability = {

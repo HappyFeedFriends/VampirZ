@@ -1,7 +1,7 @@
 .HealthBarUI{
-	width:45%;
-	height:20%;
-	position: 0 100px 0;
+	width:30%;
+	height:25%;
+	position: 0px 90px 0;
 	horizontal-align:center;
 }
 #UnitNameHealthBar{
@@ -13,41 +13,152 @@
 	height:100%;
 	flow-children:down;
 }
+
 #ManaBarMainUI,
 #HealthBarMainUI{
 	width:100%;
-	height:19%;
-	font-weight: bold;
+	height:12%;
 	border-radius:6px;
-	border: 3px solid silver;
-	background-color: #000000aa 0px 0px 2px 2px;	
+	border: 2px solid silver;
+	box-shadow: fill #00000099 2px 1px 3px 3px;
+	background-color: #000000aa 0px 0px 2px 2px;
+	margin: 2px;
 }
 #ManaBarMainUI Label,
 #HealthBarMainUI Label{
 	text-align: center;
 	color: white;
 	font-family: 'RadianceM', 'Radiance';
-	font-size: 25px;
+	font-size: 18px;
 	vertical-align: center;
 	horizontal-align: center;
+
 }
 .UnitNameBarAll{
 	width:100%;
 	height:100%;
 	clip: rect( 0%, 100%, 100%, 0% );
+
 }
 #UnitNameHealthBarBG{
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #425d25  ), color-stop( 0.2, #5BA539 ), color-stop( .5, #4D9030), to( #425d25) );
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #125d25  ), color-stop( 0.2, #2BA539 ), color-stop( .5, #2D9030), to( #225d25) );
 }
 #UnitNameManaBarBG{
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #2b4287 ), color-stop( 0.2, #4165ce ), color-stop( .5, #4a73ea), to( #2b4287 ) );
 }
 #UnitNameHB{
-	text-align: center;
-	vertical-align: center;
-	horizontal-align: center;
+	align: center center;
 	color: white;
 	font-family: 'RadianceM', 'Radiance';
-	font-size: 22px;
-	font-weight: bold;	
+	font-size: 25px;
+	margin-bottom: 10px;	
+	font-weight: bold;
+}
+
+#BossStage{
+	align: center center;
+	color: white;
+	font-family: 'RadianceM', 'Radiance';
+	font-size: 19px;
+	margin-bottom:11px;	
+	visibility: collapse;
+}
+#BossStage.IsBoss{
+	visibility: visible;
+}
+.modifier
+{
+	horizontal-align: left;
+	vertical-align: bottom;
+	flow-children: right-wrap;
+	transform: translateY(0px);
+	transition-property: opacity, transform;
+	transition-duration: 0.12s;
+	z-index: 200;		
+}
+
+.BuffBorder
+{
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	box-shadow: fill #00000099 -2px -2px 4px 4px;
+	margin: 2px;
+	pre-transform-scale2d: 1;
+	transition-property: opacity, pre-transform-scale2d, width;
+	transition-duration: 0.15s;
+	transition-timing-function: ease-in-out;
+}
+#StackCount.has_stacks
+{
+	visibility: visible;
+}
+#StackCount
+{
+	text-shadow: 0px 0px 4px 6 #000000;
+	color: white;
+	margin: 0px;
+	horizontal-align: center;
+	vertical-align: center;
+	text-align: center;
+	font-size: 17.8px;
+	overflow: noclip noclip;
+	visibility: collapse;
+}
+
+
+
+#BuffImage
+{
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	box-shadow: inset #000000aa 2px 2px 4px 4px;
+}
+
+#AbilityImage
+{
+	width: 100%;
+	height: 100%;
+}
+.item_buff #AbilityImage
+{
+	visibility: collapse;
+}
+
+#ItemImage
+{
+	width: 100%;
+	height: 100%;
+}
+
+.ability_buff #ItemImage
+{
+	visibility: collapse;
+}
+
+#CircularDuration
+{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-image: url("s2r://panorama/images/hud/reborn/buff_outline_psd.vtex");
+	background-size: 95% 95%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	wash-color: #8bdd4f;
+}
+
+#CircularDuration.is_debuff
+{
+	wash-color: #e43c10;
+}
+
+#ChannelBar #CircularDuration, #SpellDamageContainer #CircularDuration
+{
+	visibility: collapse;
 }

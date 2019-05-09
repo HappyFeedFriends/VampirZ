@@ -50,7 +50,6 @@ function UpgradeHero:AddUpgradeClass(data)
 	local UpgradeName = data.UpgradeName
 	local IsLocked = data.IsLocked == 0
 	local IsNotUpgrade = data.IsNoUpgradePrevious == 0
-	PrintTable(data)
 	local hero = PlayerResource:GetSelectedHeroEntity( pID )
 	if IsLocked then Containers:DisplayError(pID,"#hud_error_locked_upgrade") return end
 	if IsNotUpgrade then Containers:DisplayError(pID,"#hud_error_not_previous_upgrade") return end

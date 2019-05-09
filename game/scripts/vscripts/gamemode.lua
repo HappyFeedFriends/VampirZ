@@ -37,6 +37,7 @@ local RequireList = {
 		"string",
 		"table",
 		"keyvalues",
+		"triggers",
 	},
 }
 
@@ -54,6 +55,7 @@ function VampireZ:OnHeroInGame(hero)
 end
 
 function VampireZ:OnGameInProgress()
+	HeroSelection2:RandomPickHero()
 	SpawnNeutrals:Init()
 	--HeroSelection:SetRandomVampire()
 	Vampires:SetAlpha(HeroSelection2.FirstVampire)
@@ -68,6 +70,7 @@ function VampireZ:OnGameInProgress()
 end
 
 function VampireZ:PreGame()
+	GameRules:GetGameModeEntity():SetUnseenFogOfWarEnabled( true )   
 	HeroSelection2:PreLoad()
 	PlayerTables:CreateTable("DataPlayer", {
 		info = PLAYER_DATA,
@@ -81,7 +84,9 @@ function VampireZ:PreGame()
 end
 function VampireZ:HeroSelection()
 end 
+
 function VampireZ:Init()
+
 
 	GameRules:SetHeroRespawnEnabled( ENABLE_HERO_RESPAWN )
 	GameRules:SetUseUniversalShopMode( UNIVERSAL_SHOP_MODE )
@@ -103,7 +108,7 @@ function VampireZ:Init()
 	GameRules:SetCustomGameEndDelay( GAME_END_DELAY )
 	GameRules:SetCustomVictoryMessageDuration( VICTORY_MESSAGE_DURATION )
 	GameRules:SetStartingGold( STARTING_GOLD )
-	local mode = GameRules:GetGameModeEntity()        
+	local mode = GameRules:GetGameModeEntity()     
 	mode:SetRecommendedItemsDisabled( RECOMMENDED_BUILDS_DISABLED )
 	mode:SetCameraDistanceOverride( CAMERA_DISTANCE_OVERRIDE )
 	mode:SetCustomBuybackCostEnabled( CUSTOM_BUYBACK_COST_ENABLED )
@@ -175,12 +180,37 @@ function VampireZ:Think()
 				elseif PlayerResource:GetConnectionState(i) == DOTA_CONNECTION_STATE_ABANDONED then
 					USER_DATA[i].IsAbandoned = true
 				end
+				for _,item in pairs( Entities:FindAllByClassname( "dota_item_drop")) do
+					local containedItem = item:GetContainedItem()
+					local hero = PlayerResource:GetSelectedHeroEntity(i)
+					if not hero:IsVampire() and containedItem:GetAbilityName() == "item_bag_of_gold" and #(hero:GetOrigin() - item:GetOrigin()) <= 400 then
+						Gold:ModifyGold(hero:GetPlayerID(),NIGHT_HUNTER_DATA.GoldPerBag,true)
+						UTIL_RemoveImmediate( item )
+					end
+				end
 			end
 		end
 		if GameRules:GetDOTATime(false,false) >= GAME_TIME_TO_WIN then
 				request:SetWinner(DOTA_TEAM_GOODGUYS)
 				return
 		end
-		return 1
+		if GameRules:IsDaytime() then
+			self.IsNightSpawn = false
+			if HealthBar.NightHunter then
+				HealthBar.NightHunter:ForceKill(true)
+				kills:CreateCustomToast({
+				type = "generic",
+				text = "#custom_toast_nightHunter_notkilled"
+			})
+			HealthBar.NightHunter = nil
+			end 
+		elseif self.IsNightSpawn == false then
+			self.IsNightSpawn = true
+		end
+		if self.IsNightSpawn and not HealthBar.NightHunter then
+			SpawnNeutrals:SpawnNightHunter()
+			self.IsNightSpawn = nil
+		end
+		return 0.1
 	end)
 end

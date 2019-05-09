@@ -110,5 +110,5 @@ function Vampires:IsAlpha(pID)
 end 
 
 function  CDOTA_BaseNPC:IsAlpha()
-	return Vampires:IsAlpha(self:GetPlayerID())
+	return self:IsHero() and Vampires:IsAlpha(self:GetPlayerID())
 end 

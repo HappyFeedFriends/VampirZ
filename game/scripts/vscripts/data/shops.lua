@@ -20,13 +20,6 @@ CUSTOM_SHOP =
 			"item_dragon_shell",
 			"item_holy_magic_bow",
 		},
-		["HumanBullet"] = {
-			"item_colt",
-			"item_pistol",
-			"item_automatic",
-			"item_awp",
-			"item_rifle",
-		},
 		['Starting'] = {
 			"item_warrior_gloves",
 			"item_ring_of_magic",

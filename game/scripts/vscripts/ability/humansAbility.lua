@@ -11,39 +11,40 @@ function Gunner_Weakness:GetIntrinsicModifierName()
 end
 
 LinkLuaModifier( "modifier_gunner_weakness", "ability/humansAbility.lua", LUA_MODIFIER_MOTION_NONE )
-
+LinkLuaModifier( "modifier_gunner_weakness_buff", "ability/humansAbility.lua", LUA_MODIFIER_MOTION_NONE )
 modifier_gunner_weakness = class({
     IsHidden                = function(self) return false end,
     IsPurgable              = function(self) return false end,
     IsDebuff                = function(self) return false end,
     IsBuff                  = function(self) return true end,
     RemoveOnDeath           = function(self) return false end,
-    OnCreated               = function(self) self.Attacks = 0 self:StartIntervalThink(0.1) end,
+    IsAura 					=	function(self) return true end,
+    GetAuraRadius			= 	function(self) return self:GetCaster():IsUpgrade("SpecialUpgrade_1_Gunner_3") and self.radius or 1  end,
+    GetAuraSearchFlags      = 	function(self) return DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO end,
+    GetAuraSearchTeam      	= 	function(self) return DOTA_UNIT_TARGET_TEAM_FRIENDLY end,
+    GetAuraSearchType      	= 	function(self) return DOTA_UNIT_TARGET_HERO end,
+    GetModifierAura 		=	function(self) return "modifier_gunner_weakness_buff" end,
+})
+
+function modifier_gunner_weakness:OnCreated()
+	if IsServer() then
+		self.radius = self:GetParent():GetUpgradeData("SpecialUpgrade_1_Gunner_3").Value
+	end
+end 
+
+modifier_gunner_weakness_buff = class({
+    IsHidden                = function(self) return false end,
+    IsPurgable              = function(self) return false end,
+    IsDebuff                = function(self) return false end,
+    IsBuff                  = function(self) return true end,
+    RemoveOnDeath           = function(self) return false end,
+    OnCreated               = function(self) self.Attacks = 0 end,
     DeclareFunctions        = function(self) return {MODIFIER_EVENT_ON_ATTACK_LANDED} end,
 })
 
-function modifier_gunner_weakness:OnIntervalThink()
-	if IsServer()  then
-		local caster = self:GetParent()
-		if caster:IsUpgrade("SpecialUpgrade_1_Gunner_3") then
-			local radius = caster:GetUpgradeData("SpecialUpgrade_1_Gunner_3").Value
-			local target_team = DOTA_UNIT_TARGET_TEAM_FRIENDLY
-			local target_types = DOTA_UNIT_TARGET_HERO
-			local target_flags = DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO
-			local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, radius, target_team, target_types, target_flags, FIND_CLOSEST, false)
-			if #units > 0 then
-				for count, hero in ipairs(units) do
-	                if hero ~= caster and hero:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK then
-					    hero:AddNewModifier( caster, self:GetAbility(), "modifier_gunner_weakness", { duration = 1.0 } )
-	                end
-				end
-			end
-		end
-	end
-end
 
-function modifier_gunner_weakness:OnAttackLanded(k)
-	local caster = self:GetParent()
+function modifier_gunner_weakness_buff:OnAttackLanded(k)
+	local caster = self:GetCaster()
 	local target = k.target
 	local attacker = k.attacker
 	local chance = self:GetAbility():GetSpecialValueFor("chance")
@@ -96,15 +97,11 @@ modifier_gunner_hunters_mark = class({
     IsDebuff                = function(self) return true end,
     IsBuff                  = function(self) return false end,
     RemoveOnDeath           = function(self) return true end,
-    OnCreated               = function(self) self:StartIntervalThink(0.1) end,
     DeclareFunctions        = function(self) return {MODIFIER_EVENT_ON_DEATH} end,
+    CheckState				= function(self) return {
+    	[MODIFIER_STATE_PROVIDES_VISION] = true,
+	} end,
 })
-
-function modifier_gunner_hunters_mark:OnIntervalThink()
-    local unit = self:GetParent()
-
-    AddFOWViewer(self:GetCaster():GetTeam(), unit:GetAbsOrigin(), 125, 0.04, false)
-end
 
 function modifier_gunner_hunters_mark:OnDeath()
     local AllHero = HeroList:GetAllHeroes()
@@ -483,14 +480,10 @@ modifier_gunner_hawk = class({
     IsDebuff                = function(self) return false end,
     IsBuff                  = function(self) return true end,
     RemoveOnDeath           = function(self) return true end,
-    OnCreated               = function(self) self:StartIntervalThink(0.03) end,
+    CheckState				= function(self) return {
+    	[MODIFIER_STATE_PROVIDES_VISION] = true,
+	} end,
 })
-
-function modifier_gunner_hawk:OnIntervalThink()
-	local hawk = self:GetParent()
-
-	AddFOWViewer(hawk:GetTeam(), hawk:GetAbsOrigin(), hawk:GetDayTimeVisionRange(), 0.04, false)
-end
 
 -----------------------------------------------------
 --Hunter`s chain/Additional ability
@@ -692,8 +685,8 @@ modifier_gunner_second_life = class({
 function modifier_gunner_second_life:OnIntervalThink()
     if IsServer() then
         local caster = self:GetParent()
-        if caster:HasModifier("modifier_gunner_second_life_safe") == false and self:GetAbility():GetCooldownTimeRemaining() == 0 then
-            caster:AddNewModifier(caster, self:GetAbility(), "modifier_gunner_second_life_safe", {Duration = inf})
+        if not caster:HasModifier("modifier_gunner_second_life_safe") and self:GetAbility():GetCooldownTimeRemaining() == 0 then
+            caster:AddNewModifier(caster, self:GetAbility(), "modifier_gunner_second_life_safe", {Duration = -1})
         end
     end
 end
@@ -1028,23 +1021,7 @@ function modifier_vow_to_god:GetAuraEntityReject(entity)
 	return ((self:GetAuraSearchTeam() == DOTA_UNIT_TARGET_TEAM_BOTH and entity:GetTeam() ~= self:GetCaster():GetTeam() and self:GetModifierAura() == "modifier_vow_to_god_aura_buff")) or self:GetModifierAura() == "modifier_vow_to_god_aura_debuff" and entity:GetTeam() == self:GetCaster():GetTeam()
 end
 
-function modifier_vow_to_god:OnIntervalThink()
-	if IsServer() then
-		local caster = self:GetCaster()
-	    local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, self:GetAbility():GetSpecialValueFor("radius"),DOTA_UNIT_TARGET_TEAM_BOTH, self:GetAuraSearchType(), self:GetAuraSearchFlags(), FIND_CLOSEST, false)
-		for count, hero in ipairs(units) do
-			if caster:IsUpgrade("SpecialUpgrade_1_Priest_2") and hero:GetTeam() == caster:GetTeam() then
-				hero:AddNewModifier( caster,self:GetAbility(), 'modifier_vow_to_god_mana', { duration = 1.0 } )
-			end
-			if hero:GetTeam() ~= caster:GetTeam() and self:GetAuraSearchTeam() == DOTA_UNIT_TARGET_TEAM_BOTH then
-				hero:AddNewModifier( caster,self:GetAbility(), 'modifier_vow_to_god_aura_debuff', { duration = 1.0 } )
-			end
-		end
-	end
-end
-
 function modifier_vow_to_god:OnCreated() 
-	self:StartIntervalThink(0.8)
 	self.radius = self:GetAbility():GetSpecialValueFor("radius")
 	self.flags = DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO
 	self.targetType = DOTA_UNIT_TARGET_HERO
@@ -1259,33 +1236,13 @@ modifier_pact_with_the_devil = class({
     IsDebuff                = function(self) return false end,
     IsBuff                  = function(self) return true end,
     RemoveOnDeath           = function(self) return true end,
-    OnCreated               = function(self) self:StartIntervalThink(0.1) end,
-    DeclareFunctions        = function(self) return {MODIFIER_PROPERTY_MANA_REGEN_CONSTANT} end,
-    GetModifierConstantManaRegen = function(self) return self:GetAbility():GetSpecialValueFor("mp_regen") end,
+    IsAura 					=	function(self) return true end,
+    GetAuraRadius			= 	function(self) return self:GetAbility():GetSpecialValueFor("radius") end,
+    GetAuraSearchFlags      = 	function(self) return DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO end,
+    GetAuraSearchTeam      	= 	function(self) return DOTA_UNIT_TARGET_TEAM_FRIENDLY end,
+    GetAuraSearchType      	= 	function(self) return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC end,
+    GetModifierAura 		=	function(self) return "modifier_pact_with_the_devil_aura_buff" end,
 })
-
-function modifier_pact_with_the_devil:OnIntervalThink()
-	if IsServer() then
-	    local caster = self:GetParent()
-	    if caster:IsUpgrade("SpecialUpgrade_1_Priest_2") then
-	        caster:AddNewModifier( caster, self:GetAbility(), "modifier_pact_with_the_devil_hp_regen", { duration = 1.0 } )
-	    end
-	    local target_team = DOTA_UNIT_TARGET_TEAM_FRIENDLY
-	    local target_types = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
-	    local target_flags = DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO
-	    local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, self:GetAbility():GetSpecialValueFor("radius"), target_team, target_types, target_flags, FIND_CLOSEST, false)
-	    if #units > 0 then
-	        for count, hero in ipairs(units) do
-	            if hero ~= caster then
-	                if caster:IsUpgrade("SpecialUpgrade_2_Priest_2") then
-	                    hero:AddNewModifier( caster, self:GetAbility(), "modifier_pact_with_the_devil_hp_regen", { duration = 1.0 } )
-	                end
-	                hero:AddNewModifier( caster, self:GetAbility(), "modifier_pact_with_the_devil_aura_buff", { duration = 1.0 } )
-	            end
-	        end
-	    end
-	end
-end
 
 LinkLuaModifier( "modifier_pact_with_the_devil_aura_buff", "ability/humansAbility.lua", LUA_MODIFIER_MOTION_NONE )
 
@@ -1295,22 +1252,23 @@ modifier_pact_with_the_devil_aura_buff = class({
     IsDebuff                = function(self) return false end,
     IsBuff                  = function(self) return true end,
     RemoveOnDeath           = function(self) return true end,
-    DeclareFunctions        = function(self) return {MODIFIER_PROPERTY_MANA_REGEN_CONSTANT} end,
-    GetModifierConstantManaRegen = function(self) return self:GetAbility():GetSpecialValueFor("mp_regen") end,
+    DeclareFunctions        = function(self) return {MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT} end,
+    GetModifierConstantManaRegen = function(self) return self.mp_regen end,
+    GetModifierConstantHealthRegen = function(self) return self.regenHealth end,
 })
 
-LinkLuaModifier( "modifier_pact_with_the_devil_hp_regen", "ability/humansAbility.lua", LUA_MODIFIER_MOTION_NONE )
-
-modifier_pact_with_the_devil_hp_regen = class({
-    IsHidden                = function(self) return true end,
-    IsPurgable              = function(self) return false end,
-    IsDebuff                = function(self) return false end,
-    IsBuff                  = function(self) return true end,
-    RemoveOnDeath           = function(self) return true end,
-    DeclareFunctions        = function(self) return {MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT} end,
-    GetModifierConstantHealthRegen = function(self) return self:GetAbility():GetSpecialValueFor("mp_regen")/2 end,
-})
-
+function modifier_pact_with_the_devil_aura_buff:OnCreated()
+	self.regenHealth = 0
+	if IsServer() then
+		self.mp_regen = self:GetAbility():GetSpecialValueFor("mp_regen")
+		if self:GetCaster():IsUpgrade("SpecialUpgrade_2_Priest_2") then
+			self.regenHealth = self.mp_regen/2
+		end
+		if self:GetParent() == self:GetCaster() and self:GetCaster():IsUpgrade("SpecialUpgrade_1_Priest_2") then
+			self.mp_regen = self.mp_regen + (self.regenHealth/2)
+		end
+	end
+end
 -----------------------------------------------------
 --Opening the Seal/Additional ability
 -----------------------------------------------------
@@ -1530,7 +1488,7 @@ modifier_healer_holiness = class({
 function modifier_healer_holiness:OnIntervalThink()
     local caster = self:GetParent()
     if IsServer() then
-	    if caster:IsUpgrade("SpecialUpgrade_3_Priest_2") and self:GetStackCount() ~= 2 then
+	    if self:GetStackCount() ~= 2 and caster:IsUpgrade("SpecialUpgrade_3_Priest_2")  then
 	        self:SetStackCount(2)
 	    end
 	end

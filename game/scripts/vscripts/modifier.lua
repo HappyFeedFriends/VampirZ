@@ -109,3 +109,38 @@ end
 function modifier_wearable_visuals_activity:GetAttributes()
     return MODIFIER_ATTRIBUTE_MULTIPLE
 end
+
+modifier_debuff_fire = class({
+    IsHidden                = function(self) return false end,
+    IsPurgable              = function(self) return false end,
+    IsDebuff                = function(self) return true end,
+    IsBuff                  = function(self) return false end,
+    RemoveOnDeath           = function(self) return false end,
+})
+
+function modifier_debuff_fire:OnCreated(data)
+    if IsServer() then
+        self.tick_interval = data.tick_interval or 1.0
+        self.fullDamage = data.fullDamage or 1.0
+        self:StartIntervalThink(self.tick_interval)
+        self.DamageType = data.DamageType or DAMAGE_TYPE_PURE
+        self.fx = ParticleManager:CreateParticle("particles/neutral_fx/black_dragon_fireball.vpcf", PATTACH_POINT_FOLLOW, self:GetParent() )
+    end
+end
+
+function modifier_debuff_fire:OnDestroy()
+    if IsServer() and self.fx then
+        ParticleManager:DestroyParticle(self.fx, true)
+    end
+end
+
+function modifier_debuff_fire:OnIntervalThink()
+    if IsServer() then
+        ApplyDamage({
+            victim =  self:GetParent(), 
+            attacker =  self:GetCaster(), 
+            damage =  self.fullDamage, 
+            damage_type =  self.DamageType,  
+        })
+    end
+end

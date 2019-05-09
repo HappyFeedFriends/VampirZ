@@ -7,6 +7,30 @@
 	flow-children: down;
 	margin-bottom: 100px;
 }
+
+.ShopByType{
+	flow-children:down;
+	width:100%;
+}
+
+.FrontpageCellHeader
+{
+	z-index: 1;
+	color: #528EA5;
+	background-color: black;
+	font-size: 14px;
+	margin: 0px;
+	padding: 3px 8px 1px 12px;
+	text-shadow: 0px 0px 8px 2.0 #000000;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+	font-weight: medium;
+
+	transition-property: color;
+	transition-duration: 0.15s;
+	transition-timing-function: ease-in; 	
+}
+
 #CustomShopMain{
 	width:100%;
 	height:100%;
@@ -20,6 +44,7 @@
 	flow-children: down;
 	horizontal-align:right;
 	background-color: rgb(0, 0, 0);
+
 }
 
 .BuyingItem{
@@ -39,12 +64,12 @@
 	flow-children: down;
 	horizontal-align:center;
 	vertical-align:center;
+	width:100%;
 }
 .MainShopPanel{
 	width: 350px;
-	margin-top:10px;
-	margin-bottom:10px;
-	margin-left:40px;
+	margin-top:5px;
+	margin-bottom:5px;
 	flow-children: right-wrap;
 	horizontal-align:center;
 }
@@ -57,7 +82,7 @@
 	margin-bottom: 3px;
     margin-right: 6px;
     margin-left: 4px;
-	border-radius:5px;
+	border-radius:1px; 
 }
 .MainShopPanel Button:Hover{
 	brightness: 2.0;

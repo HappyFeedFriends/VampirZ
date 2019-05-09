@@ -1,0 +1,41 @@
+<root>
+    <styles>
+       	<include src="file://{resources}/styles/custom_game/MapUI.css" />
+	   	<include src="s2r://panorama/styles/dotastyles.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/util.js" />  		 		 		
+    </scripts>
+    <script>
+    	function ToggleMap(){
+    		var panel = $('#KeyBindPanel');
+            panel.SetHasClass('IsOpen',!panel.BHasClass('IsOpen'))
+    	}
+        
+    	(function(){
+        
+    		HidePanel(FindDotaHudElement('minimap_block'));
+    		HidePanel(FindDotaHudElement('GlyphScanContainer'));
+    		RegisterKeyBind("TAB", ToggleMap,true)
+            GameEvents.Subscribe('LocationName', function(data){
+                if (!$('#ZoneToastPanel').BHasClass('Visible') && data.text != null ){
+                    $('#ZoneToastPanel').AddClass('Visible');
+                    $('#ZoneNameLabel').text = $.Localize(data.text);
+                    $.Schedule(3,function(){ 
+                        $('#ZoneToastPanel').RemoveClass('Visible');
+                    });
+                }
+            });
+    	})();
+    </script>
+    <Panel class="MiniMapMain" hittest="false" >   
+    	<Panel id="MapContainer" >
+    		<DOTAHUDOverlayMap id="OverlayMap" mapscale="6" hittest="false" hittestchildren="false"  maptexture="materials/overviews/vampirz_dark_forest_tga_49823f8d.vtex"/> 
+    		<Label text="Открыть всю карту [TAB]" /> 
+    	</Panel>
+        <Panel hittest="false" id="ZoneToastPanel" always-cache-composition-layer="true" require-composition-layer="true" >
+          <Label hittest="false" id="ZoneNameLabel" text="location_1" class="TitleFont" />
+        </Panel>
+    	 <DOTAMinimap id="KeyBindPanel" hittest="true" hittestchildren="true"  maptexture="materials/overviews/vampirz_dark_forest_tga_49823f8d.vtex"/>
+    </Panel>
+</root>

@@ -12,10 +12,16 @@ function FillTypeShop(ShopData,panels){
 	var i = 1;
 	if (!panels) return
 	for (var type in ShopData){
-		Panel = panels.FindChild( type );
+		var panelMain =  panels.FindChild( type ) || $.CreatePanel( "Panel", panels, type );
+		panelMain.AddClass('ShopByType')
+		var label = (panelMain.FindChild( 'Header' ) || $.CreatePanel( "Panel", panelMain, 'Header' ))
+		var q = label.FindChild( 'Label' ) || $.CreatePanel( "Label", label, 'Label' )
+		q.AddClass('FrontpageCellHeader')
+		q.text = $.Localize('custom_shop_type_' + type) 
+		Panel = panelMain.FindChild( 'panel' );
 		if ( !Panel )
 		{   
-			Panel = $.CreatePanel( "Panel", panels, type );  
+			Panel = $.CreatePanel( "Panel", panelMain, 'panel' );  
 			Panel.SetHasClass( "MainShopPanel", true );         
 		}
 		for ( var ItemName in ShopData[type] ){  
@@ -65,20 +71,19 @@ function UpdateItemPanelByCost(itemPanel){
 		SearchingFor = searchStr; 
 		if (SearchingFor.length > 0){
 			_.each(ShopSearch.Children(),function(child) {
-				if (child){
-					_.each(child.Children(),function(childs) {
-						var localize = $.Localize("Dota_tooltip_ability_" + childs.id).toLowerCase();
-						
+				_.each(child.Children(),function(childs) {
+					_.each(childs.Children(),function(childes){
+						var localize = $.Localize("Dota_tooltip_ability_" + childes.id).toLowerCase();
 						if (!localize.match(SearchingFor.toLowerCase())) 
-							HidePanel(childs);
+							HidePanel(childes);
 						else
-							UnHiddenPanel(childs);
+							UnHiddenPanel(childes);
 					});
-					if (IsAllChildrenHide(child))
-						HidePanel(child);
-					else
-						UnHiddenPanel(child);				
-				}
+				if (IsAllChildrenHide(childs))
+					HidePanel(childs);
+				else
+					UnHiddenPanel(childs);
+				});				
 			}); 
 		}else{
 			_.each(ShopSearch.Children(),function(child) {
@@ -87,6 +92,10 @@ function UpdateItemPanelByCost(itemPanel){
 				_.each(child.Children(),function(childs) {
 					if (IsHiddenPanel(childs))
 					UnHiddenPanel(childs)
+					_.each(childs.Children(),function(childes) {
+						if (IsHiddenPanel(childes))
+						UnHiddenPanel(childes)
+					}); 
 				}); 
 			}); 
 		}
@@ -117,7 +126,7 @@ function DataChange(){
 	if (FindDotaHudElement('CustomShopButton')){
 		var playerID = GetPlayerID();
 		UpdateButtonShopLabel(playerID);
-		UpdateItems(); 
+		UpdateItems();  
 		FindDotaHudElement('CustomShopButton').GetParent().FindChildTraverse('ClassIcon').SetImage(IsVampire(playerID) && 'file://{images}/custom_game/custom_icon/blood.png' || 
 		'file://{images}/custom_game/custom_icon/UpgradeButton.png')
 	}
@@ -133,7 +142,7 @@ function DataChange(){
 		UnHiddenPanel(ManShop);
 		HidePanel(VampireShop);
 	}
-} 
+}  
     
 function UpdateButtonShopLabel(pID){
 	 var GoldLabel = FindDotaHudElement('CustomShopButton').FindChildTraverse('CustomShopButtonLabel');

@@ -81,6 +81,24 @@ local killerAbility
 local damagebits = keys.damagebits
 	if keys.entindex_attacker ~= nil then killerEntity = EntIndexToHScript( keys.entindex_attacker ) end
 	if keys.entindex_inflictor ~= nil then killerAbility = EntIndexToHScript( keys.entindex_inflictor ) end
+	if killedUnit.IsNightHunter and killerEntity:IsHero() then
+		local count = 0
+		HealthBar.NightHunter = nil
+		local abs = killedUnit:GetOrigin()
+		Timers:CreateTimer(0.5,function()
+			count = count + 1
+			killedUnit:DropItem('item_bag_of_gold',abs + RandomVector(RandomFloat(0,1050)))
+			return count <= NIGHT_HUNTER_DATA.CountBagOfGold and 0.1 or nil
+		end)
+		kills:CreateCustomToast({
+			type = "generic",
+			text = "#custom_toast_nightHunterDeath", -- До тестить смерть утром.
+			variables = {
+				['{minute}'] = NIGHT_HUNTER_DATA.DecTimeToDeath/60
+			}
+		})
+		GAME_TIME_TO_WIN =  math.max(0,GAME_TIME_TO_WIN - NIGHT_HUNTER_DATA.DecTimeToDeath/60)
+	end 
 	if killedUnit:IsRealHero() then
 		killedUnit:SetRespawnTime()
 		if killerEntity then

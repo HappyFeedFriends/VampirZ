@@ -1,6 +1,7 @@
 #base "items/vampires.txt"
 #base "items/humans.txt"
 #base "items/bullets.txt"
+#base "items/util.txt"
 "DOTAAbilities"
 {
   "item_containers_lua_pack"

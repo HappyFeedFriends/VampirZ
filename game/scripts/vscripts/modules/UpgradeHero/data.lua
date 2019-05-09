@@ -131,7 +131,7 @@ SETTING_DATA_UPGRADES = {
 				},
 				["SpecialUpgrade_8"] = {
 					Image = "VampireAttack",
-					Value =  0.45,
+					Value =  0.55,
 				},
 			},			
 			[3] = { -- Defense
@@ -176,14 +176,14 @@ SETTING_DATA_UPGRADES = {
         ['Priest'] = {
             [1] = {            
                 ["SpecialUpgrade_1"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_call_to_angels",
                     Value = 60,
                 },  
                 ["SpecialUpgrade_2"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_vow_to_God",
                 },
                 ["SpecialUpgrade_3"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_divine_touch",
                     Resist = 25,
                 },  
                 ["SpecialUpgrade_4"] = {
@@ -192,19 +192,19 @@ SETTING_DATA_UPGRADES = {
                     Range = 350,
                 },
                 ["SpecialUpgrade_5"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_divine_touch",
                     Ms = 150,
                 },
                 ["SpecialUpgrade_6"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_divine_touch",
                     Sr = 25,
                 },
                 ["SpecialUpgrade_7"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_vow_to_God",
                     In = 2,
                 },
                 ["SpecialUpgrade_8"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_inquisition",
                 },
             },         
             [2] = {            
@@ -218,30 +218,30 @@ SETTING_DATA_UPGRADES = {
                 	},
                 },  
                 ["SpecialUpgrade_2"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_pact_with_the_devil",
                 },
                 ["SpecialUpgrade_3"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_opening_the_seal",
                     Bonus = 25,
                 },  
                 ["SpecialUpgrade_4"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_pentagram",
                     dBonus = 2,
                 },
                 ["SpecialUpgrade_5"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_opening_the_seal",
                     Bonus = 20,
                 },
                 ["SpecialUpgrade_6"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_opening_the_seal",
                     Bonus = 25,
                 },
                 ["SpecialUpgrade_7"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_pentagram",
                     As = 150,
                 },
                 ["SpecialUpgrade_8"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_pentagram",
                     Phys = 30,
                     Mag = 30,
                 },
@@ -257,31 +257,31 @@ SETTING_DATA_UPGRADES = {
                 	}
                 },  
                 ["SpecialUpgrade_2"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_holiness",
                 },
                 ["SpecialUpgrade_3"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_victim",
                     Phys = 25,
                     Mag = 25,
                 },  
                 ["SpecialUpgrade_4"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_blood_ties",
                     Value = 20,
                 },
                 ["SpecialUpgrade_5"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_victim",
                     Bonus = 30,
                 },  
                 ["SpecialUpgrade_6"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_victim",
                     Value = 2,
                 },
                 ["SpecialUpgrade_7"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_blood_ties",
                     Value = 30,
                 },
                 ["SpecialUpgrade_8"] = {
-                    Image = "HeroIcon",
+                    Image = "Healer_blood_ties",
                     Block = 20,
                     Resist = 25,
                 }, 

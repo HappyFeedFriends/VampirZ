@@ -1,8 +1,5 @@
 var Settings ={
-	regenerationSize:"18",
-	regenerationFamily:'Radiance',
-	regenerationMargin:"90%",
-	fixedNumber:1,
+	fixedNumber:1, 
 }
 var FixedSchedule = FixedSchedule || false;
 var HealthBar = FindDotaHudElement("HBBarMain"); // Main Panel
@@ -11,17 +8,13 @@ var HealthBarMain = HealthBar.FindChildTraverse("HealthBarMainUI"); // Health Pa
 var HP = HealthBarMain.FindChildTraverse("HealthBarLabel"); // health text
 var HealthRegenLabel = HealthBarMain.FindChildTraverse("HealthBarRegenLabel"); // health regen text
 var HealthBG = HealthBar.FindChildTraverse("UnitNameHealthBarBG"); // Health background
-HealthRegenLabel.style.fontFamily = Settings.regenerationFamily;
-HealthRegenLabel.style.fontSize = Settings.regenerationSize;
-HealthRegenLabel.style.marginLeft = Settings.regenerationMargin;
+
 
 var ManaBarMain = HealthBar.FindChildTraverse("ManaBarMainUI"); // Mana Panel
 var ManaBarLabel = ManaBarMain.FindChildTraverse("ManaBarLabel"); //Mana text
 var ManaBarBG = HealthBar.FindChildTraverse("UnitNameManaBarBG"); // Mana background
 var ManaBarRegenLabel = HealthBar.FindChildTraverse("ManaBarRegenLabel"); // Mana regen text
-ManaBarRegenLabel.style.fontFamily = Settings.regenerationFamily; 
-ManaBarRegenLabel.style.fontSize = Settings.regenerationSize;
-ManaBarRegenLabel.style.marginLeft = Settings.regenerationMargin;
+
 
 function CloseHealthBar(){
 	HidePanel(HealthBarMain);
@@ -43,14 +36,16 @@ function OpenHealthBar(){
 }
 
 function CloseAllBars(){
-	CloseHealthBar();
+	//CloseHealthBar();
 	CloseManaBar();
-	CloseNameUnit();
+	//CloseNameUnit();
+	HidePanel($('#HBBarMain'))
 }
 function OpenAllBars(){
 	OpenHealthBar();
 	OpenManaBar();
 	OpenNameUnit();
+	UnHiddenPanel($('#HBBarMain'))
 }
 var allData
 function UpdateHealthBarInfo(data){
@@ -58,6 +53,11 @@ function UpdateHealthBarInfo(data){
 		UpdateManaBar(data);
 		UpdateHpBar(data);
 		OpenNameUnit();
+		UnHiddenPanel($('#HBBarMain'))
+		CreateModifiersPanel(data.index);
+		$('#BossStage').SetHasClass('IsBoss',data.stage != null)
+		$('#BossStage').SetDialogVariable('color',data.stage == 1 ? 'lime' : data.stage == 2 ? 'orange' : 'red')
+		$('#BossStage').SetDialogVariable('stage',data.stage || 0)
 	}else{
 		CloseAllBars();
 	}
@@ -73,6 +73,9 @@ function Updating(data){
 
 function UpdateManaBar(data){
 	var pctMp,MpText,MpRegen;
+	data.Mana = Entities.GetMana(data.index) > 0 ? Entities.GetMana(data.index) : -1;
+	data.ManaMax = Entities.GetMaxMana(data.index) > 0 ? Entities.GetMaxMana(data.index) : -1;;
+	data.ManaRegen = Entities.GetManaThinkRegen(data.index);
 	if (data.Mana >= 0 && data.ManaMax >= 0){
 		if (IsHiddenPanel(ManaBarMain)) OpenManaBar(); 
 		pctMp = (data.Mana/data.ManaMax * 100) || 0; 
@@ -96,6 +99,9 @@ function UpdateManaBar(data){
 } 
 
 function UpdateHpBar(data){
+	data.health = Entities.GetHealth(data.index);
+	data.HealthMax = Entities.GetMaxHealth(data.index);
+	data.HealthRegen = Entities.GetHealthThinkRegen(data.index);
 	if (IsHiddenPanel(HealthBarMain)) OpenHealthBar();
 		var pctHp = (data.health/data.HealthMax * 100) || 0;
 		if (GetNumberOfDecimal(pctHp) > Settings.fixedNumber )  pctHp = pctHp.toFixed(Settings.fixedNumber);
@@ -110,10 +116,71 @@ function UpdateHpBar(data){
 			HpRegen += "%";			
 			hpText = pctHp + "% / 100%";
 		}
-		UnitNameLabel.text = $.Localize(data.HeroName);
+		UnitNameLabel.text = $.Localize(Entities.GetUnitName( data.index ));
 		HP.text = hpText; 
 		HealthRegenLabel.text = "+ " + HpRegen;
 		HealthBG.style.clip = "rect( 0% ," + pctHp + "%" + ", 100% ,0% )";
+}
+
+function CreateModifiersPanel(sUnit){
+	var buffContainer = $('#buffs');
+	var debuffContainer = $('#debuffs'); 
+	_.forEach(buffContainer.Children(),function(child){
+		if (Buffs.GetName(sUnit, child.BuffID )  == "" && Buffs.GetParent( sUnit, child.BuffID ) != sUnit){
+			HidePanel(child)
+			child.DeleteAsync(0)
+		}
+	})
+	_.forEach(debuffContainer.Children(),function(child){
+		if (Buffs.GetName(sUnit, child.BuffID )  == "" && Buffs.GetParent( sUnit, child.BuffID ) != sUnit){
+			HidePanel(child)
+			child.DeleteAsync(0)
+		}
+	})
+	for (var i = 0; i < Entities.GetNumBuffs(sUnit); i++) {
+		var buffID = Entities.GetBuff(sUnit, i)
+		if (!Buffs.IsHidden(sUnit, buffID ) ){
+			var IsDebuff = Buffs.IsDebuff(sUnit, buffID)
+			var Container = IsDebuff ? debuffContainer : buffContainer
+			var panel = Container.FindChild('Buff_' + buffID);
+			if (!panel){
+				panel = $.CreatePanel( "Panel", Container, 'Buff_' + buffID );
+				panel.BuffID = buffID
+				panel.BLoadLayoutSnippet('BuffSnippet');
+				panel.SetPanelEvent("onmouseover", onMouseOverBuff(panel,sUnit)); 
+				panel.SetPanelEvent("onmouseout", onMouseOutBuff(panel));
+			} 
+			var StackCount = Buffs.GetStackCount( sUnit, buffID );
+			if (StackCount > 0)
+				panel.FindChildTraverse('StackCount').text = StackCount
+			panel.FindChildTraverse('StackCount').SetHasClass('has_stacks',StackCount > 0)
+			var buffImage = Abilities.IsItem( Buffs.GetAbility(sUnit, buffID ) )
+			? 'file://{images}/items/'+ Buffs.GetTexture( sUnit, buffID ).replace('item_','')  + '.png'
+			: Buffs.GetTexture( sUnit, buffID ) == "" 
+				? "file://{images}/spellicons/empty.png"
+				: 'raw://resource/flash3/images/spellicons/'+ Buffs.GetTexture( sUnit, buffID ) +'.png';
+			panel.FindChildTraverse('BuffImage').SetImage(buffImage);
+			var completion = Buffs.GetDuration( sUnit, buffID ) == -1 || Buffs.GetRemainingTime(sUnit, buffID ) <= 0 
+			? 360
+			: Math.max( 0, 360 * (Buffs.GetRemainingTime(sUnit, buffID ) / Buffs.GetDuration(sUnit, buffID )) );
+			panel.FindChildTraverse('CircularDuration').SetHasClass('is_debuff',IsDebuff);
+			panel.FindChildTraverse('CircularDuration').style.clip = "radial(50% 50%, "+ -completion +"deg, " + completion + "deg)";
+		}
+	}
+	buffContainer.RemoveClass('BuffBorder') 
+}
+
+function onMouseOverBuff(panel,sUnit)
+{
+	return function(){
+		$.DispatchEvent( "DOTAShowBuffTooltip", panel, sUnit, panel.BuffID, Entities.IsEnemy( sUnit ) );
+	}
+}
+function onMouseOutBuff(panel)
+{
+	return function(){
+		$.DispatchEvent( "DOTAHideBuffTooltip", panel );
+	}
 }
 
 (function(){

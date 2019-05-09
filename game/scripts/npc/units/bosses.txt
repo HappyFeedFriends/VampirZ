@@ -125,4 +125,68 @@
 		"VisionNighttimeRange"		"700"		// Range of vision at night time.
 
 	}
+
+	"npc_VampirZ_Boss_night_hunter"
+	{
+		"BaseClass"					"npc_dota_creature"	
+		"vscripts" 					"modules/SpawnNeutrals/NightHunterAI.lua"
+		"Model"						"models/heroes/doom/doom.vmdl"
+		"SoundSet"					"Creep_Good_Range"
+		"ModelScale"				"1"
+		"Level"						"1"
+		"IsAncient"					"1"
+		"UseNeutralCreepBehavior"  	"0"				       
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"0"		
+		"AttackDamageMax"			"0"			
+		"AttackAnimationPoint"		"0.98"		
+		"AttackAcquisitionRange"	"100"		
+		"AttackRange"				"350"					
+
+		"Ability1"					"NightHunter_ability1"
+		"Ability2"					"NightHunter_ability2"
+		"Ability3"					"NightHunter_ability3"
+		"Ability4"					"NightHunter_ability4"
+		"Ability5"					"NightHunter_ability5"
+		"Ability6"					"NightHunter_ability6"
+		"Ability7"					"NightHunter_ability7"
+		//"Ability8"					"NightHunter_ability8"
+
+		"BountyXP"					"0"		// Experience earn.
+		"BountyGoldMin"				"0"		// Gold earned min.
+		"BountyGoldMax"				"0"		// Gold earned max.
+		// Bounds
+		//----------------------------------------------------------------
+		"RingRadius"				"120"
+		"HealthBarOffset"			"650"
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			
+		"MovementSpeed"				"400"		
+		"MovementTurnRate"			"450"		
+		// Status
+
+		"StatusHealth"				"100"			// Base health.
+		"StatusHealthRegen"			"15"			// Health regeneration rate.
+		"StatusMana"				"1400"				// Base mana.
+		"StatusManaRegen"			"12"				// Mana regeneration rate.
+		"TeamName"					"DOTA_TEAM_NEUTRAL"			// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"VisionDaytimeRange"		"700"		// Range of vision during day light.
+		"VisionNighttimeRange"		"700"		// Range of vision at night time.
+		"Creature"
+		{
+			"AttachWearables"
+			{
+			    "Wearable1" { "ItemDef" "8098" } 
+				"Wearable2" { "ItemDef" "8099" } 
+				"Wearable3" { "ItemDef" "8100" } 
+				"Wearable4" { "ItemDef" "8101" } 
+                "Wearable5" { "ItemDef" "8102" } 
+				"Wearable6" { "ItemDef" "8103" }
+				"Wearable7" { "ItemDef" "6102" } 
+			}
+		}
+	}
 }

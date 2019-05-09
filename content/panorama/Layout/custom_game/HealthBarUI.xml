@@ -8,25 +8,32 @@
 		<include src="file://{resources}/scripts/custom_game/util.js" />
 		<include src="file://{resources}/scripts/custom_game/HealthBarUI.js" />
 	</scripts>
-	<Panel class="HealthBarUI" hittest="false">
-		<Panel id="HBBarMain" hittest="false">
-			<Label class="UnitNameLabel" id="UnitNameHB">
-			</Label>		
-			<Panel class="HealthBarMain" id="HealthBarMainUI">
-				<Panel class="UnitNameBarAll" id="UnitNameHealthBarBG">
-				</Panel>
-				<Label class="HealthBarLabel" id="HealthBarLabel">
-				</Label>				
-				<Label class="HealthBarRegenLabel" id="HealthBarRegenLabel">
-				</Label>
+	<snippets>
+		<snippet name="BuffSnippet">  
+				<Button class="BuffBorder">
+						<Image id="BuffImage" defaultsrc="file://{images}/spellicons/empty.png" scaling="stretch-to-fit-y-preserve-aspect" />
+						<Label id="StackCount" text="" />
+						<Panel id="CircularDuration" />
+				</Button>
+		</snippet>
+	</snippets>
+	<Panel class="HealthBarUI">
+		<Panel id="HBBarMain"> 
+			<Label id="UnitNameHB" class="UnitNameLabel"/>
+			<Label id="BossStage"  html="true" text="BossStageLabel2" /> 	  
+			<Panel class="HealthBarMain" id="HealthBarMainUI"> 
+				<Panel class="UnitNameBarAll" id="UnitNameHealthBarBG"/>
+				<Label class="HealthBarLabel" id="HealthBarLabel"/>				
+				<Label style="horizontal-align:right; margin-right:3px;" id="HealthBarRegenLabel"/>
 			</Panel>			
 			<Panel class="ManaBarMain" id="ManaBarMainUI">
-				<Panel class="UnitNameBarAll" id="UnitNameManaBarBG">
-				</Panel>
-				<Label class="ManaBarLabel" id="ManaBarLabel">
-				</Label>				
-				<Label class="ManaBarRegenLabel" id="ManaBarRegenLabel">
-				</Label>
+				<Panel class="UnitNameBarAll" id="UnitNameManaBarBG"/>
+				<Label class="ManaBarLabel" id="ManaBarLabel"/>				
+				<Label style="horizontal-align:right; margin-right:3px;" id="ManaBarRegenLabel"/>
+			</Panel>
+			<Panel id="modifiers" style="flow-children:right-wrap; align:center top; margin-top:3px;" hittest="true">
+				<Panel class="modifier" id="debuffs"/>
+				<Panel class="modifier" id="buffs"/>
 			</Panel>
 		</Panel>
     </Panel>

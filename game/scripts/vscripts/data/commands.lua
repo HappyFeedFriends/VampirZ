@@ -12,6 +12,15 @@ CHAT_COMMANDS =
 			Vampires:SetVampire(PlayerId)
 		end
 	},
+	["CREATE_PARTICLE"] = 
+	{
+		ACCESS = DEV_ACCESS,
+		funcs = function(args,PlayerId)
+			PlayerResource:GetSelectedHeroEntity(PlayerId):CreateParticleOfAction({
+				radius = args,
+			})
+		end
+	},
 	["CLEAR_UPGRADES"] = 
 	{
 		ACCESS = DEV_ACCESS,
@@ -22,7 +31,6 @@ CHAT_COMMANDS =
 			t2[PlayerId] = {}
 			PlayerTables:SetTableValue("UpgradeHeroSetting", "LockedUpgrade", t) 
 			PlayerTables:SetTableValue("UpgradeHeroSetting", "SavesUpgrades", t2)
-			PrintTable(PlayerTables:GetTableValue("UpgradeHeroSetting", "LockedUpgrade"))
 			CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(PlayerId), "UpdateUpgradeHero", {})
 		end
 	},		

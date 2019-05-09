@@ -1,5 +1,6 @@
 #base "abilities/vampires.txt"
 #base "abilities/humans.txt"
+#base "abilities/NightHunter.txt"
 
 "DOTAAbilities"
 {

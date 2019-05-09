@@ -35,7 +35,7 @@
 			"02"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"absorb_damage"		"200 350 440 500"
+				"absorb_damage"		"300 450 620 750"
 			}
 			"03"
 			{
@@ -62,7 +62,7 @@
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"delay"				"0.7"
+				"delay"				"0.3"
 			}			
 			"03"
 			{
@@ -72,7 +72,7 @@
 			"04"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"radius"			"275 275 300 450"
+				"radius"			"340"
 			}				
 		}
 	}	
@@ -90,7 +90,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"bonus_damage"		"35 45 55 65"
+				"bonus_damage"		"35 45 65 85"
 			}			
 			"02"
 			{
@@ -297,7 +297,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"healing"			"3 4 5 6"
+				"healing"			"3 5 7 10"
 			}				
 			"02"
 			{

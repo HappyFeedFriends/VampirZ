@@ -1,0 +1,235 @@
+""
+{
+	"NightHunter_ability1"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"25"
+		"AbilityManaCost"				"125"
+		"BaseClass"         			"ability_lua"
+		"AbilityCastPoint"				"1.2"
+		"ScriptFile"          			"ability/NightHunter"
+		"AbilityTextureName"        	"customImages/NightHunter_ability1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"1200"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"20"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration_stunned"	"1.2"
+			}
+		}
+	}
+
+	"NightHunter_ability2"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"25"
+		"AbilityManaCost"				"65"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/NightHunter"
+		"AbilityCastPoint"				"1.2"
+		"AbilityTextureName"        	"customImages/NightHunter_ability2"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"600"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"300"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration_stunned"	"1.2"
+			}
+		}
+	}
+
+	"NightHunter_ability3"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"15"
+		"AbilityManaCost"				"65"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/NightHunter"
+		"AbilityCastPoint"				"1.6"
+		"AbilityTextureName"        	"customImages/NightHunter_ability3"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"1100"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"650"
+			}
+		}
+	}
+
+	"NightHunter_ability4"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"18"
+		"AbilityManaCost"				"200"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/NightHunter"
+		"AbilityCastPoint"				"1.6"
+		"AbilityTextureName"        	"customImages/NightHunter_ability4"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"1100"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"150"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"countMeteor"		"12"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radiusMeteor"		"200"
+			}
+		}
+	}
+
+	"NightHunter_ability5"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"45"
+		"AbilityManaCost"				"320"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/NightHunter"
+		"AbilityCastPoint"				"1.5"
+		"AbilityTextureName"        	"customImages/NightHunter_ability5"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"700"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius_damage"		"200"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"50"
+			}
+		}
+	}	
+
+	"NightHunter_ability6"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"45"
+		"AbilityManaCost"				"320"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/NightHunter"
+		"AbilityCastPoint"				"1"
+		"AbilityTextureName"        	"customImages/NightHunter_ability5"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"countUnit"			"20"
+			}
+		}
+	}
+
+	"NightHunter_ability7"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"33"
+		"AbilityManaCost"				"220"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/NightHunter"
+		"AbilityCastPoint"				"1.8"
+		"AbilityTextureName"        	"customImages/NightHunter_ability5"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"700"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"ring_radius"		"200"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"5"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"4"
+			}
+		}
+	}
+
+	"NightHunter_ability8"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"				"33"
+		"AbilityManaCost"				"220"
+		"BaseClass"         			"ability_lua"
+		"ScriptFile"          			"ability/NightHunter"
+		"AbilityCastPoint"				"1.8"
+		"AbilityTextureName"        	"customImages/NightHunter_ability5"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"700"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"ring_radius"		"200"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"5"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"4"
+			}
+		}
+	}
+
+}

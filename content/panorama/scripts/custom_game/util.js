@@ -66,6 +66,10 @@ function HidePanel(panel) {
 	panel.enabled = false;
 	panel.hidden_custom = true;
 }
+function ToggleHidePanel(panel,bool){
+	if (!panel) return
+	return bool ? HidePanel(panel) : UnHiddenPanel(panel)
+}
 
 function UnHiddenPanel(panel) {
 	if (!panel) return
@@ -86,7 +90,7 @@ function IsVampire(pID){
 }
 
 function IsAlpha(pID){
-	return GetInfoTableVampires() && pID >= 0  && (GetInfoTableVampires()[pID].IsAlpha == 1) || CustomNetTables.GetTableValue('HeroSelection','Setting')['FirstVampire'] == String(pID);
+	return GetInfoTableVampires() && pID >= 0  && (GetInfoTableVampires()[pID].IsAlpha == 1);
 }
 
 function GetBlood(pID){

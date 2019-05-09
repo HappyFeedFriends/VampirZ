@@ -1,6 +1,7 @@
   // Dota Units File
 #base "units/neutrals.txt"
 #base "units/bosses.txt"
+
 "DOTAUnits"
 {
   "Version" "1"

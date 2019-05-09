@@ -61,7 +61,12 @@ function SpawnNeutrals:Init()
 	return NEUTRALS_SPAWN_SETTINGS.WavesDelay
 	end)
 end
-
+			SpawnNeutrals:RandomSpawns()
+			SpawnNeutrals.SpawnCount = SpawnNeutrals:GetSpawnNumber() + 1
+			for _,v in pairs(SpawnNeutrals.EntitySpawners) do
+				Origin = v:GetAbsOrigin()
+				SpawnNeutrals:SpawnByEntityUnits(Origin)
+			end
 function SpawnNeutrals:GetRandomUnitName() 
 	return PickRandomValueTable(SpawnNeutrals.UnitsList)
 end 
@@ -131,11 +136,11 @@ end
 function SpawnNeutrals:SpawnByEntityUnits(Origin)
 	local unit,miniboss
 	for i=1,NEUTRALS_SPAWN_SETTINGS.CreepPerSpawn do
-	miniboss = false	
-	if RollPercentage(NEUTRALS_SPAWN_SETTINGS.SpawnChanceMiniBoss) and SpawnNeutrals.MiniBossCount < SpawnNeutrals:GetLimits().MiniBossLimit and not boss then
-		SpawnNeutrals.MiniBossCount = SpawnNeutrals.MiniBossCount + 1
-		miniboss = true
-	end 
+		miniboss = false	
+		if RollPercentage(NEUTRALS_SPAWN_SETTINGS.SpawnChanceMiniBoss) and SpawnNeutrals.MiniBossCount < SpawnNeutrals:GetLimits().MiniBossLimit and not boss then
+			SpawnNeutrals.MiniBossCount = SpawnNeutrals.MiniBossCount + 1
+			miniboss = true
+		end 
 		unit = SpawnNeutrals:CreateUnitByName(Origin,miniboss)
 	end 
 end 
@@ -143,4 +148,31 @@ function RemoveAllSpawnedUnits()
 	for k,v in pairs(SpawnNeutrals.UnitsList) do
 		RemoveAllUnitsByName(v)
 	end	
-end 
+end
+
+function SpawnNeutrals:SpawnNightHunter()
+	SpawnNeutrals:RandomSpawns()
+	local Origin = self.EntitySpawners[RandomInt(1,#self.EntitySpawners)]:GetAbsOrigin()
+	local unit = CreateUnitByName(NIGHT_HUNTER_DATA.name, Origin, true, nil, nil, DOTA_TEAM_BADGUYS)
+	unit:SetModelScale(1.8)
+	unit:SetMinimumGoldBounty(0)
+	unit:SetMaximumGoldBounty(0)
+	unit:SetMaxHealth(NIGHT_HUNTER_DATA.STATS.health)
+	unit:SetBaseMaxHealth(NIGHT_HUNTER_DATA.STATS.health)
+	unit:SetHealth(NIGHT_HUNTER_DATA.STATS.health)
+	unit:SetBaseDamageMin(NIGHT_HUNTER_DATA.STATS.Damage[1]/2)
+	unit:SetBaseDamageMax(NIGHT_HUNTER_DATA.STATS.Damage[1] * 2)
+	unit:SetPhysicalArmorBaseValue(NIGHT_HUNTER_DATA.STATS.armor)
+	unit:SetBaseMagicalResistanceValue(NIGHT_HUNTER_DATA.STATS.magicResist)
+	unit:SetBaseHealthRegen(NIGHT_HUNTER_DATA.STATS.healthRegen)
+	unit:SetDeathXP(NIGHT_HUNTER_DATA.Xp)
+	unit.IsNightHunter = true
+	unit.stage = 1
+	HealthBar.NightHunter = unit
+	kills:CreateCustomToast({
+		type = "generic",
+		text = "#custom_toast_nightHunterAlive"
+	})
+	AddFOWViewer( DOTA_TEAM_GOODGUYS, Origin, 900, 5*60, false )
+
+end

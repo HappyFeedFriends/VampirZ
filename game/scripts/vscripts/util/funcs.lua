@@ -328,6 +328,24 @@ function CDOTA_BaseNPC:Healing(healing,vampire,offparticle,caster)
 	end
 end
 
+function CDOTA_BaseNPC:DropItem(itemName,Origin)
+if not itemName then return end
+   	local newItem = CreateItem(itemName, nil, nil)
+	local v = Origin or (self:GetOrigin() + RandomVector(RandomFloat(0,250)))
+	local drop = CreateItemOnPositionForLaunch( v, newItem )
+	newItem:LaunchLootInitialHeight( false, 0, 500, 0.75, v) 
+   	Timers:CreateTimer({
+          endTime = 60,
+          callback = function()
+			if newItem and IsValidEntity(newItem) and not newItem:GetOwnerEntity() then 
+				UTIL_Remove(newItem)
+				UTIL_Remove(drop)
+			end
+			return nil
+     end})
+   	return newItem,drop
+end
+
 function CDOTA_BaseNPC:GetCountItem()
 local k = 0
 	for i=0, 5 do
@@ -336,6 +354,51 @@ local k = 0
 		end 
 	end
 	return k
+end
+
+function CDOTABaseAbility:FireLinearProjectile(FX, velocity, distance, width, data, bDelete, bVision, vision)
+	local internalData = data or {}
+	local delete = false
+	if bDelete then delete = bDelete end
+	local provideVision = true
+	if bVision then provideVision = bVision end
+	local info = {
+		EffectName = FX,
+		Ability = self,
+		vSpawnOrigin = internalData.origin or self:GetCaster():GetAbsOrigin(), 
+		fStartRadius = width,
+		fEndRadius = internalData.width_end or width,
+		vVelocity = velocity,
+		fDistance = distance or 1000,
+		Source = internalData.source or self:GetCaster(),
+		iUnitTargetTeam = internalData.team or DOTA_UNIT_TARGET_TEAM_ENEMY,
+		iUnitTargetType = internalData.type or DOTA_UNIT_TARGET_ALL,
+		iUnitTargetFlags = internalData.type or DOTA_UNIT_TARGET_FLAG_NONE,
+		bDeleteOnHit = delete,
+		fExpireTime = GameRules:GetGameTime() + 10.0,
+		bProvidesVision = provideVision,
+		iVisionRadius = vision or 100,
+		iVisionTeamNumber = self:GetCaster():GetTeamNumber(),
+		ExtraData = internalData.extraData
+	}
+
+	return ProjectileManager:CreateLinearProjectile( info )
+end
+
+function ParticleManager:FireParticle(effect, attach, owner, cps)
+	local FX = ParticleManager:CreateParticle(effect, attach, owner)
+	if cps then
+		for cp, value in pairs(cps) do
+			if type(value) == "userdata" then
+				ParticleManager:SetParticleControl(FX, tonumber(cp), value)
+			elseif type(value) == "table" then
+				ParticleManager:SetParticleControlEnt(FX, cp, value.owner or owner, value.attach or attach, value.point or "attach_hitloc", (value.owner or owner):GetAbsOrigin(), true)
+			else
+				ParticleManager:SetParticleControlEnt(FX, cp, owner, attach, value, owner:GetAbsOrigin(), true)
+			end
+		end
+	end
+	ParticleManager:ReleaseParticleIndex(FX)
 end
 
 function CDOTA_BaseNPC:Teleport(position)
@@ -417,4 +480,31 @@ function CDOTA_Item:UpdateCharge(amount,bonus)
 	else
 		self:SetCurrentCharges(newCharges)
 	end
+end
+function CDOTA_BaseNPC:CreateParticleOfAction(data)
+	self:AddNewModifier(self,nil,'modifier_debuff_fire',{duration = 5})
+	if data.shockwave then
+		local fx = ParticleManager:CreateParticle("particles/econ/generic/generic_aoe_shockwave_1/generic_aoe_shockwave_1.vpcf", PATTACH_ABSORIGIN_FOLLOW, self)
+		ParticleManager:SetParticleControl(fx, 0, data.point or self:GetAbsOrigin())
+		ParticleManager:SetParticleControl(fx, 1, Vector(data.radius or 100,0,0))
+		ParticleManager:SetParticleControl(fx, 2, Vector(2,0,15))
+		ParticleManager:SetParticleControl(fx, 3, Vector(230,22,22))
+		ParticleManager:SetParticleControl(fx, 4, Vector(208,70,70))
+		ParticleManager:ReleaseParticleIndex(fx)
+		return fx
+	end
+	-- Particle by Boss Hunter
+	local fx = ParticleManager:CreateParticle("particles/generic_radius_warning.vpcf", PATTACH_WORLDORIGIN, self)
+	ParticleManager:SetParticleControl(fx, 0, data.point or self:GetAbsOrigin() )
+	ParticleManager:SetParticleControl(fx, 1, Vector(data.radius or 100,200,0))
+	ParticleManager:ReleaseParticleIndex(fx)
+	return fx
+end
+
+function CDOTA_BaseNPC:CreateParticleRage()
+	local fx = ParticleManager:CreateParticle("particles/econ/generic/generic_buff_1/generic_buff_1.vpcf", PATTACH_POINT_FOLLOW, self )
+	ParticleManager:SetParticleControl(fx, 14, Vector(1,1,1))
+	ParticleManager:SetParticleControl(fx, 15, Vector(255,232,130))
+	ParticleManager:ReleaseParticleIndex(fx)
+	return fx
 end

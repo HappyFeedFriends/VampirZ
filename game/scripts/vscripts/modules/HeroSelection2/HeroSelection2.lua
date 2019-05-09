@@ -31,6 +31,9 @@ function HeroSelection2:UpdateTimer()
 		t['DurationSelection'] = math.max(t['DurationSelection'] - 1,0)
 		CustomNetTables:SetTableValue("HeroSelection", 'Setting', t)
 		CustomGameEventManager:Send_ServerToAllClients("HeroSelectionUpdateTimer", {})
+		if t['DurationSelection'] <= 0 then
+			HealthBar:Init()
+		end
 		return t['DurationSelection'] > 0 and 1 or nil
 	end)
 end
@@ -79,6 +82,37 @@ local heroes = {}
 	return heroes
 end
 
+function HeroSelection2:RandomPickHero()
+	PlayerResource:PlayerIterate(function(pID)
+		if PlayerResource:GetSelectedHeroName(pID) == FORCE_PICKED_HERO then
+			HeroSelection2:SelectHero({
+				PlayerID = pID,
+				heroName = HeroSelection2:GetRandomHero(pID),
+				}) 
+		end
+	end)
+end 
+
+function HeroSelection2:GetRandomHero(pID)
+	local heroes = CustomNetTables:GetTableValue("HeroSelection", 'HeroList')
+	local heroList = {}
+	if Vampires:IsAlpha(pID) then return "npc_dota_hero_night_stalker" end
+	if Vampires:IsVampire(pID) then
+		for k,v in pairs(heroes) do 
+			if v.IsVampire == 1 and v.IsLocked ~= 1 then
+				table.insert(heroList,k)
+			end 
+		end
+		return heroList[RandomInt(1,#heroList)]
+	else
+		for k,v in pairs(heroes) do 
+			if v.IsVampire == 0 and v.IsLocked ~= 1 then
+				table.insert(heroList,k)
+			end 
+		end
+		return heroList[RandomInt(1,#heroList)]
+	end
+end
 function HeroSelection2:SetFirstVampire()
 	if HeroSelection2.FirstVampire then return HeroSelection2.FirstVampire end
 		for index,value in pairs(PickersHeroes) do 
@@ -106,3 +140,4 @@ function HeroSelection2:SetFirstVampire()
 	--HeroSelection2.FirstVampire = 1
 	return HeroSelection2.FirstVampire 
 end
+--PlayerResource:GetSelectedHeroEntity(0):RemoveModifierByName('modifier_stunned')
